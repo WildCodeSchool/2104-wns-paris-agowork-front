@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AllNav } from "../../styles/navbar/Navbar";
 
 function Navbar(): JSX.Element {
   return (
-    <div>
+    <AllNav>
       <div>
         <h1>Wilders Book</h1>
         <li>
@@ -13,7 +14,7 @@ function Navbar(): JSX.Element {
           <Link to="/addWilder">Add Wilder</Link>
         </li>
       </div>
-    </div>
+    </AllNav>
   );
 }
 

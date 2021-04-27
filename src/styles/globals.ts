@@ -5,6 +5,7 @@ const colors = {
     s: "100%",
     l: "42%",
   },
+  secondary: "#E5E5E5",
 };
 
 export default colors;
