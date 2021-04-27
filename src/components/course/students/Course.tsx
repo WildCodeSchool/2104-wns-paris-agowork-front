@@ -1,4 +1,3 @@
-// ts-nocheck
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 
@@ -25,6 +24,7 @@ function Course({
 }: CourseProps): JSX.Element {
   const [achievment, setAchievment] = useState("");
   const [updateIsValidated, { data, error }] = useMutation(UPDATE_ISVALIDATED);
+  // eslint-disable-next-line
   console.log(data);
   return (
     <div>
@@ -45,7 +45,11 @@ function Course({
           <p>modification effectuée : {data.updateIsValidated.isValidated}</p>
         )}
 
-        <div onChange={(e) => setAchievment(e.target.value)}>
+        <div
+          onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+            setAchievment(e.target.value)
+          }
+        >
           {isValidated === "TRUE" ? (
             <p> Terminé & assimilé ✔️ </p>
           ) : (
