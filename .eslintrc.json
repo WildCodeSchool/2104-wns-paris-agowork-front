@@ -33,6 +33,9 @@
                 "endOfLine": "auto"
             }
         ],
+        "no-underscore-dangle":  ["error", { 
+            "allow": ["_id"] 
+        }],
         "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"]}] 
     }
 }
