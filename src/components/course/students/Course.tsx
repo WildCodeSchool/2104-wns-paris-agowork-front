@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "../../../styles/elements";
+import { Card } from "../../../assets/styles/elements";
 
 export type CourseProps = {
   _id?: string;

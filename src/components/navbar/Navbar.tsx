@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Navigation } from "react-minimal-side-navigation";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import { Link } from "react-router-dom";
-import { AllNav } from "../../styles/navbar/Navbar";
+import { AllNav } from "../../assets/styles/navbar/Navbar";
+import logo from "../../assets/pictures/logo.png";
 
 export const Navbar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
   return (
     <AllNav>
+      <img src={logo} alt="ECS" />
       <Navigation
         activeItemId="/home"
         onSelect={({ itemId }) => {
@@ -16,32 +16,20 @@ export const Navbar = () => {
         }}
         items={[
           {
-            title: "Home",
-            itemId: "/home",
+            title: "Campus de Paris",
+            itemId: "/Paris",
           },
           {
-            title: "About",
-            itemId: "/about",
-            subNav: [
-              {
-                title: "Projects",
-                itemId: "/about/projects",
-              },
-              {
-                title: "Members",
-                itemId: "/about/members",
-              },
-            ],
+            title: "Dashboard",
+            itemId: "/Dashboard",
           },
           {
-            title: "Another Tab",
-            itemId: "/another",
-            subNav: [
-              {
-                title: "Teams",
-                itemId: "/another/teams",
-              },
-            ],
+            title: "Ressources",
+            itemId: "/Ressources",
+          },
+          {
+            title: "Cours",
+            itemId: "/Cours",
           },
         ]}
       />
