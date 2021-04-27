@@ -45,6 +45,24 @@ export const Navbar = () => {
             elemBefore: () => <MdSchool />,
             title: "Cours",
             itemId: "/Cours",
+            subNav: [
+              {
+                title: "Module 1 : Découverte du monde professionnel",
+                itemId: "/management/teams",
+              },
+              {
+                title: "Module 2 : Les rouages de l’entreprise",
+                itemId: "/management/members",
+              },
+              {
+                title: "Module 3 : Histoire et panorama des média",
+                itemId: "/management/members",
+              },
+              {
+                title: "Module 4 : Panorama",
+                itemId: "/management/members",
+              },
+            ],
           },
           {
             elemBefore: () => <AiFillStar />,
