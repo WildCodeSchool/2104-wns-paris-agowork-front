@@ -28,5 +28,6 @@ enum Achievment {
 }
 
 input CourseInput {
+  id: ID
   isValidated: Achievment
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import Course, { CourseProps } from "./Course";
+import { ModuleWrapper } from "../../../styles/elements";
 
 export type CourseModuleProps = {
   _id?: string;
@@ -12,19 +13,17 @@ function CourseModule({
   courses,
 }: CourseModuleProps): JSX.Element {
   return (
-    <div>
+    <ModuleWrapper>
       <h2>{moduleTitle}</h2>
-      <div>
-        {courses.map((course) => (
-          <Course
-            key={course._id}
-            courseTitle={course.courseTitle}
-            isValidated={course.isValidated}
-            comments={course.comments}
-          />
-        ))}
-      </div>
-    </div>
+      {courses.map((course) => (
+        <Course
+          key={course._id}
+          courseTitle={course.courseTitle}
+          isValidated={course.isValidated}
+          comments={course.comments}
+        />
+      ))}
+    </ModuleWrapper>
   );
 }
 

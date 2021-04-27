@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
+import {
+  Card,
+  Form,
+  FormElements,
+  RadioButtons,
+  Label,
+  Input,
+} from "../../../styles/elements";
 
 export type CourseProps = {
   _id?: string;
@@ -23,13 +31,13 @@ function Course({
   isValidated,
 }: CourseProps): JSX.Element {
   const [achievment, setAchievment] = useState("");
-  const [updateIsValidated, { data, error }] = useMutation(UPDATE_ISVALIDATED);
+  const [updateIsValidated, { data }] = useMutation(UPDATE_ISVALIDATED);
   // eslint-disable-next-line
   console.log(data);
   return (
-    <div>
+    <Card>
       <h3>{courseTitle}</h3>
-      <form
+      <Form
         onChange={async (e) => {
           e.preventDefault();
           updateIsValidated({
@@ -45,39 +53,54 @@ function Course({
           <p>modification effectuée : {data.updateIsValidated.isValidated}</p>
         )}
 
-        <div
-          onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
-            setAchievment(e.target.value)
-          }
-        >
+        <FormElements>
           {isValidated === "TRUE" ? (
-            <p> Terminé & assimilé ✔️ </p>
+            <RadioButtons>Terminé & assimilé ✔️</RadioButtons>
           ) : (
-            <>
-              <input name="isValidated-input" type="radio" value="TRUE" />
-            </>
+            <RadioButtons>
+              <Label htmlFor="isValidated-input"> Oui </Label>
+              <Input
+                id="isValidated-input"
+                type="radio"
+                value="TRUE"
+                onChange={(e) => setAchievment("TRUE")}
+              />
+            </RadioButtons>
           )}
 
           {isValidated === "FALSE" ? (
-            <p> Pas acquis ❌ </p>
+            <RadioButtons> Pas acquis ❌ </RadioButtons>
           ) : (
-            <>
-              <input name="isValidated-input" type="radio" value="FALSE" />
-            </>
+            <RadioButtons>
+              <Label htmlFor="isValidated-input"> Non </Label>
+              <Input
+                id="isValidated-input"
+                type="radio"
+                value="FALSE"
+                onChange={(e) => setAchievment(e.target.value)}
+              />
+            </RadioButtons>
           )}
 
           {isValidated === "INPROGRESS" ? (
-            <p> In progress 🔄 </p>
+            <RadioButtons> In progress 🔄 </RadioButtons>
           ) : (
-            <>
-              <input name="isValidated-input" type="radio" value="INPROGRESS" />
-            </>
+            <RadioButtons>
+              <Label htmlFor="isValidated-input"> In progress </Label>
+              <input
+                id="isValidated-input"
+                type="radio"
+                value="INPROGRESS"
+                onChange={(e) => setAchievment(e.target.value)}
+              />
+            </RadioButtons>
           )}
-        </div>
-      </form>
-      {error ? <p>{error}</p> : ""}
-      <div>{comments}</div>
-    </div>
+        </FormElements>
+      </Form>
+      <div>
+        <p>{comments}</p>
+      </div>
+    </Card>
   );
 }
 

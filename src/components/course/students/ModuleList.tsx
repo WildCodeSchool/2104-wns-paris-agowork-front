@@ -25,7 +25,7 @@ function ModuleList(): JSX.Element {
   return (
     <div>
       <Container>
-        <h2>Lundi 27 avril 2021</h2>
+        <h1>Lundi 27 avril 2021</h1>
         <CardRow>
           {data.allCourseModules.map((module: CourseModuleProps) => (
             <CourseModule
