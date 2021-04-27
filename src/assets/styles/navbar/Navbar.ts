@@ -4,7 +4,7 @@ import colors from "../globals";
 export const AllNav = styled.nav`
   background-color: ${colors.secondary};
   background-color.hover: ${colors.secondary};
-  width: 20%;
+  width: 25%;
   border-color: none;
   > img:first-child {
     border-radius: 7px 7px 0 0;
