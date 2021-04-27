@@ -13,4 +13,18 @@ export const AllNav = styled.nav`
     height: auto;
     background-color: ${colors.primary};
   }
+  p {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-left: 2rem;
+    > img:first-child {
+      border-radius: 7px 7px 0 0;
+      margin-bottom: 20px;
+      margin-left: 1rem;
+      max-width: 20%;
+      height: auto;
+      background-color: white;
+    }
+  }
 `;
