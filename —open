@@ -1,3 +1,11 @@
+type Query {
+  allCourseModules:[CourseModule] @listLength(min:1, max: 4)
+}
+
+type Mutation {
+  updateIsValidated(isValidated: CourseInput): Course
+}
+
 type CourseModule {
   id: ID
   moduleTitle: String
@@ -7,12 +15,18 @@ type CourseModule {
 
 type Course {
   id: ID
-  courseTitle: String @fake(type:word)
+  courseTitle: String 
+  	@examples(values: ["Introduction", "Super cours 1", "Super cours 2", "Super cours 3"])
   comments: String @fake(type:lorem, options:{maxNumber:10, minNumber:4})
-  isValidated: Boolean 
-  	@examples(values: [true, false])
+  isValidated: Achievment
 }
 
-type Query {
-  allCourseModules:[CourseModule] @listLength(min:1, max: 4)
+enum Achievment {
+  TRUE
+  FALSE
+  INPROGRESS
+}
+
+input CourseInput {
+  isValidated: Achievment
 }

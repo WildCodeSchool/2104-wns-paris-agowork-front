@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import colors from "./globals";
 
-export const Card = styled.article`
+export const Card = `
   padding: 20px;
   border: 1px solid #c9c9c9;
   border-radius: 7px;
