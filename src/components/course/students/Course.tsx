@@ -1,3 +1,4 @@
+// ts-nocheck
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 
@@ -10,16 +11,20 @@ export type CourseProps = {
 };
 
 const UPDATE_ISVALIDATED = gql`
-  mutation updateIsValidated($isValidated: CourseInput) {
-    updateIsValidated(isValidated: $isValidated) {
+  mutation updateIsValidated($input: CourseInput) {
+    updateIsValidated(input: $input) {
       isValidated
     }
   }
 `;
 
-function Course({ courseTitle, comments }: CourseProps): JSX.Element {
-  const [isValidated, setIsValidated] = useState("");
-  const [updateIsValidated, { data }] = useMutation(UPDATE_ISVALIDATED);
+function Course({
+  courseTitle,
+  comments,
+  isValidated,
+}: CourseProps): JSX.Element {
+  const [achievment, setAchievment] = useState("");
+  const [updateIsValidated, { data, error }] = useMutation(UPDATE_ISVALIDATED);
   console.log(data);
   return (
     <div>
@@ -30,7 +35,7 @@ function Course({ courseTitle, comments }: CourseProps): JSX.Element {
           updateIsValidated({
             variables: {
               input: {
-                isValidated,
+                achievment,
               },
             },
           });
@@ -39,30 +44,34 @@ function Course({ courseTitle, comments }: CourseProps): JSX.Element {
         {data && (
           <p>modification effectuée : {data.updateIsValidated.isValidated}</p>
         )}
-        <label htmlFor="isValidated-input-true"> Oui </label>
-        <input
-          id="isValidated-input-true"
-          type="radio"
-          value="TRUE"
-          onChange={(e) => setIsValidated(e.target.value)}
-        />
 
-        <label htmlFor="isValidated-input-false"> Non </label>
-        <input
-          id="isValidated-input-false"
-          type="radio"
-          value="FALSE"
-          onChange={(e) => setIsValidated(e.target.value)}
-        />
+        <div onChange={(e) => setAchievment(e.target.value)}>
+          {isValidated === "TRUE" ? (
+            <p> Terminé & assimilé ✔️ </p>
+          ) : (
+            <>
+              <input name="isValidated-input" type="radio" value="TRUE" />
+            </>
+          )}
 
-        <label htmlFor="isValidated-input-inprogress"> En cours </label>
-        <input
-          id="isValidated-input-inprogress"
-          type="radio"
-          value="INPROGRESS"
-          onChange={(e) => setIsValidated(e.target.value)}
-        />
+          {isValidated === "FALSE" ? (
+            <p> Pas acquis ❌ </p>
+          ) : (
+            <>
+              <input name="isValidated-input" type="radio" value="FALSE" />
+            </>
+          )}
+
+          {isValidated === "INPROGRESS" ? (
+            <p> In progress 🔄 </p>
+          ) : (
+            <>
+              <input name="isValidated-input" type="radio" value="INPROGRESS" />
+            </>
+          )}
+        </div>
       </form>
+      {error ? <p>{error}</p> : ""}
       <div>{comments}</div>
     </div>
   );

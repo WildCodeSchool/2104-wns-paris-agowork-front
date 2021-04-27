@@ -3,7 +3,7 @@ type Query {
 }
 
 type Mutation {
-  updateIsValidated(isValidated: CourseInput): Course
+  updateIsValidated(input: CourseInput): Course
 }
 
 type CourseModule {
