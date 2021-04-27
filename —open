@@ -1,0 +1,18 @@
+type CourseModule {
+  id: ID
+  moduleTitle: String
+  	@examples(values: ["Découverte du monde professionnel", "Les rouages de l'entreprise", "Histoire et panorama des média", "Panorama"])
+  courses: [Course]
+}
+
+type Course {
+  id: ID
+  courseTitle: String @fake(type:word)
+  comments: String @fake(type:lorem, options:{maxNumber:10, minNumber:4})
+  isValidated: Boolean 
+  	@examples(values: [true, false])
+}
+
+type Query {
+  allCourseModules:[CourseModule] @listLength(min:1, max: 4)
+}
