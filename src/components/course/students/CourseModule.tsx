@@ -2,12 +2,13 @@ import React from "react";
 import Course, { CourseProps } from "./Course";
 
 export type CourseModuleProps = {
-  _id?: string;
+  id?: string;
   moduleTitle: string;
   courses: CourseProps[];
 };
 
 function CourseModule({
+  id,
   moduleTitle,
   courses,
 }: CourseModuleProps): JSX.Element {
@@ -17,7 +18,8 @@ function CourseModule({
       <div>
         {courses.map((course) => (
           <Course
-            key={course._id}
+            id={id}
+            key={course.id}
             courseTitle={course.courseTitle}
             isValidated={course.isValidated}
             comments={course.comments}

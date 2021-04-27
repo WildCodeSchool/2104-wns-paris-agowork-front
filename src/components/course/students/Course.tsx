@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 
 export type CourseProps = {
-  _id?: string;
+  id?: string;
   courseTitle: string;
   isValidated: string;
   comments: string;
@@ -12,68 +12,74 @@ export type CourseProps = {
 const UPDATE_ISVALIDATED = gql`
   mutation updateIsValidated($input: CourseInput) {
     updateIsValidated(input: $input) {
+      id
       isValidated
     }
   }
 `;
 
 function Course({
+  id,
   courseTitle,
   comments,
   isValidated,
 }: CourseProps): JSX.Element {
-  const [achievment, setAchievment] = useState("");
+  const [achievment, setAchievment] = useState(isValidated);
   const [updateIsValidated, { data, error }] = useMutation(UPDATE_ISVALIDATED);
-  // eslint-disable-next-line
-  console.log(data);
+  let message = null;
+  if (data && data.updateIsValidated) {
+    message = data.updateIsValidated.isValidated;
+  }
   return (
     <div>
       <h3>{courseTitle}</h3>
+      {message ? <p>New value: {message}</p> : null}
       <form
-        onChange={async (e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
           updateIsValidated({
             variables: {
               input: {
-                achievment,
+                id,
+                isValidated: achievment,
               },
             },
           });
         }}
       >
-        {data && (
-          <p>modification effectuée : {data.updateIsValidated.isValidated}</p>
-        )}
+        {isValidated === "TRUE" ? <p> Terminé & assimilé ✔️ </p> : null}
 
-        <div
-          onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
-            setAchievment(e.target.value)
-          }
-        >
-          {isValidated === "TRUE" ? (
-            <p> Terminé & assimilé ✔️ </p>
-          ) : (
-            <>
-              <input name="isValidated-input" type="radio" value="TRUE" />
-            </>
-          )}
+        {isValidated === "FALSE" ? <p> Pas acquis ❌ </p> : null}
 
-          {isValidated === "FALSE" ? (
-            <p> Pas acquis ❌ </p>
-          ) : (
-            <>
-              <input name="isValidated-input" type="radio" value="FALSE" />
-            </>
-          )}
-
-          {isValidated === "INPROGRESS" ? (
-            <p> In progress 🔄 </p>
-          ) : (
-            <>
-              <input name="isValidated-input" type="radio" value="INPROGRESS" />
-            </>
-          )}
-        </div>
+        {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
+        <span>Terminé</span>
+        <input
+          name="achievment"
+          type="radio"
+          value="TRUE"
+          checked={achievment === "TRUE"}
+          onChange={(e) => setAchievment(e.target.value)}
+        />
+        <br />
+        <span>Pas acquis</span>
+        <input
+          name="achievment"
+          type="radio"
+          value="FALSE"
+          checked={achievment === "FALSE"}
+          onChange={(e) => setAchievment(e.target.value)}
+        />
+        <br />
+        <span>In progress</span>
+        <input
+          name="achievment"
+          type="radio"
+          value="INPROGRESS"
+          checked={achievment === "INPROGRESS"}
+          onChange={(e) => setAchievment(e.target.value)}
+        />
+        <br />
+        <button type="submit">Edit</button>
       </form>
       {error ? <p>{error}</p> : ""}
       <div>{comments}</div>
