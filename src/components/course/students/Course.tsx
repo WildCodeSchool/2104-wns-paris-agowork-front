@@ -37,7 +37,7 @@ function Course({ courseTitle, comments }: CourseProps): JSX.Element {
         }}
       >
         {data && (
-          <p>status {data.updateIsValidated.isValidated} a été modifié</p>
+          <p>modification effectuée : {data.updateIsValidated.isValidated}</p>
         )}
         <label htmlFor="isValidated-input-true"> Oui </label>
         <input
