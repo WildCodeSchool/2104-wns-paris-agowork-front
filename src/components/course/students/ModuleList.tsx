@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import { CardRow, Container } from "../../../styles/elements";
+import { CardRow, Container } from "../../../assets/styles/elements";
 import CourseModule, { CourseModuleProps } from "./CourseModule";
 
 const ALL_MODULES = gql`

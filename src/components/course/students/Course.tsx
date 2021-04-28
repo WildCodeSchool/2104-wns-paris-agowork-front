@@ -9,7 +9,7 @@ import {
   FormElements,
   InputComments,
   Button,
-} from "../../../styles/elements";
+} from "../../../assets/styles/elements";
 
 export type CourseProps = {
   id?: string;
