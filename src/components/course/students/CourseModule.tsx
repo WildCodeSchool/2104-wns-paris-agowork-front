@@ -3,12 +3,13 @@ import Course, { CourseProps } from "./Course";
 import { ModuleWrapper } from "../../../styles/elements";
 
 export type CourseModuleProps = {
-  _id?: string;
+  id?: string;
   moduleTitle: string;
   courses: CourseProps[];
 };
 
 function CourseModule({
+  id,
   moduleTitle,
   courses,
 }: CourseModuleProps): JSX.Element {
@@ -17,7 +18,8 @@ function CourseModule({
       <h2>{moduleTitle}</h2>
       {courses.map((course) => (
         <Course
-          key={course._id}
+          id={course.id}
+          key={course.id}
           courseTitle={course.courseTitle}
           isValidated={course.isValidated}
           comments={course.comments}

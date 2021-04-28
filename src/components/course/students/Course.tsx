@@ -3,14 +3,14 @@ import { useMutation, gql } from "@apollo/client";
 import {
   Card,
   Form,
-  FormElements,
-  RadioButtons,
-  Label,
+  Achievment,
   Input,
+  RadioButtons,
+  FormElements,
 } from "../../../styles/elements";
 
 export type CourseProps = {
-  _id?: string;
+  id?: string;
   courseTitle: string;
   isValidated: string;
   comments: string;
@@ -20,82 +20,81 @@ export type CourseProps = {
 const UPDATE_ISVALIDATED = gql`
   mutation updateIsValidated($input: CourseInput) {
     updateIsValidated(input: $input) {
+      id
       isValidated
     }
   }
 `;
 
 function Course({
+  id,
   courseTitle,
   comments,
   isValidated,
 }: CourseProps): JSX.Element {
   const [achievment, setAchievment] = useState("");
   const [updateIsValidated, { data }] = useMutation(UPDATE_ISVALIDATED);
+  let message = null;
+  if (data && data.updateIsValidated) {
+    message = data.updateIsValidated.isValidated;
+  }
   // eslint-disable-next-line
   console.log(data);
   return (
     <Card>
       <h3>{courseTitle}</h3>
+      {message ? <p>New value: {message}</p> : null}
       <Form
-        onChange={async (e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
           updateIsValidated({
             variables: {
               input: {
-                achievment,
+                id,
+                isValidated: achievment,
               },
             },
           });
         }}
       >
-        {data && (
-          <p>modification effectuée : {data.updateIsValidated.isValidated}</p>
-        )}
+        {isValidated === "TRUE" ? <p> Terminé & assimilé ✔️ </p> : null}
 
+        {isValidated === "FALSE" ? <p> Pas acquis ❌ </p> : null}
+
+        {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
         <FormElements>
-          {isValidated === "TRUE" ? (
-            <RadioButtons>Terminé & assimilé ✔️</RadioButtons>
-          ) : (
-            <RadioButtons>
-              <Label htmlFor="isValidated-input"> Oui </Label>
-              <Input
-                id="isValidated-input"
-                type="radio"
-                value="TRUE"
-                onChange={(e) => setAchievment("TRUE")}
-              />
-            </RadioButtons>
-          )}
-
-          {isValidated === "FALSE" ? (
-            <RadioButtons> Pas acquis ❌ </RadioButtons>
-          ) : (
-            <RadioButtons>
-              <Label htmlFor="isValidated-input"> Non </Label>
-              <Input
-                id="isValidated-input"
-                type="radio"
-                value="FALSE"
-                onChange={(e) => setAchievment(e.target.value)}
-              />
-            </RadioButtons>
-          )}
-
-          {isValidated === "INPROGRESS" ? (
-            <RadioButtons> In progress 🔄 </RadioButtons>
-          ) : (
-            <RadioButtons>
-              <Label htmlFor="isValidated-input"> In progress </Label>
-              <input
-                id="isValidated-input"
-                type="radio"
-                value="INPROGRESS"
-                onChange={(e) => setAchievment(e.target.value)}
-              />
-            </RadioButtons>
-          )}
+          <RadioButtons>
+            <Achievment>Terminé</Achievment>
+            <Input
+              name="achievment"
+              type="radio"
+              value="TRUE"
+              checked={achievment === "TRUE"}
+              onChange={(e) => setAchievment(e.target.value)}
+            />
+          </RadioButtons>
+          <RadioButtons>
+            <Achievment>Pas acquis</Achievment>
+            <Input
+              name="achievment"
+              type="radio"
+              value="FALSE"
+              checked={achievment === "FALSE"}
+              onChange={(e) => setAchievment(e.target.value)}
+            />
+          </RadioButtons>
+          <RadioButtons>
+            <Achievment>In progress</Achievment>
+            <Input
+              name="achievment"
+              type="radio"
+              value="INPROGRESS"
+              checked={achievment === "INPROGRESS"}
+              onChange={(e) => setAchievment(e.target.value)}
+            />
+          </RadioButtons>
         </FormElements>
+        <button type="submit">Mettre à jour</button>
       </Form>
       <div>
         <p>{comments}</p>

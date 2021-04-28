@@ -65,7 +65,7 @@ export const RadioButtons = styled.div`
   padding-bottom: 1rem;
 `;
 
-export const Label = styled.label`
+export const Achievment = styled.label`
   display: flex;
   flex-wrap: wrap;
 `;
