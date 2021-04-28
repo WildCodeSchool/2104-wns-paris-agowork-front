@@ -9,10 +9,11 @@ import { MdSchool } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { GoTasklist } from "react-icons/go";
 import { AllNav } from "../../assets/styles/navbar/Navbar";
+import Icons from "./Icons";
 import logo from "../../assets/pictures/logo.png";
 import profile from "../../assets/pictures/profile.png";
 
-export const Navbar = () => {
+export const Navbar = (): JSX.Element => {
   return (
     <AllNav>
       <img src={logo} alt="ECS" />
@@ -76,6 +77,8 @@ export const Navbar = () => {
           },
         ]}
       />
+      <Icons />
+      <p>Powered by AgoWork</p>
     </AllNav>
   );
 };
