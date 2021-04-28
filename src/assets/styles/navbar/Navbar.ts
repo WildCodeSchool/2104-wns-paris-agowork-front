@@ -3,7 +3,7 @@ import colors from "../globals";
 
 export const AllNav = styled.nav`
   background-color: ${colors.secondary};
-  width: 22%;
+  width: 45%;
   height: 100%;
   border-color: none;
   p {
@@ -44,17 +44,10 @@ export const AllNav = styled.nav`
 export const NavLink = styled.div`
   text-align: left;
   color.hover: ${colors.primary};
-  backgrond-color: red;
-`;
-
-export const Navigation = styled.div`
-  width: 100%;
-  backgrond-color: red;
 `;
 
 export const Logo = styled.div`
   background-color: ${colors.primary};
-  order-radius: 7px 7px 0 0;
   margin-bottom: 20px;
   height: 50%;
   padding: 1rem;
