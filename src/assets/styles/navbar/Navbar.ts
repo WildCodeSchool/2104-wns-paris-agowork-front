@@ -3,7 +3,7 @@ import colors from "../globals";
 
 export const AllNav = styled.nav`
   background-color: ${colors.secondary};
-  width: 25%;
+  width: 22%;
   height: 100%;
   border-color: none;
   p {
@@ -21,9 +21,35 @@ export const AllNav = styled.nav`
       margin-right: 2rem;
     }
   }
-  .link {
-    text-align: left;
+  .campus {
+    color: ${colors.primary};
   }
+  .dashboard {
+    color: ${colors.primary};
+  }
+  .ressource {
+    color: ${colors.primary};
+  }
+  .cours {
+    color: ${colors.primary};
+  }
+  .favoris {
+    color: ${colors.primary};
+  }
+  .bilan {
+    color: ${colors.primary};
+  }
+`;
+
+export const NavLink = styled.div`
+  text-align: left;
+  color.hover: ${colors.primary};
+  backgrond-color: red;
+`;
+
+export const Navigation = styled.div`
+  width: 100%;
+  backgrond-color: red;
 `;
 
 export const Logo = styled.div`
@@ -36,13 +62,6 @@ export const Logo = styled.div`
   .esc {
     width: 100%;
     margin-right: 1rem;
-  }
-`;
-
-export const Navigation = styled.div`
-  div {
-    background-color: white;
-    text-align: left;
   }
 `;
 

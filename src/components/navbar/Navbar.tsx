@@ -8,7 +8,7 @@ import { ImBooks } from "react-icons/im";
 import { MdSchool } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { GoTasklist } from "react-icons/go";
-import { AllNav, Logo } from "../../assets/styles/navbar/Navbar";
+import { AllNav, Logo, NavLink } from "../../assets/styles/navbar/Navbar";
 import Icons from "./Icons";
 import logo from "../../assets/pictures/logo.png";
 import profile from "../../assets/pictures/profile.png";
@@ -23,7 +23,7 @@ export const Navbar = (): JSX.Element => {
         <img src={profile} alt="profile" />
         Jane Doe
       </p>
-      <div className="link">
+      <NavLink>
         <Navigation
           activeItemId="/home"
           onSelect={({ itemId }) => {
@@ -31,22 +31,22 @@ export const Navbar = (): JSX.Element => {
           }}
           items={[
             {
-              elemBefore: () => <TiGroup />,
+              elemBefore: () => <TiGroup className="campus" />,
               title: "Campus de Paris",
               itemId: "/Paris",
             },
             {
-              elemBefore: () => <BsFillGearFill />,
+              elemBefore: () => <BsFillGearFill className="dashboard" />,
               title: "Dashboard",
               itemId: "/Dashboard",
             },
             {
-              elemBefore: () => <ImBooks />,
+              elemBefore: () => <ImBooks className="ressource" />,
               title: "Ressources",
               itemId: "/Ressources",
             },
             {
-              elemBefore: () => <MdSchool />,
+              elemBefore: () => <MdSchool className="cours" />,
               title: "Cours",
               itemId: "/Cours",
               subNav: [
@@ -73,18 +73,18 @@ export const Navbar = (): JSX.Element => {
               ],
             },
             {
-              elemBefore: () => <AiFillStar />,
+              elemBefore: () => <AiFillStar className="favoris" />,
               title: "Favoris",
               itemId: "/Favoris",
             },
             {
-              elemBefore: () => <GoTasklist />,
+              elemBefore: () => <GoTasklist className="bilan" />,
               title: "Bilan compétences",
               itemId: "/Bilan",
             },
           ]}
         />
-      </div>
+      </NavLink>
       <Icons />
       <p>Powered by AgoWork</p>
     </AllNav>
