@@ -21,7 +21,7 @@ export const CardRow = styled.section`
 export const Card = styled.article`
   padding: 20px;
   background-color: white;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
@@ -34,10 +34,12 @@ export const Card = styled.article`
     text-align: left;
     padding-left: 20px;
   }
-  p,
-  ul {
-    color: #757575;
-    line-height: 1.5;
+`;
+
+export const ModuleWrapper = styled.div`
+  h2 {
+    font-size: 30px;
+    text-align: left;
   }
 `;
 
@@ -70,14 +72,17 @@ export const Achievment = styled.label`
   flex-wrap: wrap;
 `;
 
-export const Input = styled.input`
+export const InputAchievment = styled.input`
   display: flex;
   flex-wrap: wrap;
 `;
 
-export const ModuleWrapper = styled.div`
-  h2 {
-    font-size: 30px;
-    text-align: left;
-  }
+export const InputComments = styled.input`
+  width: 250%;
+  height: 150px;
+`;
+
+export const Button = styled.button`
+  background-color: ${colors.primary};
+  color: white;
 `;

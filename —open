@@ -30,4 +30,5 @@ enum Achievment {
 input CourseInput {
   id: ID
   isValidated: Achievment
+  comments: String
 }

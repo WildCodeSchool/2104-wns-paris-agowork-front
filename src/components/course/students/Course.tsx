@@ -4,9 +4,11 @@ import {
   Card,
   Form,
   Achievment,
-  Input,
+  InputAchievment,
   RadioButtons,
   FormElements,
+  InputComments,
+  Button,
 } from "../../../styles/elements";
 
 export type CourseProps = {
@@ -22,6 +24,7 @@ const UPDATE_ISVALIDATED = gql`
     updateIsValidated(input: $input) {
       id
       isValidated
+      comments
     }
   }
 `;
@@ -33,6 +36,7 @@ function Course({
   isValidated,
 }: CourseProps): JSX.Element {
   const [achievment, setAchievment] = useState("");
+  const [newComments, setNewComments] = useState("");
   const [updateIsValidated, { data }] = useMutation(UPDATE_ISVALIDATED);
   let message = null;
   if (data && data.updateIsValidated) {
@@ -52,20 +56,19 @@ function Course({
               input: {
                 id,
                 isValidated: achievment,
+                comments: newComments,
               },
             },
           });
         }}
       >
         {isValidated === "TRUE" ? <p> Terminé & assimilé ✔️ </p> : null}
-
         {isValidated === "FALSE" ? <p> Pas acquis ❌ </p> : null}
-
         {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
         <FormElements>
           <RadioButtons>
             <Achievment>Terminé</Achievment>
-            <Input
+            <InputAchievment
               name="achievment"
               type="radio"
               value="TRUE"
@@ -75,7 +78,7 @@ function Course({
           </RadioButtons>
           <RadioButtons>
             <Achievment>Pas acquis</Achievment>
-            <Input
+            <InputAchievment
               name="achievment"
               type="radio"
               value="FALSE"
@@ -85,7 +88,7 @@ function Course({
           </RadioButtons>
           <RadioButtons>
             <Achievment>In progress</Achievment>
-            <Input
+            <InputAchievment
               name="achievment"
               type="radio"
               value="INPROGRESS"
@@ -93,12 +96,16 @@ function Course({
               onChange={(e) => setAchievment(e.target.value)}
             />
           </RadioButtons>
+          <InputComments
+            name="newComments"
+            type="text"
+            placeholder={comments}
+            value={newComments}
+            onChange={(e) => setNewComments(e.target.value)}
+          />
+          <Button type="submit">Mettre à jour</Button>
         </FormElements>
-        <button type="submit">Mettre à jour</button>
       </Form>
-      <div>
-        <p>{comments}</p>
-      </div>
     </Card>
   );
 }
