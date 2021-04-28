@@ -3,18 +3,11 @@ import colors from "../globals";
 
 export const AllNav = styled.nav`
   background-color: ${colors.secondary};
-  background-color.hover: ${colors.secondary};
   width: 25%;
   height: 100%;
   border-color: none;
-  > img:first-child {
-    border-radius: 7px 7px 0 0;
-    margin-bottom: 20px;
-    max-width: 100%;
-    height: auto;
-    background-color: ${colors.primary};
-  }
   p {
+    margin-top: 1rem;
     display: flex;
     text-align: center;
     align-items: center;
@@ -22,11 +15,34 @@ export const AllNav = styled.nav`
     > img:first-child {
       border-radius: 7px 7px 0 0;
       margin-bottom: 20px;
-      margin-left: 1rem;
       max-width: 20%;
       height: auto;
       background-color: white;
+      margin-right: 2rem;
     }
+  }
+  .link {
+    text-align: left;
+  }
+`;
+
+export const Logo = styled.div`
+  background-color: ${colors.primary};
+  order-radius: 7px 7px 0 0;
+  margin-bottom: 20px;
+  height: 50%;
+  padding: 1rem;
+  border-radius: 10px;
+  .esc {
+    width: 100%;
+    margin-right: 1rem;
+  }
+`;
+
+export const Navigation = styled.div`
+  div {
+    background-color: white;
+    text-align: left;
   }
 `;
 
@@ -43,7 +59,7 @@ export const Social = styled.div`
   }
   .social {
     pading-left: 20%;
-    font-size: 150%;
+    font-size: 170%;
   }
   .power {
     color: white;

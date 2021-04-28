@@ -8,7 +8,7 @@ import { ImBooks } from "react-icons/im";
 import { MdSchool } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { GoTasklist } from "react-icons/go";
-import { AllNav } from "../../assets/styles/navbar/Navbar";
+import { AllNav, Logo } from "../../assets/styles/navbar/Navbar";
 import Icons from "./Icons";
 import logo from "../../assets/pictures/logo.png";
 import profile from "../../assets/pictures/profile.png";
@@ -16,67 +16,75 @@ import profile from "../../assets/pictures/profile.png";
 export const Navbar = (): JSX.Element => {
   return (
     <AllNav>
-      <img src={logo} alt="ECS" />
+      <Logo>
+        <img className="esc" src={logo} alt="ECS" />
+      </Logo>
       <p>
-        Jane Doe
         <img src={profile} alt="profile" />
+        Jane Doe
       </p>
-      <Navigation
-        activeItemId="/home"
-        onSelect={({ itemId }) => {
-          <Link to="/">Home</Link>;
-        }}
-        items={[
-          {
-            elemBefore: () => <TiGroup />,
-            title: "Campus de Paris",
-            itemId: "/Paris",
-          },
-          {
-            elemBefore: () => <BsFillGearFill />,
-            title: "Dashboard",
-            itemId: "/Dashboard",
-          },
-          {
-            elemBefore: () => <ImBooks />,
-            title: "Ressources",
-            itemId: "/Ressources",
-          },
-          {
-            elemBefore: () => <MdSchool />,
-            title: "Cours",
-            itemId: "/Cours",
-            subNav: [
-              {
-                title: "Module 1 : Découverte du monde professionnel",
-                itemId: "/management/teams",
-              },
-              {
-                title: "Module 2 : Les rouages de l’entreprise",
-                itemId: "/management/members",
-              },
-              {
-                title: "Module 3 : Histoire et panorama des média",
-                itemId: "/management/members",
-              },
-              {
-                title: "Module 4 : Panorama",
-                itemId: "/management/members",
-              },
-            ],
-          },
-          {
-            elemBefore: () => <AiFillStar />,
-            title: "Favoris",
-            itemId: "/Favoris",
-          },
-          {
-            elemBefore: () => <GoTasklist />,
-            title: "Bilan compétences",
-            itemId: "/Bilan",
-          },
-        ]}
-      />
+      <div className="link">
+        <Navigation
+          activeItemId="/home"
+          onSelect={({ itemId }) => {
+            <Link to="/">Home</Link>;
+          }}
+          items={[
+            {
+              elemBefore: () => <TiGroup />,
+              title: "Campus de Paris",
+              itemId: "/Paris",
+            },
+            {
+              elemBefore: () => <BsFillGearFill />,
+              title: "Dashboard",
+              itemId: "/Dashboard",
+            },
+            {
+              elemBefore: () => <ImBooks />,
+              title: "Ressources",
+              itemId: "/Ressources",
+            },
+            {
+              elemBefore: () => <MdSchool />,
+              title: "Cours",
+              itemId: "/Cours",
+              subNav: [
+                {
+                  title: "Mes cours",
+                  itemId: "/cours",
+                },
+                {
+                  title: "Module 1 : Découverte du monde professionnel",
+                  itemId: "/management/teams",
+                },
+                {
+                  title: "Module 2 : Les rouages de l’entreprise",
+                  itemId: "/management/members",
+                },
+                {
+                  title: "Module 3 : Histoire et panorama des média",
+                  itemId: "/management/members",
+                },
+                {
+                  title: "Module 4 : Panorama",
+                  itemId: "/management/members",
+                },
+              ],
+            },
+            {
+              elemBefore: () => <AiFillStar />,
+              title: "Favoris",
+              itemId: "/Favoris",
+            },
+            {
+              elemBefore: () => <GoTasklist />,
+              title: "Bilan compétences",
+              itemId: "/Bilan",
+            },
+          ]}
+        />
+      </div>
       <Icons />
       <p>Powered by AgoWork</p>
     </AllNav>
