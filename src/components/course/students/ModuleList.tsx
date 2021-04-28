@@ -23,21 +23,19 @@ function ModuleList(): JSX.Element {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
   return (
-    <div>
-      <Container>
-        <h1>Lundi 27 avril 2021</h1>
-        <CardRow>
-          {data.allCourseModules.map((module: CourseModuleProps) => (
-            <CourseModule
-              id={module.id}
-              key={module.id}
-              moduleTitle={module.moduleTitle}
-              courses={module.courses}
-            />
-          ))}
-        </CardRow>
-      </Container>
-    </div>
+    <Container>
+      <h1>Lundi 27 avril 2021</h1>
+      <CardRow>
+        {data.allCourseModules.map((module: CourseModuleProps) => (
+          <CourseModule
+            id={module.id}
+            key={module.id}
+            moduleTitle={module.moduleTitle}
+            courses={module.courses}
+          />
+        ))}
+      </CardRow>
+    </Container>
   );
 }
 
