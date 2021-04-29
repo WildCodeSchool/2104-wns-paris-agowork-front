@@ -1,10 +1,18 @@
 import styled from "styled-components";
-import colors from "../globals";
+import { colors, fonts } from "../globals";
+
+export const GlobalNav = styled.div`
+  background-color: ${colors.secondary};
+  width: 20%;
+  position: relative;
+  font-family: ${fonts.ralewayRegular};
+`;
 
 export const AllNav = styled.nav`
   background-color: ${colors.secondary};
-  width: 45%;
   height: 100%;
+  width: 20%;
+  position: fixed;
   border-color: none;
   p {
     margin-top: 1rem;
@@ -49,7 +57,6 @@ export const NavLink = styled.div`
 export const Logo = styled.div`
   background-color: ${colors.primary};
   margin-bottom: 20px;
-  height: 50%;
   padding: 1rem;
   border-radius: 10px;
   .esc {
@@ -71,13 +78,48 @@ export const Social = styled.div`
   }
   .social {
     pading-left: 20%;
-    font-size: 170%;
+    font-size: 150%;
   }
   .power {
     color: white;
     background-color: red;
-    border-radius: 50%;
-    padding: 2%;
+    border-radius: 100%;
+    padding: 10%;
     margin-right: 1rem;
+  }
+  a {
+    color: white;
+  }
+  .facebook {
+    background-color: none;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #1877f2;
+    }
+  }
+  .twitter {
+    background-color: none;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #38a1f2;
+    }
+  }
+  .linkedin {
+    background-color: none;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #2366c2;
+    }
+  }
+  .youtube {
+    background-color: none;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #f40106;
+    }
   }
 `;

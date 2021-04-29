@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   primary: "#0845BC",
   focus: {
     h: 45,
@@ -8,4 +8,6 @@ const colors = {
   secondary: "#e5e5e5",
 };
 
-export default colors;
+export const fonts = {
+  ralewayRegular: "'Raleway', sans-serif",
+};

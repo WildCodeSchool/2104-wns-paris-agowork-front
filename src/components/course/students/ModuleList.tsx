@@ -20,7 +20,14 @@ const ALL_MODULES = gql`
 
 function ModuleList(): JSX.Element {
   const { loading, error, data } = useQuery(ALL_MODULES);
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <Container>
+        <CardRow>
+          <p>Loading...</p>
+        </CardRow>
+      </Container>
+    );
   if (error) return <p>Error :(</p>;
   return (
     <Container>

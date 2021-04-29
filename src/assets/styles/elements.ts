@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import colors from "./globals";
+import { colors, fonts } from "./globals";
 
 export const Container = styled.div`
   margin-left: 15%;
+  width: 80%;
   margin-right: 15%;
   padding-top: 15px;
   h1 {
