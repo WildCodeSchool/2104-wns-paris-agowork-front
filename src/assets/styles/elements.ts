@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Radio from "@material-ui/core/Radio";
 import { colors, fonts } from "./globals";
 
 export const Container = styled.div`
@@ -71,7 +72,7 @@ export const Achievment = styled.label`
   flex-wrap: wrap;
 `;
 
-export const InputAchievment = styled.input`
+export const InputAchievment = styled(Radio)`
   display: flex;
   flex-wrap: wrap;
 `;

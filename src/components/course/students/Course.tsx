@@ -70,7 +70,6 @@ function Course({
             <Achievment>Terminé</Achievment>
             <InputAchievment
               name="achievment"
-              type="radio"
               value="TRUE"
               checked={achievment === "TRUE"}
               onChange={(e) => setAchievment(e.target.value)}
@@ -80,7 +79,6 @@ function Course({
             <Achievment>Pas acquis</Achievment>
             <InputAchievment
               name="achievment"
-              type="radio"
               value="FALSE"
               checked={achievment === "FALSE"}
               onChange={(e) => setAchievment(e.target.value)}
@@ -90,7 +88,6 @@ function Course({
             <Achievment>In progress</Achievment>
             <InputAchievment
               name="achievment"
-              type="radio"
               value="INPROGRESS"
               checked={achievment === "INPROGRESS"}
               onChange={(e) => setAchievment(e.target.value)}
