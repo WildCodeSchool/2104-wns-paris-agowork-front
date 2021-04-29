@@ -3,8 +3,8 @@ import colors from "../globals";
 
 export const AllNav = styled.nav`
   background-color: ${colors.secondary};
-  width: 45%;
   height: 100%;
+  width: 250px;
   border-color: none;
   p {
     margin-top: 1rem;
