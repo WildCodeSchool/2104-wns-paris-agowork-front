@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Radio from "@material-ui/core/Radio";
+import Button from "@material-ui/core/Button";
+import { TextareaAutosize } from "@material-ui/core";
 import { colors, fonts } from "./globals";
 
 export const Container = styled.div`
@@ -77,12 +79,13 @@ export const InputAchievment = styled(Radio)`
   flex-wrap: wrap;
 `;
 
-export const InputComments = styled.input`
+export const InputComments = styled(TextareaAutosize)`
   width: 250%;
   height: 150px;
 `;
 
-export const Button = styled.button`
-  background-color: ${colors.primary};
-  color: white;
+export const StyledButton = styled(Button)`
+  && {
+    margin: 10px;
+  }
 `;

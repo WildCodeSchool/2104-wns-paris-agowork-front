@@ -8,7 +8,7 @@ import {
   RadioButtons,
   FormElements,
   InputComments,
-  Button,
+  StyledButton,
 } from "../../../assets/styles/elements";
 
 export type CourseProps = {
@@ -95,12 +95,12 @@ function Course({
           </RadioButtons>
           <InputComments
             name="newComments"
-            type="text"
             placeholder={comments}
+            defaultValue="Ajouter des notes sur ce cours"
             value={newComments}
             onChange={(e) => setNewComments(e.target.value)}
           />
-          <Button type="submit">Mettre à jour</Button>
+          <StyledButton type="submit">Mettre à jour</StyledButton>
         </FormElements>
       </Form>
     </Card>
