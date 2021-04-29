@@ -4,6 +4,7 @@ import {
   useTheme,
   Theme,
 } from "@material-ui/core/styles";
+import styled from "styled-components";
 
 const drawerWidth = 240;
 
@@ -72,3 +73,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default useStyles;
+
+export const Logo = styled.div`
+  background-color: black;
+  margin-bottom: 20px;
+  padding: 1rem;
+  border-radius: 10px;
+  .esc {
+    width: 100%;
+    margin-right: 1rem;
+  }
+`;

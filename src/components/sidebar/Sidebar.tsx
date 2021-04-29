@@ -1,11 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import clsx from "clsx";
-import {
-  createStyles,
-  makeStyles,
-  useTheme,
-  Theme,
-} from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -26,7 +21,9 @@ import DoneOutlineOutlinedIcon from "@material-ui/icons/DoneOutlineOutlined";
 import StarHalfOutlinedIcon from "@material-ui/icons/StarHalfOutlined";
 import MenuBookOutlinedIcon from "@material-ui/icons/MenuBookOutlined";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
-import useStyles from "./StyleSidebar";
+import Avatar from "@material-ui/core/Avatar";
+import logo from "../../assets/pictures/logo.png";
+import useStyles, { Logo } from "../../assets/styles/sidebar/StyleSidebar";
 
 export const Sidebar = (): JSX.Element => {
   const classes = useStyles();
@@ -89,8 +86,12 @@ export const Sidebar = (): JSX.Element => {
           </IconButton>
         </div>
         <Divider />
+        <Logo>
+          <img className="esc" src={logo} alt="ECS" />
+        </Logo>
         <List>
           {[
+            "Jean Moulin",
             "Campus de Paris",
             "Dashboard",
             "Ressources",
@@ -100,12 +101,19 @@ export const Sidebar = (): JSX.Element => {
           ].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index === 0 ? <GroupIcon /> : null}
-                {index === 1 ? <SettingsOutlinedIcon /> : null}
-                {index === 2 ? <MenuBookOutlinedIcon /> : null}
-                {index === 3 ? <SchoolOutlinedIcon /> : null}
-                {index === 4 ? <StarHalfOutlinedIcon /> : null}
-                {index === 5 ? <DoneOutlineOutlinedIcon /> : null}
+                {index === 0 ? (
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="/static/images/avatar/1.jpg"
+                    className="classes.small"
+                  />
+                ) : null}
+                {index === 1 ? <GroupIcon /> : null}
+                {index === 2 ? <SettingsOutlinedIcon /> : null}
+                {index === 3 ? <MenuBookOutlinedIcon /> : null}
+                {index === 4 ? <SchoolOutlinedIcon /> : null}
+                {index === 5 ? <StarHalfOutlinedIcon /> : null}
+                {index === 6 ? <DoneOutlineOutlinedIcon /> : null}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
