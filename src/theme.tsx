@@ -1,6 +1,15 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      "'Raleway'",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+  },
   palette: {
     primary: {
       // light: will be calculated from palette.primary.main,
@@ -13,7 +22,6 @@ const theme = createMuiTheme({
       // main: color of radio
       main: "#0845BC",
       // dark: will be calculated from palette.secondary.main,
-      contrastText: "#ffcc00",
     },
   },
   overrides: {

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
+import Accordion from "@material-ui/core/Accordion";
+import EditIcon from "@material-ui/icons/Edit";
+import Typography from "@material-ui/core/Typography";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import {
   Card,
   Form,
@@ -9,7 +13,8 @@ import {
   FormElements,
   InputComments,
   StyledButton,
-} from "../../../assets/styles/elements";
+  AccordionComments,
+} from "../../../assets/styles/studentCourse/Elements";
 
 export type CourseProps = {
   id?: string;
@@ -93,13 +98,26 @@ function Course({
               onChange={(e) => setAchievment(e.target.value)}
             />
           </RadioButtons>
-          <InputComments
-            name="newComments"
-            placeholder={comments}
-            defaultValue="Ajouter des notes sur ce cours"
-            value={newComments}
-            onChange={(e) => setNewComments(e.target.value)}
-          />
+          <Accordion elevation={0}>
+            <AccordionComments
+              expandIcon={<EditIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              {comments ? (
+                <Typography>{comments}</Typography>
+              ) : (
+                <p>Ajoutez des notes sur ce cours</p>
+              )}
+            </AccordionComments>
+            <AccordionDetails>
+              <InputComments
+                name="newComments"
+                value={newComments}
+                onChange={(e) => setNewComments(e.target.value)}
+              />
+            </AccordionDetails>
+          </Accordion>
           <StyledButton type="submit">Mettre à jour</StyledButton>
         </FormElements>
       </Form>
