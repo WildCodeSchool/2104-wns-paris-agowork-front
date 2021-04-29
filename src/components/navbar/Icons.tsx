@@ -12,11 +12,21 @@ export const icons = (): JSX.Element => {
   return (
     <Social>
       <div>
-        <FaPowerOff className="power" />
-        <TiSocialFacebook className="social" />
-        <TiSocialTwitter className="social" />
-        <TiSocialLinkedin className="social" />
-        <TiSocialYoutube className="social" />
+        <a href="/" className="powerEffect">
+          <FaPowerOff className="power" />
+        </a>
+        <a href="/" className="facebook">
+          <TiSocialFacebook className="social" />
+        </a>
+        <a href="/" className="twitter">
+          <TiSocialTwitter className="social" />
+        </a>
+        <a href="/" className="linkedin">
+          <TiSocialLinkedin className="social" />
+        </a>
+        <a href="/" className="youtube">
+          <TiSocialYoutube className="social" />
+        </a>
       </div>
     </Social>
   );
