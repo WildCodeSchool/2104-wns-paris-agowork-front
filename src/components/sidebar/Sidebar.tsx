@@ -24,9 +24,18 @@ import DoneOutlineOutlinedIcon from "@material-ui/icons/DoneOutlineOutlined";
 import StarHalfOutlinedIcon from "@material-ui/icons/StarHalfOutlined";
 import MenuBookOutlinedIcon from "@material-ui/icons/MenuBookOutlined";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
+import PowerSettingsNewOutlinedIcon from "@material-ui/icons/PowerSettingsNewOutlined";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import YouTubeIcon from "@material-ui/icons/YouTube";
 import Avatar from "@material-ui/core/Avatar";
 import logo from "../../assets/pictures/logo.png";
-import useStyles, { Logo } from "../../assets/styles/sidebar/StyleSidebar";
+import useStyles, {
+  Logo,
+  SocialOpen,
+  SocialClose,
+} from "../../assets/styles/sidebar/StyleSidebar";
 
 export const Sidebar = (): JSX.Element => {
   const classes = useStyles();
@@ -45,6 +54,7 @@ export const Sidebar = (): JSX.Element => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -145,6 +155,57 @@ export const Sidebar = (): JSX.Element => {
             )
           )}
         </List>
+        {open ? (
+          <SocialOpen>
+            <div>
+              <a href="/" className="powerEffect">
+                <PowerSettingsNewOutlinedIcon className="power" />
+              </a>
+              <a href="/" className="facebook">
+                <FacebookIcon className="social" />
+              </a>
+              <a href="/" className="twitter">
+                <TwitterIcon className="social" />
+              </a>
+              <a href="/" className="linkedin">
+                <LinkedInIcon className="social" />
+              </a>
+              <a href="/" className="youtube">
+                <YouTubeIcon className="social" />
+              </a>
+            </div>
+          </SocialOpen>
+        ) : (
+          <SocialClose>
+            <div>
+              <a href="/" className="facebook">
+                <FacebookIcon className="social" />
+              </a>
+            </div>
+            <div>
+              <a href="/" className="twitter">
+                <TwitterIcon className="social" />
+              </a>
+            </div>
+            <div>
+              <a href="/" className="linkedin">
+                <LinkedInIcon className="social" />
+              </a>
+            </div>
+            <div>
+              <a href="/" className="youtube">
+                <YouTubeIcon className="social" />
+              </a>
+            </div>
+            <div>
+              <a href="/" className="powerEffect">
+                <PowerSettingsNewOutlinedIcon className="power" />
+              </a>
+            </div>
+          </SocialClose>
+        )}
+
+        {open ? <p>Powered by AgoWork</p> : null}
       </Drawer>
     </div>
   );

@@ -78,12 +78,136 @@ const useStyles = makeStyles((theme: Theme) =>
 export default useStyles;
 
 export const Logo = styled.div`
-  background-color: ${theme.palette.primary.main};
   margin-bottom: 20px;
   padding: 1rem;
   border-radius: 10px;
   .esc {
     width: 100%;
     margin-right: 1rem;
+  }
+`;
+
+export const SocialOpen = styled.div`
+  margin-top: 20%;
+  margin-bottom: 20%;
+  padding: 5%;
+  border-radius: 10px;
+  div {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+  }
+  .social {
+    pading-left: 20%;
+    font-size: 200%;
+    margin-top: 25%;
+  }
+  .power {
+    color: white;
+    background-color: red;
+    border-radius: 100%;
+    font-size: 250%;
+    padding: 10%;
+    margin-right: 1rem;
+  }
+  a {
+    color: white;
+  }
+  .facebook {
+    background-color: #1877f2;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #1877f2;
+      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+    }
+  }
+  .twitter {
+    background-color: #38a1f2;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #38a1f2;
+      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+    }
+  }
+  .linkedin {
+    background-color: #2366c2;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #2366c2;
+      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+    }
+  }
+  .youtube {
+    background-color: #f40106;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #f40106;
+    }
+  }
+`;
+
+export const SocialClose = styled.div`
+  margin-right: 1rem;
+  padding: 20%;
+  border-radius: 10px;
+  div {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+  }
+  .social {
+    font-size: 150%;
+  }
+  .power {
+    color: white;
+    background-color: red;
+    border-radius: 100%;
+    padding: 10%;
+    margin-top: 1rem;
+  }
+  a {
+    color: white;
+  }
+  .facebook {
+    background-color: #1877f2;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #1877f2;
+      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+    }
+  }
+  .twitter {
+    background-color: #38a1f2;
+    margin-top: 1rem;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #38a1f2;
+      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+    }
+  }
+  .linkedin {
+    background-color: #2366c2;
+    margin-top: 1rem;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #2366c2;
+      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+    }
+  }
+  .youtube {
+    background-color: #f40106;
+    margin-top: 1rem;
+    &:hover {
+      border-radius: 10px;
+      padding: 5px;
+      background-color: #f40106;
+    }
   }
 `;
