@@ -69,6 +69,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       padding: theme.spacing(3),
     },
+    nested: {
+      paddingLeft: theme.spacing(4),
+    },
   })
 );
 

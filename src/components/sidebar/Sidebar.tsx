@@ -6,7 +6,10 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
+import Collapse from "@material-ui/core/Collapse";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import StarBorder from "@material-ui/icons/StarBorder";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -29,6 +32,11 @@ export const Sidebar = (): JSX.Element => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [openSubnav, setOpenSubnav] = React.useState(false);
+
+  const handleClick = () => {
+    setOpenSubnav(!openSubnav);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -58,9 +66,6 @@ export const Sidebar = (): JSX.Element => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Mini variant drawer
-          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -90,34 +95,55 @@ export const Sidebar = (): JSX.Element => {
           <img className="esc" src={logo} alt="ECS" />
         </Logo>
         <List>
-          {[
-            "Jean Moulin",
-            "Campus de Paris",
-            "Dashboard",
-            "Ressources",
-            "Cours",
-            "Favoris",
-            "Bilan de compétences",
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index === 0 ? (
-                  <Avatar
-                    alt="Remy Sharp"
-                    src="/static/images/avatar/1.jpg"
-                    className="classes.small"
-                  />
-                ) : null}
-                {index === 1 ? <GroupIcon /> : null}
-                {index === 2 ? <SettingsOutlinedIcon /> : null}
-                {index === 3 ? <MenuBookOutlinedIcon /> : null}
-                {index === 4 ? <SchoolOutlinedIcon /> : null}
-                {index === 5 ? <StarHalfOutlinedIcon /> : null}
-                {index === 6 ? <DoneOutlineOutlinedIcon /> : null}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {["Jean Moulin", "Campus de Paris", "Dashboard"].map(
+            (text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index === 0 ? (
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/1.jpg"
+                      className="classes.small"
+                    />
+                  ) : null}
+                  {index === 1 ? <GroupIcon /> : null}
+                  {index === 2 ? <SettingsOutlinedIcon /> : null}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            )
+          )}
+
+          <ListItem button onClick={handleClick}>
+            <ListItemIcon>
+              <MenuBookOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Inbox" />
+            {openSubnav ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={openSubnav} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem button className={classes.nested}>
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText primary="Starred" />
+              </ListItem>
+            </List>
+          </Collapse>
+
+          {["Ressources", "Favoris", "Bilan de compétences"].map(
+            (text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index === 0 ? <SchoolOutlinedIcon /> : null}
+                  {index === 1 ? <StarHalfOutlinedIcon /> : null}
+                  {index === 2 ? <DoneOutlineOutlinedIcon /> : null}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            )
+          )}
         </List>
       </Drawer>
     </div>
