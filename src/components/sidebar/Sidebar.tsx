@@ -20,8 +20,12 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import GroupIcon from "@material-ui/icons/Group";
+import SchoolOutlinedIcon from "@material-ui/icons/SchoolOutlined";
+import DoneOutlineOutlinedIcon from "@material-ui/icons/DoneOutlineOutlined";
+import StarHalfOutlinedIcon from "@material-ui/icons/StarHalfOutlined";
+import MenuBookOutlinedIcon from "@material-ui/icons/MenuBookOutlined";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import useStyles from "./StyleSidebar";
 
 export const Sidebar = (): JSX.Element => {
@@ -86,21 +90,22 @@ export const Sidebar = (): JSX.Element => {
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          {[
+            "Campus de Paris",
+            "Dashboard",
+            "Ressources",
+            "Cours",
+            "Favoris",
+            "Bilan de compétences",
+          ].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index === 0 ? <GroupIcon /> : null}
+                {index === 1 ? <SettingsOutlinedIcon /> : null}
+                {index === 2 ? <MenuBookOutlinedIcon /> : null}
+                {index === 3 ? <SchoolOutlinedIcon /> : null}
+                {index === 4 ? <StarHalfOutlinedIcon /> : null}
+                {index === 5 ? <DoneOutlineOutlinedIcon /> : null}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
