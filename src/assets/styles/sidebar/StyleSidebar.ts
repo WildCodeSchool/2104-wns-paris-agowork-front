@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default useStyles;
 
 export const Logo = styled.div`
-  background-color: black;
+  background-color: ${theme.palette.primary.main};
   margin-bottom: 20px;
   padding: 1rem;
   border-radius: 10px;
