@@ -100,7 +100,7 @@ export const Logo = styled.div`
 `;
 
 export const SocialOpen = styled.div`
-  margin-top: 50%;
+  margin-top: 30%;
   margin-bottom: 20%;
   padding: 5%;
   border-radius: 10px;
@@ -156,7 +156,7 @@ export const SocialOpen = styled.div`
 `;
 
 export const SocialClose = styled.div`
-  margin-top: 100%;
+  margin-top: 20%;
   margin-right: 1rem;
   padding: 20%;
   border-radius: 10px;
