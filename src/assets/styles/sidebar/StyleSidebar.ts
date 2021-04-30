@@ -83,10 +83,16 @@ export const Initial = styled.div`
   margin-top: -2rem;
 `;
 
+export const BtnSwitch = styled.div`
+  margin-top: -2rem;
+  margin-bottom: 2rem;
+`;
+
 export const Logo = styled.div`
-  margin-bottom: 20px;
   padding: 1rem;
   border-radius: 10px;
+  width: 15%;
+  background-color: white;
   .esc {
     width: 100%;
     margin-right: 1rem;

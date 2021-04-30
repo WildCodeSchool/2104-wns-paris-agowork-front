@@ -23,18 +23,19 @@ import DoneOutlineOutlinedIcon from "@material-ui/icons/DoneOutlineOutlined";
 import StarHalfOutlinedIcon from "@material-ui/icons/StarHalfOutlined";
 import MenuBookOutlinedIcon from "@material-ui/icons/MenuBookOutlined";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
-import PowerSettingsNewOutlinedIcon from "@material-ui/icons/PowerSettingsNewOutlined";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import Avatar from "@material-ui/core/Avatar";
+import Switch from "@material-ui/core/Switch";
 import logo from "../../assets/pictures/logo.png";
 import useStyles, {
   Logo,
   SocialOpen,
   SocialClose,
   Initial,
+  BtnSwitch,
 } from "../../assets/styles/sidebar/StyleSidebar";
 
 export const Sidebar = (): JSX.Element => {
@@ -42,6 +43,10 @@ export const Sidebar = (): JSX.Element => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [openSubnav, setOpenSubnav] = React.useState(false);
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+  });
 
   const handleClick = () => {
     setOpenSubnav(!openSubnav);
@@ -53,6 +58,10 @@ export const Sidebar = (): JSX.Element => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
@@ -76,6 +85,9 @@ export const Sidebar = (): JSX.Element => {
           >
             <MenuIcon />
           </IconButton>
+          <Logo>
+            <img className="esc" src={logo} alt="ECS" />
+          </Logo>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -119,6 +131,15 @@ export const Sidebar = (): JSX.Element => {
               <Initial>{open ? null : <h3>J M</h3>}</Initial>
             </ListItemText>
           </ListItem>
+          <BtnSwitch>
+            <Switch
+              checked={state.checkedA}
+              onChange={handleChange}
+              name="checkedA"
+              inputProps={{ "aria-label": "secondary checkbox" }}
+              className="small"
+            />
+          </BtnSwitch>
           {["Campus de Paris", "Dashboard"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
@@ -199,9 +220,6 @@ export const Sidebar = (): JSX.Element => {
             </div>
           </SocialClose>
         )}
-        <Logo>
-          <img className="esc" src={logo} alt="ECS" />
-        </Logo>
         {open ? <p> 🔥 Powered by AgoWork</p> : null}
       </Drawer>
     </div>
