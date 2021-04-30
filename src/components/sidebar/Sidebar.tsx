@@ -101,9 +101,6 @@ export const Sidebar = (): JSX.Element => {
           </IconButton>
         </div>
         <Divider />
-        <Logo>
-          <img className="esc" src={logo} alt="ECS" />
-        </Logo>
         <List>
           {["Jean Moulin", "Campus de Paris", "Dashboard"].map(
             (text, index) => (
@@ -112,7 +109,7 @@ export const Sidebar = (): JSX.Element => {
                   {index === 0 ? (
                     <Avatar
                       alt="Remy Sharp"
-                      src="/static/images/avatar/1.jpg"
+                      src="https://i.postimg.cc/RZX6Y3jH/avatar.png"
                       className="classes.small"
                     />
                   ) : null}
@@ -128,16 +125,13 @@ export const Sidebar = (): JSX.Element => {
             <ListItemIcon>
               <MenuBookOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText primary="Cours" />
             {openSubnav ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={openSubnav} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText primary="Starred" />
+                <ListItemText primary="Modules du jour" />
               </ListItem>
             </List>
           </Collapse>
@@ -155,6 +149,7 @@ export const Sidebar = (): JSX.Element => {
             )
           )}
         </List>
+        <Divider />
         {open ? (
           <SocialOpen>
             <div>
@@ -204,8 +199,10 @@ export const Sidebar = (): JSX.Element => {
             </div>
           </SocialClose>
         )}
-
-        {open ? <p>Powered by AgoWork</p> : null}
+        <Logo>
+          <img className="esc" src={logo} alt="ECS" />
+        </Logo>
+        {open ? <p> 🔥 Powered by AgoWork</p> : null}
       </Drawer>
     </div>
   );

@@ -1,12 +1,7 @@
-import {
-  createStyles,
-  makeStyles,
-  useTheme,
-  Theme,
-} from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import styled from "styled-components";
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,6 +14,8 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
+      background: "white",
+      color: "white",
     },
     appBarShift: {
       marginLeft: drawerWidth,
@@ -30,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     menuButton: {
       marginRight: 36,
+      background: "#bdbdbd",
     },
     hide: {
       display: "none",
@@ -45,6 +43,8 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
       }),
+      overflowX: "hidden",
+      overflowY: "hidden",
     },
     drawerClose: {
       transition: theme.transitions.create("width", {
@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.leavingScreen,
       }),
       overflowX: "hidden",
+      overflowY: "hidden",
       width: theme.spacing(7) + 1,
       [theme.breakpoints.up("sm")]: {
         width: theme.spacing(9) + 1,
@@ -88,7 +89,7 @@ export const Logo = styled.div`
 `;
 
 export const SocialOpen = styled.div`
-  margin-top: 20%;
+  margin-top: 140%;
   margin-bottom: 20%;
   padding: 5%;
   border-radius: 10px;
@@ -104,7 +105,7 @@ export const SocialOpen = styled.div`
   }
   .power {
     color: white;
-    background-color: red;
+    background-color: #0845bc;
     border-radius: 100%;
     font-size: 250%;
     padding: 10%;
@@ -151,6 +152,7 @@ export const SocialOpen = styled.div`
 `;
 
 export const SocialClose = styled.div`
+  margin-top: 250%;
   margin-right: 1rem;
   padding: 20%;
   border-radius: 10px;
@@ -164,7 +166,7 @@ export const SocialClose = styled.div`
   }
   .power {
     color: white;
-    background-color: red;
+    background-color: #0845bc;
     border-radius: 100%;
     padding: 10%;
     margin-top: 1rem;

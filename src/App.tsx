@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "./theme";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import ModuleList from "./components/course/students/ModuleList";
 import "./App.css";
@@ -7,8 +8,10 @@ import "./App.css";
 function App(): JSX.Element {
   return (
     <div className="App">
-      <Sidebar />
-      <ModuleList />
+      <ThemeProvider theme={theme}>
+        <Sidebar />
+        <ModuleList />
+      </ThemeProvider>
     </div>
   );
 }
