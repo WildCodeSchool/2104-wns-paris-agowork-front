@@ -98,3 +98,10 @@ export const AccordionComments = styled(AccordionSummary)`
     margin-top: 100px;
   }
 `;
+
+export const AchievmentStatus = styled.div`
+  font-size: 22px;
+  text-align: left;
+  padding-left: 20px;
+  color
+`;

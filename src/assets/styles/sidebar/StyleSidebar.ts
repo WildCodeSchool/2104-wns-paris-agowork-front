@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
       }),
+      overflowY: "hidden",
     },
     drawerClose: {
       transition: theme.transitions.create("width", {
@@ -69,9 +70,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     nested: {
       paddingLeft: theme.spacing(4),
-    },
-    small: {
-      marginLeft: theme.spacing(3),
     },
   })
 );

@@ -14,6 +14,7 @@ import {
   InputComments,
   StyledButton,
   AccordionComments,
+  AchievmentStatus,
 } from "../../../assets/styles/studentCourse/Elements";
 
 export type CourseProps = {
@@ -52,6 +53,11 @@ function Course({
   return (
     <Card>
       <h3>{courseTitle}</h3>
+      <AchievmentStatus>
+        {isValidated === "TRUE" ? <p> Terminé & assimilé ✔️ </p> : null}
+        {isValidated === "FALSE" ? <p> Pas acquis ❌ </p> : null}
+        {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
+      </AchievmentStatus>
       {message ? <p>New value: {message}</p> : null}
       <Form
         onSubmit={async (e) => {
@@ -67,12 +73,9 @@ function Course({
           });
         }}
       >
-        {isValidated === "TRUE" ? <p> Terminé & assimilé ✔️ </p> : null}
-        {isValidated === "FALSE" ? <p> Pas acquis ❌ </p> : null}
-        {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
         <FormElements>
           <RadioButtons>
-            <Achievment>Terminé</Achievment>
+            <Achievment>Terminé & assimilé ✔️</Achievment>
             <InputAchievment
               name="achievment"
               value="TRUE"
@@ -81,7 +84,7 @@ function Course({
             />
           </RadioButtons>
           <RadioButtons>
-            <Achievment>Pas acquis</Achievment>
+            <Achievment>Pas acquis ❌ </Achievment>
             <InputAchievment
               name="achievment"
               value="FALSE"
@@ -90,7 +93,7 @@ function Course({
             />
           </RadioButtons>
           <RadioButtons>
-            <Achievment>In progress</Achievment>
+            <Achievment>In progress 🔄</Achievment>
             <InputAchievment
               name="achievment"
               value="INPROGRESS"

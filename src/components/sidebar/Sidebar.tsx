@@ -131,10 +131,7 @@ export const Sidebar = (): JSX.Element => {
           <Collapse in={openSubnav} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText primary="Modules de la journée" />
+                <ListItemText primary="Modules du jour" />
               </ListItem>
             </List>
           </Collapse>
