@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
+import Accordion from "@material-ui/core/Accordion";
+import EditIcon from "@material-ui/icons/Edit";
+import Typography from "@material-ui/core/Typography";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 import {
   Card,
   Form,
@@ -8,8 +12,10 @@ import {
   RadioButtons,
   FormElements,
   InputComments,
-  Button,
-} from "../../../assets/styles/elements";
+  StyledButton,
+  AccordionComments,
+  AchievmentStatus,
+} from "../../../assets/styles/studentCourse/Elements";
 
 export type CourseProps = {
   id?: string;
@@ -42,11 +48,14 @@ function Course({
   if (data && data.updateIsValidated) {
     message = data.updateIsValidated.isValidated;
   }
-  // eslint-disable-next-line
-  console.log(data);
   return (
     <Card>
       <h3>{courseTitle}</h3>
+      <AchievmentStatus>
+        {isValidated === "TRUE" ? <p> Terminé & assimilé ✔️ </p> : null}
+        {isValidated === "FALSE" ? <p> Pas acquis ❌ </p> : null}
+        {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
+      </AchievmentStatus>
       {message ? <p>New value: {message}</p> : null}
       <Form
         onSubmit={async (e) => {
@@ -62,48 +71,55 @@ function Course({
           });
         }}
       >
-        {isValidated === "TRUE" ? <p> Terminé & assimilé ✔️ </p> : null}
-        {isValidated === "FALSE" ? <p> Pas acquis ❌ </p> : null}
-        {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
         <FormElements>
           <RadioButtons>
-            <Achievment>Terminé</Achievment>
+            <Achievment>Terminé & assimilé ✔️</Achievment>
             <InputAchievment
               name="achievment"
-              type="radio"
               value="TRUE"
               checked={achievment === "TRUE"}
               onChange={(e) => setAchievment(e.target.value)}
             />
           </RadioButtons>
           <RadioButtons>
-            <Achievment>Pas acquis</Achievment>
+            <Achievment>Pas acquis ❌ </Achievment>
             <InputAchievment
               name="achievment"
-              type="radio"
               value="FALSE"
               checked={achievment === "FALSE"}
               onChange={(e) => setAchievment(e.target.value)}
             />
           </RadioButtons>
           <RadioButtons>
-            <Achievment>In progress</Achievment>
+            <Achievment>In progress 🔄</Achievment>
             <InputAchievment
               name="achievment"
-              type="radio"
               value="INPROGRESS"
               checked={achievment === "INPROGRESS"}
               onChange={(e) => setAchievment(e.target.value)}
             />
           </RadioButtons>
-          <InputComments
-            name="newComments"
-            type="text"
-            placeholder={comments}
-            value={newComments}
-            onChange={(e) => setNewComments(e.target.value)}
-          />
-          <Button type="submit">Mettre à jour</Button>
+          <Accordion elevation={0}>
+            <AccordionComments
+              expandIcon={<EditIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              {comments ? (
+                <Typography>{comments}</Typography>
+              ) : (
+                <p>Ajoutez des notes sur ce cours</p>
+              )}
+            </AccordionComments>
+            <AccordionDetails>
+              <InputComments
+                name="newComments"
+                value={newComments}
+                onChange={(e) => setNewComments(e.target.value)}
+              />
+            </AccordionDetails>
+          </Accordion>
+          <StyledButton type="submit">Mettre à jour</StyledButton>
         </FormElements>
       </Form>
     </Card>

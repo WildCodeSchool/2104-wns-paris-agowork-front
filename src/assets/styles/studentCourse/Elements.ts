@@ -1,11 +1,15 @@
 import styled from "styled-components";
-import { colors, fonts } from "./globals";
+import Radio from "@material-ui/core/Radio";
+import Button from "@material-ui/core/Button";
+import { TextareaAutosize } from "@material-ui/core";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import { colors, fonts } from "./Globals";
 
 export const Container = styled.div`
-  margin-left: 15%;
   width: 80%;
-  margin-right: 15%;
-  padding-top: 15px;
+  margin-left: 13%;
+  margin-right: 10%;
+  padding-top: 7%;
   h1 {
     font-size: 35px;
     color: ${colors.primary};
@@ -25,7 +29,7 @@ export const Card = styled.article`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
   h3,
   h4 {
     color: ${colors.primary};
@@ -46,7 +50,6 @@ export const Form = styled.form`
   font-size: 20px;
   text-decoration: none;
   color: #aaa;
-  border-bottom: 1px solid #ddd;
 `;
 
 export const FormElements = styled.div`
@@ -71,17 +74,34 @@ export const Achievment = styled.label`
   flex-wrap: wrap;
 `;
 
-export const InputAchievment = styled.input`
+export const InputAchievment = styled(Radio)`
   display: flex;
   flex-wrap: wrap;
 `;
 
-export const InputComments = styled.input`
+export const InputComments = styled(TextareaAutosize)`
   width: 250%;
   height: 150px;
 `;
 
-export const Button = styled.button`
-  background-color: ${colors.primary};
-  color: white;
+export const StyledButton = styled(Button)`
+  && {
+    margin: 10px;
+  }
+`;
+
+export const AccordionComments = styled(AccordionSummary)`
+  MuiButtonBase-root
+    MuiIconButton-root
+    MuiAccordionSummary-expandIcon
+    MuiIconButton-edgeEnd {
+    margin-top: 100px;
+  }
+`;
+
+export const AchievmentStatus = styled.div`
+  font-size: 22px;
+  text-align: left;
+  padding-left: 20px;
+  color
 `;
