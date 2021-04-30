@@ -10,10 +10,11 @@ export const Container = styled.div`
   margin-left: 13%;
   margin-right: 10%;
   padding-top: 7%;
-  h1 {
-    font-size: 35px;
-    color: ${colors.primary};
-  }
+`;
+
+export const Date = styled.span`
+  font-size: 25px;
+  color: ${colors.primary};
 `;
 
 export const CardRow = styled.section`
@@ -80,13 +81,14 @@ export const InputAchievment = styled(Radio)`
 `;
 
 export const InputComments = styled(TextareaAutosize)`
-  width: 250%;
+  min-width: 100%;
   height: 150px;
 `;
 
 export const StyledButton = styled(Button)`
   && {
     margin: 10px;
+    margin-left: 42%;
   }
 `;
 
@@ -103,5 +105,4 @@ export const AchievmentStatus = styled.div`
   font-size: 22px;
   text-align: left;
   padding-left: 20px;
-  color
 `;

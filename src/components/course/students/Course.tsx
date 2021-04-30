@@ -99,28 +99,28 @@ function Course({
               onChange={(e) => setAchievment(e.target.value)}
             />
           </RadioButtons>
-          <Accordion elevation={0}>
-            <AccordionComments
-              expandIcon={<EditIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              {comments ? (
-                <Typography>{comments}</Typography>
-              ) : (
-                <p>Ajoutez des notes sur ce cours</p>
-              )}
-            </AccordionComments>
-            <AccordionDetails>
-              <InputComments
-                name="newComments"
-                value={newComments}
-                onChange={(e) => setNewComments(e.target.value)}
-              />
-            </AccordionDetails>
-          </Accordion>
-          <StyledButton type="submit">Mettre à jour</StyledButton>
         </FormElements>
+        <Accordion elevation={0}>
+          <AccordionComments
+            expandIcon={<EditIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            {comments ? (
+              <Typography>{comments}</Typography>
+            ) : (
+              <p>Ajoutez des notes sur ce cours</p>
+            )}
+          </AccordionComments>
+          <AccordionDetails>
+            <InputComments
+              name="newComments"
+              value={newComments}
+              onChange={(e) => setNewComments(e.target.value)}
+            />
+          </AccordionDetails>
+        </Accordion>
+        <StyledButton type="submit">Mettre à jour</StyledButton>
       </Form>
     </Card>
   );
