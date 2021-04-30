@@ -9,7 +9,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -24,17 +23,19 @@ import DoneOutlineOutlinedIcon from "@material-ui/icons/DoneOutlineOutlined";
 import StarHalfOutlinedIcon from "@material-ui/icons/StarHalfOutlined";
 import MenuBookOutlinedIcon from "@material-ui/icons/MenuBookOutlined";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
-import PowerSettingsNewOutlinedIcon from "@material-ui/icons/PowerSettingsNewOutlined";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import Avatar from "@material-ui/core/Avatar";
+import Switch from "@material-ui/core/Switch";
 import logo from "../../assets/pictures/logo.png";
 import useStyles, {
   Logo,
   SocialOpen,
   SocialClose,
+  Initial,
+  BtnSwitch,
 } from "../../assets/styles/sidebar/StyleSidebar";
 
 export const Sidebar = (): JSX.Element => {
@@ -42,6 +43,10 @@ export const Sidebar = (): JSX.Element => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [openSubnav, setOpenSubnav] = React.useState(false);
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+  });
 
   const handleClick = () => {
     setOpenSubnav(!openSubnav);
@@ -53,6 +58,10 @@ export const Sidebar = (): JSX.Element => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
@@ -76,6 +85,9 @@ export const Sidebar = (): JSX.Element => {
           >
             <MenuIcon />
           </IconButton>
+          <Logo>
+            <img className="esc" src={logo} alt="ECS" />
+          </Logo>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -102,24 +114,41 @@ export const Sidebar = (): JSX.Element => {
         </div>
         <Divider />
         <List>
-          {["Jean Moulin", "Campus de Paris", "Dashboard"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index === 0 ? (
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="https://i.postimg.cc/RZX6Y3jH/avatar.png"
-                      className="classes.small"
-                    />
-                  ) : null}
-                  {index === 1 ? <GroupIcon /> : null}
-                  {index === 2 ? <SettingsOutlinedIcon /> : null}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
+          <ListItem>
+            <ListItemIcon>
+              <Avatar
+                alt="Remy Sharp"
+                src="https://i.postimg.cc/RZX6Y3jH/avatar.png"
+                className="classes.small"
+              />
+            </ListItemIcon>
+            <ListItemText>
+              <p>Jean Moulin</p>
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Initial>{open ? null : <h3>J M</h3>}</Initial>
+            </ListItemText>
+          </ListItem>
+          <BtnSwitch>
+            <Switch
+              checked={state.checkedA}
+              onChange={handleChange}
+              name="checkedA"
+              inputProps={{ "aria-label": "secondary checkbox" }}
+              className="small"
+            />
+          </BtnSwitch>
+          {["Campus de Paris", "Dashboard"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index === 0 ? <GroupIcon /> : null}
+                {index === 1 ? <SettingsOutlinedIcon /> : null}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
 
           <ListItem button onClick={handleClick}>
             <ListItemIcon>
@@ -153,9 +182,6 @@ export const Sidebar = (): JSX.Element => {
         {open ? (
           <SocialOpen>
             <div>
-              <a href="/" className="powerEffect">
-                <PowerSettingsNewOutlinedIcon className="power" />
-              </a>
               <a href="/" className="facebook">
                 <FacebookIcon className="social" />
               </a>
@@ -192,16 +218,8 @@ export const Sidebar = (): JSX.Element => {
                 <YouTubeIcon className="social" />
               </a>
             </div>
-            <div>
-              <a href="/" className="powerEffect">
-                <PowerSettingsNewOutlinedIcon className="power" />
-              </a>
-            </div>
           </SocialClose>
         )}
-        <Logo>
-          <img className="esc" src={logo} alt="ECS" />
-        </Logo>
         {open ? <p> 🔥 Powered by AgoWork</p> : null}
       </Drawer>
     </div>
