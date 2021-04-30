@@ -43,16 +43,12 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
       }),
-      overflowX: "hidden",
-      overflowY: "hidden",
     },
     drawerClose: {
       transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      overflowX: "hidden",
-      overflowY: "hidden",
       width: theme.spacing(7) + 1,
       [theme.breakpoints.up("sm")]: {
         width: theme.spacing(9) + 1,
@@ -89,7 +85,7 @@ export const Logo = styled.div`
 `;
 
 export const SocialOpen = styled.div`
-  margin-top: 140%;
+  margin-top: 50%;
   margin-bottom: 20%;
   padding: 5%;
   border-radius: 10px;
@@ -152,7 +148,7 @@ export const SocialOpen = styled.div`
 `;
 
 export const SocialClose = styled.div`
-  margin-top: 250%;
+  margin-top: 100%;
   margin-right: 1rem;
   padding: 20%;
   border-radius: 10px;
