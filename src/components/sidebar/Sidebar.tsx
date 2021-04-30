@@ -9,7 +9,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -35,6 +34,7 @@ import useStyles, {
   Logo,
   SocialOpen,
   SocialClose,
+  Initial,
 } from "../../assets/styles/sidebar/StyleSidebar";
 
 export const Sidebar = (): JSX.Element => {
@@ -102,24 +102,32 @@ export const Sidebar = (): JSX.Element => {
         </div>
         <Divider />
         <List>
-          {["Jean Moulin", "Campus de Paris", "Dashboard"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index === 0 ? (
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="https://i.postimg.cc/RZX6Y3jH/avatar.png"
-                      className="classes.small"
-                    />
-                  ) : null}
-                  {index === 1 ? <GroupIcon /> : null}
-                  {index === 2 ? <SettingsOutlinedIcon /> : null}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
+          <ListItem>
+            <ListItemIcon>
+              <Avatar
+                alt="Remy Sharp"
+                src="https://i.postimg.cc/RZX6Y3jH/avatar.png"
+                className="classes.small"
+              />
+            </ListItemIcon>
+            <ListItemText>
+              <p>Jean Moulin</p>
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            <ListItemText>
+              <Initial>{open ? null : <h3>J M</h3>}</Initial>
+            </ListItemText>
+          </ListItem>
+          {["Campus de Paris", "Dashboard"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index === 0 ? <GroupIcon /> : null}
+                {index === 1 ? <SettingsOutlinedIcon /> : null}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
 
           <ListItem button onClick={handleClick}>
             <ListItemIcon>
@@ -153,9 +161,6 @@ export const Sidebar = (): JSX.Element => {
         {open ? (
           <SocialOpen>
             <div>
-              <a href="/" className="powerEffect">
-                <PowerSettingsNewOutlinedIcon className="power" />
-              </a>
               <a href="/" className="facebook">
                 <FacebookIcon className="social" />
               </a>
@@ -190,11 +195,6 @@ export const Sidebar = (): JSX.Element => {
             <div>
               <a href="/" className="youtube">
                 <YouTubeIcon className="social" />
-              </a>
-            </div>
-            <div>
-              <a href="/" className="powerEffect">
-                <PowerSettingsNewOutlinedIcon className="power" />
               </a>
             </div>
           </SocialClose>

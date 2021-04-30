@@ -7,6 +7,10 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
+      small: {
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+      },
     },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
@@ -49,6 +53,7 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
+      overflowX: "hidden",
       width: theme.spacing(7) + 1,
       [theme.breakpoints.up("sm")]: {
         width: theme.spacing(9) + 1,
@@ -73,6 +78,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default useStyles;
+
+export const Initial = styled.div`
+  margin-top: -2rem;
+`;
 
 export const Logo = styled.div`
   margin-bottom: 20px;
@@ -99,50 +108,43 @@ export const SocialOpen = styled.div`
     font-size: 200%;
     margin-top: 25%;
   }
-  .power {
-    color: white;
-    background-color: #0845bc;
-    border-radius: 100%;
-    font-size: 250%;
-    padding: 10%;
-    margin-right: 1rem;
-  }
   a {
     color: white;
   }
   .facebook {
-    background-color: #1877f2;
+    color: #0845bc;
+    font-size: 18px;
     &:hover {
+      color: #1877f2;
       border-radius: 10px;
-      padding: 5px;
-      background-color: #1877f2;
-      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+      font-size: 18px;
     }
   }
   .twitter {
-    background-color: #38a1f2;
+    color: #0845bc;
+    font-size: 18px;
     &:hover {
+      color: #38a1f2;
       border-radius: 10px;
-      padding: 5px;
-      background-color: #38a1f2;
-      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+      font-size: 18px;
     }
   }
   .linkedin {
-    background-color: #2366c2;
+    color: #0845bc;
+    font-size: 18px;
     &:hover {
+      color: #2366c2;
       border-radius: 10px;
-      padding: 5px;
-      background-color: #2366c2;
-      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+      font-size: 18px;
     }
   }
   .youtube {
-    background-color: #f40106;
+    color: #0845bc;
+    font-size: 18px;
     &:hover {
+      color: #f40106;
       border-radius: 10px;
-      padding: 5px;
-      background-color: #f40106;
+      font-size: 18px;
     }
   }
 `;
@@ -157,55 +159,42 @@ export const SocialClose = styled.div`
     display: flex;
     justify-content: space-around;
   }
-  .social {
-    font-size: 150%;
-  }
-  .power {
-    color: white;
-    background-color: #0845bc;
-    border-radius: 100%;
-    padding: 10%;
-    margin-top: 1rem;
-  }
   a {
     color: white;
   }
   .facebook {
-    background-color: #1877f2;
+    color: #0845bc;
+    font-size: 18px;
     &:hover {
-      border-radius: 10px;
-      padding: 5px;
-      background-color: #1877f2;
-      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+      color: #1877f2;
+      font-size: 18px;
     }
   }
   .twitter {
-    background-color: #38a1f2;
+    color: #0845bc;
     margin-top: 1rem;
+    font-size: 18px;
     &:hover {
-      border-radius: 10px;
-      padding: 5px;
-      background-color: #38a1f2;
-      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+      color: #38a1f2;
+      font-size: 18px;
     }
   }
   .linkedin {
-    background-color: #2366c2;
+    color: #0845bc;
     margin-top: 1rem;
+    font-size: 18px;
     &:hover {
-      border-radius: 10px;
-      padding: 5px;
-      background-color: #2366c2;
-      box-shadow: inset 0 -3.25em 0 0 var(--hover);
+      color: #2366c2;
+      font-size: 18px;
     }
   }
   .youtube {
-    background-color: #f40106;
+    color: #0845bc;
     margin-top: 1rem;
+    font-size: 18px;
     &:hover {
-      border-radius: 10px;
-      padding: 5px;
-      background-color: #f40106;
+      color: #f40106;
+      font-size: 18px;
     }
   }
 `;
