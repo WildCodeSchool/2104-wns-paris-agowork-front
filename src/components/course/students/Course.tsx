@@ -48,8 +48,6 @@ function Course({
   if (data && data.updateIsValidated) {
     message = data.updateIsValidated.isValidated;
   }
-  // eslint-disable-next-line
-  console.log(data);
   return (
     <Card>
       <h3>{courseTitle}</h3>
