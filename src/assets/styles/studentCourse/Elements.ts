@@ -15,6 +15,8 @@ export const Container = styled.div`
 export const Date = styled.span`
   font-size: 25px;
   color: ${colors.primary};
+  text-transform: uppercase;
+  letter-spacing: 1px;
 `;
 
 export const CardRow = styled.section`
@@ -26,7 +28,10 @@ export const Card = styled.article`
   padding: 20px;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 15px rgba(55, 84, 170, 0),
+    inset 0 0 20px rgba(255, 255, 255, 0), 7px 7px 15px rgba(55, 84, 170, 0.15),
+    -7px -7px 20px rgba(255, 255, 255, 1),
+    inset 0px 0px 4px rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -44,6 +49,7 @@ export const ModuleWrapper = styled.div`
   h2 {
     font-size: 30px;
     text-align: left;
+    margin-top: 55px;
   }
 `;
 
@@ -89,6 +95,12 @@ export const StyledButton = styled(Button)`
   && {
     margin: 10px;
     margin-left: 42%;
+    border-radius: 10px;
+  }
+  &: hover {
+    color: black;
+    border 1px solid ${colors.primary};
+    background-color: transparent;
   }
 `;
 
@@ -105,4 +117,26 @@ export const AchievmentStatus = styled.div`
   font-size: 22px;
   text-align: left;
   padding-left: 20px;
+  border: 1 px solid red;
+`;
+
+export const CourseTitle = styled.span`
+  font-size: 35px;
+  color: ${colors.primary};
+`;
+
+export const Message = styled.span`
+  font-size: 20px;
+  background-color: #e0e8f7;
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: center;
+  border-radius: 10px;
+`;
+
+export const BgCalendar = styled.span`
+  background-color: #e0e8f7;
+  padding: 20px;
+  border-radius: 10px;
+  margin-right: 1.5rem;
 `;

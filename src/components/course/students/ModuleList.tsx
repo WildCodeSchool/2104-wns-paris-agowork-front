@@ -3,6 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import {
   CardRow,
   Container,
+  BgCalendar,
   Date,
 } from "../../../assets/styles/studentCourse/Elements";
 import CourseModule, { CourseModuleProps } from "./CourseModule";
@@ -35,7 +36,9 @@ function ModuleList(): JSX.Element {
   if (error) return <p>Error :(</p>;
   return (
     <Container>
-      <Date>Lundi 27 avril 2021</Date>
+      <Date>
+        <BgCalendar>Lundi 27 avril 2021</BgCalendar>
+      </Date>
       <CardRow>
         {data.allCourseModules.map((module: CourseModuleProps) => (
           <CourseModule
