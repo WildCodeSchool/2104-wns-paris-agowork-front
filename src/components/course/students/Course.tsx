@@ -14,6 +14,8 @@ import {
   InputComments,
   StyledButton,
   AccordionComments,
+  Message,
+  CourseTitle,
   AchievmentStatus,
 } from "../../../assets/styles/studentCourse/Elements";
 
@@ -47,16 +49,27 @@ function Course({
   let message = null;
   if (data && data.updateIsValidated) {
     message = data.updateIsValidated.isValidated;
+    if (achievment === "TRUE") {
+      message = "Terminé & assimilé ✔️";
+    }
+    if (achievment === "FALSE") {
+      message = "Pas acquis ❌";
+    }
+    if (achievment === "INPROGRESS") {
+      message = "In progress 🔄";
+    }
   }
   return (
     <Card>
-      <h3>{courseTitle}</h3>
+      <CourseTitle>{courseTitle}</CourseTitle>
       <AchievmentStatus>
         {isValidated === "TRUE" ? <p> Terminé & assimilé ✔️ </p> : null}
         {isValidated === "FALSE" ? <p> Pas acquis ❌ </p> : null}
         {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
       </AchievmentStatus>
-      {message ? <p>New value: {message}</p> : null}
+      <Message>
+        {message ? <p>Ce cours est passé en status {message}</p> : null}
+      </Message>
       <Form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -99,28 +112,28 @@ function Course({
               onChange={(e) => setAchievment(e.target.value)}
             />
           </RadioButtons>
-          <Accordion elevation={0}>
-            <AccordionComments
-              expandIcon={<EditIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              {comments ? (
-                <Typography>{comments}</Typography>
-              ) : (
-                <p>Ajoutez des notes sur ce cours</p>
-              )}
-            </AccordionComments>
-            <AccordionDetails>
-              <InputComments
-                name="newComments"
-                value={newComments}
-                onChange={(e) => setNewComments(e.target.value)}
-              />
-            </AccordionDetails>
-          </Accordion>
-          <StyledButton type="submit">Mettre à jour</StyledButton>
         </FormElements>
+        <Accordion elevation={0}>
+          <AccordionComments
+            expandIcon={<EditIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            {comments ? (
+              <Typography>{comments}</Typography>
+            ) : (
+              <p>Ajoutez des notes sur ce cours</p>
+            )}
+          </AccordionComments>
+          <AccordionDetails>
+            <InputComments
+              name="newComments"
+              value={newComments}
+              onChange={(e) => setNewComments(e.target.value)}
+            />
+          </AccordionDetails>
+        </Accordion>
+        <StyledButton type="submit">Mettre à jour</StyledButton>
       </Form>
     </Card>
   );
