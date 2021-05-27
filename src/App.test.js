@@ -43,6 +43,54 @@ const GET_MODULES_SUCCESS_MOCK = {
             },
           ],
         },
+        {
+          id: "2",
+          moduleTitle: "Français",
+          courses: [
+            {
+              id: "1",
+              courseTitle: "Moyen Age",
+              comments: "J'aime le moyen age",
+              isValidated: "TRUE",
+            },
+            {
+              id: "2",
+              courseTitle: "Grammaire",
+              comments: "jest se mock de nous",
+              isValidated: "FALSE",
+            },
+            {
+              id: "3",
+              courseTitle: "additions",
+              comments: "au secours ! ",
+              isValidated: "INPROGRESS",
+            },
+          ],
+        },
+        {
+          id: "3",
+          moduleTitle: "Maths",
+          courses: [
+            {
+              id: "1",
+              courseTitle: "Moyen Age",
+              comments: "J'aime le moyen age",
+              isValidated: "TRUE",
+            },
+            {
+              id: "2",
+              courseTitle: "Grammaire",
+              comments: "jest se mock de nous",
+              isValidated: "FALSE",
+            },
+            {
+              id: "3",
+              courseTitle: "additions",
+              comments: "au secours ! ",
+              isValidated: "INPROGRESS",
+            },
+          ],
+        },
       ],
     },
   },
@@ -93,9 +141,11 @@ describe("ModuleList", () => {
       const list = await waitFor(() => screen.getByTestId("modules"));
 
       const listItems = within(list).getAllByTestId("course");
-      expect(listItems).toHaveLength(1);
+      expect(listItems).toHaveLength(3);
 
       expect(listItems[0]).toHaveTextContent(/Histoire/);
+      expect(listItems[1]).toHaveTextContent(/Français/);
+      expect(listItems[2]).toHaveTextContent(/Maths/);
     });
   });
 });
