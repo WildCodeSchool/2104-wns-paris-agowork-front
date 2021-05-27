@@ -96,14 +96,14 @@ describe("ModuleList", () => {
         </MockedProvider>
       );
 
-      const list = await waitFor(() => screen.find("CardRow"));
+      const list = await waitFor(() => screen.getByTestId("modules"));
 
-      const listItems = within(list).find("CourseModule");
+      const listItems = within(list).getAllByTestId("course");
       expect(listItems).toHaveLength(3);
 
-      expect(listItems[0]).toHaveTextContent("Histoire");
-      expect(listItems[1]).toHaveTextContent("Français");
-      expect(listItems[2]).toHaveTextContent("Maths");
+      expect(listItems[0]).toHaveTextContent(/Histoire/);
+      expect(listItems[1]).toHaveTextContent(/Français/);
+      expect(listItems[2]).toHaveTextContent(/Maths/);
     });
   });
 });
