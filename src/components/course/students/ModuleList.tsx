@@ -46,7 +46,6 @@ function ModuleList(): JSX.Element {
       <CardRow data-testid="modules">
         {data?.allCourseModules.map((module: CourseModuleProps) => (
           <CourseModule
-            data-testid="course"
             id={module.id}
             key={module.id}
             moduleTitle={module.moduleTitle}
