@@ -23,8 +23,12 @@ export const ALL_MODULES = gql`
   }
 `;
 
+export type GetAllCourseModules = {
+  allCourseModules: CourseModuleProps[];
+};
+
 function ModuleList(): JSX.Element {
-  const { loading, error, data } = useQuery(ALL_MODULES);
+  const { loading, error, data } = useQuery<GetAllCourseModules>(ALL_MODULES);
   if (loading)
     return (
       <Container>
@@ -33,15 +37,16 @@ function ModuleList(): JSX.Element {
         </CardRow>
       </Container>
     );
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :</p>;
   return (
     <Container>
       <Date>
         <BgCalendar>Lundi 27 avril 2021</BgCalendar>
       </Date>
-      <CardRow>
-        {data.allCourseModules.map((module: CourseModuleProps) => (
+      <CardRow data-testid="modules">
+        {data?.allCourseModules.map((module: CourseModuleProps) => (
           <CourseModule
+            data-testid="course"
             id={module.id}
             key={module.id}
             moduleTitle={module.moduleTitle}
