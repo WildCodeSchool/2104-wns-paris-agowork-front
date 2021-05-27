@@ -14,7 +14,7 @@ function CourseModule({
   courses,
 }: CourseModuleProps): JSX.Element {
   return (
-    <ModuleWrapper>
+    <ModuleWrapper data-testid="course">
       <h2>{moduleTitle}</h2>
       {courses.map((course) => (
         <Course
