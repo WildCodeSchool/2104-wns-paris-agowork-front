@@ -1,29 +1,46 @@
 import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
-import {
-  render,
-  screen,
-  waitFor,
-  within,
-  fireEvent,
-} from "@testing-library/react";
-import Course from "../components/course/students/CourseContainer";
+import userEvent from "@testing-library/user-event";
+
+import Course, {
+  UPDATE_ISVALIDATED,
+} from "../components/course/students/Course";
+
+const mocks = [
+  {
+    request: {
+      query: UPDATE_ISVALIDATED,
+      variables: {
+        input: { id: "1", isValidated: "", comments: "" },
+      },
+    },
+    newData: jest.fn(() => ({
+      data: {
+        updateIsValidated: {
+          id: "1",
+          isValidated: "",
+          comments: "",
+        },
+      },
+    })),
+  },
+];
 
 describe("when button fuction", () => {
   it("function button", async () => {
-    const { getAllByTestId } = render(
-      <MockedProvider>
+    render(
+      <MockedProvider mocks={mocks} addTypename={false}>
         <Course
           id="1"
           courseTitle="Moyen Age"
           comments="J'aime le moyen age"
           isValidated="TRUE"
-          handleSubmit
         />
       </MockedProvider>
     );
-    const onSubmit = jest.fn();
-    fireEvent.click(getAllByTestId("submit-btn")[0]);
-    expect(onSubmit).toHaveBeenCalled();
+    userEvent.click(screen.getAllByTestId("submit-btn")[0]);
+    userEvent.click(screen.getAllByTestId("submit-btn")[0]);
+    await waitFor(() => expect(mocks[0].newData).toHaveBeenCalledTimes(2));
   });
 });

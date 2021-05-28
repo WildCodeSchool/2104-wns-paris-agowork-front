@@ -27,7 +27,7 @@ export type CourseProps = {
   subCourse?: unknown;
 };
 
-const UPDATE_ISVALIDATED = gql`
+export const UPDATE_ISVALIDATED = gql`
   mutation updateIsValidated($input: CourseInput) {
     updateIsValidated(input: $input) {
       id
