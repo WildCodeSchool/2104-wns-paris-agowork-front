@@ -10,7 +10,6 @@ import {
 import ModuleList, {
   ALL_MODULES,
 } from "../components/course/students/ModuleList";
-import Course from "../components/course/students/Course";
 
 const GET_MODULES_SUCCESS_MOCK = {
   request: {
@@ -150,22 +149,6 @@ describe("ModuleList", () => {
       expect(listItems[0]).toHaveTextContent(/Histoire/);
       expect(listItems[1]).toHaveTextContent(/Français/);
       expect(listItems[2]).toHaveTextContent(/Maths/);
-
-      expect(btn).not.toBeNull();
-    });
-    it("function button", async () => {
-      render(
-        <MockedProvider mocks={[GET_MODULES_SUCCESS_MOCK]} addTypename={false}>
-          <ModuleList />
-        </MockedProvider>
-      );
-
-      const btn = await waitFor(() => {
-        return screen.queryAllByTestId("submit-btn");
-      });
-      fireEvent.submit(screen.getByTestId("change-msg"));
-
-      expect(screen.queryByRole("form")).toBeInTheDocument();
 
       expect(btn).not.toBeNull();
     });

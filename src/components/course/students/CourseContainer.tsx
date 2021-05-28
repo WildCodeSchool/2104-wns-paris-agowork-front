@@ -46,6 +46,18 @@ function Course({
   const [achievment, setAchievment] = useState("");
   const [newComments, setNewComments] = useState("");
   const [updateIsValidated, { data }] = useMutation(UPDATE_ISVALIDATED);
+  function handleSubmit(e) {
+    e.preventDefault();
+    return updateIsValidated({
+      variables: {
+        input: {
+          id,
+          isValidated: achievment,
+          comments: newComments,
+        },
+      },
+    });
+  }
   let message = null;
   if (data && data.updateIsValidated) {
     message = data.updateIsValidated.isValidated;
@@ -72,20 +84,7 @@ function Course({
           <p data-testid="change-msg">Ce cours est passé en status {message}</p>
         ) : null}
       </Message>
-      <Form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          updateIsValidated({
-            variables: {
-              input: {
-                id,
-                isValidated: achievment,
-                comments: newComments,
-              },
-            },
-          });
-        }}
-      >
+      <Form data-testid="form" onSubmit={handleSubmit}>
         <FormElements>
           <RadioButtons>
             <Achievment>Terminé & assimilé ✔️</Achievment>
