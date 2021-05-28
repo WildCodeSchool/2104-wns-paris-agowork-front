@@ -68,7 +68,9 @@ function Course({
         {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
       </AchievmentStatus>
       <Message>
-        {message ? <p>Ce cours est passé en status {message}</p> : null}
+        {message ? (
+          <p data-testid="change-msg">Ce cours est passé en status {message}</p>
+        ) : null}
       </Message>
       <Form
         onSubmit={async (e) => {
@@ -133,7 +135,9 @@ function Course({
             />
           </AccordionDetails>
         </Accordion>
-        <StyledButton type="submit">Mettre à jour</StyledButton>
+        <StyledButton type="submit" data-testid="submit-btn">
+          Mettre à jour
+        </StyledButton>
       </Form>
     </Card>
   );

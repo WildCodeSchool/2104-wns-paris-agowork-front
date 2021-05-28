@@ -1,16 +1,16 @@
 import React from "react";
-import TestRenderer from "react-test-renderer";
 import { MockedProvider } from "@apollo/client/testing";
-import { render, screen, waitFor, within } from "@testing-library/react";
-import { rest } from "msw";
-import { setupServer } from "msw/node";
-import App from "./App";
+import {
+  render,
+  screen,
+  waitFor,
+  within,
+  fireEvent,
+} from "@testing-library/react";
 import ModuleList, {
   ALL_MODULES,
-} from "./components/course/students/ModuleList";
-import CourseModule, {
-  CourseModuleProps,
-} from "./components/course/students/CourseModule";
+} from "../components/course/students/ModuleList";
+import Course from "../components/course/students/Course";
 
 const GET_MODULES_SUCCESS_MOCK = {
   request: {
@@ -143,51 +143,31 @@ describe("ModuleList", () => {
       const listItems = within(list).getAllByTestId("course");
       expect(listItems).toHaveLength(3);
 
+      const btn = await waitFor(() => {
+        return screen.queryAllByTestId("submit-btn");
+      });
+
       expect(listItems[0]).toHaveTextContent(/Histoire/);
       expect(listItems[1]).toHaveTextContent(/Français/);
       expect(listItems[2]).toHaveTextContent(/Maths/);
+
+      expect(btn).not.toBeNull();
+    });
+    it("function button", async () => {
+      render(
+        <MockedProvider mocks={[GET_MODULES_SUCCESS_MOCK]} addTypename={false}>
+          <Course />
+        </MockedProvider>
+      );
+
+      const btn = await waitFor(() => {
+        return screen.queryAllByTestId("submit-btn");
+      });
+      fireEvent.submit(screen.getByTestId("change-msg"));
+
+      expect(screen.queryByRole("form")).toBeInTheDocument();
+
+      expect(btn).not.toBeNull();
     });
   });
 });
-
-// it("should render module", async () => {
-//   const component = TestRenderer.create(
-//     <MockedProvider mocks={[GET_MODULES_SUCCESS_MOCK]} addTypename={false}>
-//       <ModuleList moduleTitle="Histoire" />
-//     </MockedProvider>
-//   );
-
-//   await new Promise((resolve) => setTimeout(resolve, 0));
-
-//   const p = component.root.findByType("p");
-//   expect(p.children.join("")).toContain("Histoire is a module course");
-// });
-
-// test("renders learn react text", () => {
-//   render(
-//     <MockedProvider>
-//       <App />
-//     </MockedProvider>
-//   );
-//   const user = screen.getByText(/Loading/i);
-//   expect(user).toBeInTheDocument();
-// });
-
-// const url: string = "/msg.json";
-// const fakeData:any = {msg:mocks[result.data]};
-// const server = setupServer(
-//   rest.get(url, (req, res, ctx) => {
-//     const data = ctx.json(fakeData);
-//     return res(data);
-//   })
-// );
-
-// const server = setupServer(
-//   rest.get('/greeting', (req, res, ctx) => {
-//     return res(ctx.json({ greeting: 'hello there' }))
-//   })
-// )
-
-// beforeAll(() => server.listen());
-// afterEach(() => server.resetHandlers());
-// afterAll(() => server.close());
