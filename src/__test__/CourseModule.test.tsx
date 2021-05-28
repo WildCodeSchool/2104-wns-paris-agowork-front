@@ -156,7 +156,7 @@ describe("ModuleList", () => {
     it("function button", async () => {
       render(
         <MockedProvider mocks={[GET_MODULES_SUCCESS_MOCK]} addTypename={false}>
-          <Course />
+          <ModuleList />
         </MockedProvider>
       );
 
