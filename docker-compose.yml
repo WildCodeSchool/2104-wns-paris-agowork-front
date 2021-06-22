@@ -1,0 +1,11 @@
+services:
+    2104-wns-paris-agowork-back:
+      build: ../2104-wns-paris-agowork-back
+      ports:
+        - 4001:4000
+    mongodb:
+      image: mongo
+    2104-wns-paris-agowork-front:
+      build: ./
+      ports:
+        - 3001:3000
