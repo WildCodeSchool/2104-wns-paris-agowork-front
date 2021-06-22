@@ -27,7 +27,7 @@ export type CourseProps = {
   subCourse?: unknown;
 };
 
-const UPDATE_ISVALIDATED = gql`
+export const UPDATE_ISVALIDATED = gql`
   mutation updateIsValidated($input: CourseInput) {
     updateIsValidated(input: $input) {
       id
@@ -68,9 +68,12 @@ function Course({
         {isValidated === "INPROGRESS" ? <p> In progress 🔄 </p> : null}
       </AchievmentStatus>
       <Message>
-        {message ? <p>Ce cours est passé en status {message}</p> : null}
+        {message ? (
+          <p data-testid="change-msg">Ce cours est passé en status {message}</p>
+        ) : null}
       </Message>
       <Form
+        data-testid="form"
         onSubmit={async (e) => {
           e.preventDefault();
           updateIsValidated({
@@ -133,7 +136,9 @@ function Course({
             />
           </AccordionDetails>
         </Accordion>
-        <StyledButton type="submit">Mettre à jour</StyledButton>
+        <StyledButton type="submit" data-testid="submit-btn">
+          Mettre à jour
+        </StyledButton>
       </Form>
     </Card>
   );
