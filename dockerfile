@@ -12,4 +12,4 @@ RUN npm install
 COPY public public
 COPY src src
 
-CMD npm start, Graphql-faker —open
+CMD ["npm", "start"]
