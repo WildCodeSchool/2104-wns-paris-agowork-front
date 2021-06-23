@@ -45,3 +45,29 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## DOCKER-COMPOSE
+
+Les noms des images sont dans les docker-compose
+
+commande:
+
+- listing des problèmes (logs): docker logs -f (container id)
+
+- pour build l'image:         docker-compose -f docker-compose.dev.yml up --build
+- pour lancer l'image:        docker-compose -f docker-compose.dev.yml up
+- pour stoper le container:   docker compose stop
+- pour détruire le container et limage:  docker system prune -a
+- pour vérifier les images:   docker image ls
+- pour vérifier les containers qui tournent:   docker ps
+- pour supprimer une image:   (vérifier que l'image ne tourne pas) docker image rm (id de l'image)
+- pour stoper un container avec l'id:  docker stop (id du container)
+
+- vérifier la connection à mongode : 
+docker exec -it mongodb bash
+mongo
+use (le nom de la bdd)
+show collections
+db.(le nom de la collection).find().pretty()
+exit
+exit    
