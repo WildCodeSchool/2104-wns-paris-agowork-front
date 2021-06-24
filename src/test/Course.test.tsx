@@ -19,8 +19,8 @@ const mocks = [
       data: {
         updateIsValidated: {
           id: "1",
-          isValidated: "",
-          comments: "",
+          isValidated: "INPROGRESS",
+          comments: "cool",
         },
       },
     })),
