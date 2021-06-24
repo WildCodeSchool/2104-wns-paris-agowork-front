@@ -15,15 +15,13 @@ const mocks = [
         input: { id: "1", isValidated: "", comments: "" },
       },
     },
-    newData: jest.fn(() => ({
-      data: {
-        updateIsValidated: {
-          id: "1",
-          isValidated: "INPROGRESS",
-          comments: "cool",
-        },
+    data: {
+      updateIsValidated: {
+        id: "1",
+        isValidated: "INPROGRESS",
+        comments: "cool",
       },
-    })),
+    },
   },
 ];
 
@@ -41,6 +39,15 @@ describe("when button fuction", () => {
     );
     userEvent.click(screen.getAllByTestId("submit-btn")[0]);
     userEvent.click(screen.getAllByTestId("submit-btn")[0]);
-    await waitFor(() => expect(mocks[0].newData).toHaveBeenCalledTimes(2));
+    // await waitFor(() => expect(mocks[0].newData).toHaveBeenCalledTimes(2));
+    await waitFor(() =>
+      expect(mocks[0].data).toEqual({
+        updateIsValidated: {
+          id: "1",
+          isValidated: "INPROGRESS",
+          comments: "cool",
+        },
+      })
+    );
   });
 });
