@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import TextField from "@material-ui/core/TextField";
+import {
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  Select,
+} from "@material-ui/core";
 import { CreateUser } from "../../graphql/mutations/user";
 import {
   Form,
@@ -10,15 +16,33 @@ import {
 } from "../../assets/styles/studentCourse/Elements";
 
 export default function AddUser(): JSX.Element {
-  // const classes = useStyles();
-  const [createUser, { data }] = useMutation(CreateUser);
+  const [roleState, setRoleState] = React.useState<{
+    selectRole: string;
+    name: string;
+  }>({
+    selectRole: "",
+    name: "string",
+  });
+
+  const handleChange = (
+    event: React.ChangeEvent<{ name?: string; value: unknown }>
+  ) => {
+    const name = event.target.name as keyof typeof roleState;
+    setRoleState({
+      ...roleState,
+      [name]: event.target.value,
+    });
+  };
+
+  const [createUser] = useMutation(CreateUser);
+
   const [formState, setFormState] = useState({
     firstname: "",
     lastname: "",
     email: "",
     town: "",
-    picture: "",
-    role: "STUDENT",
+    picture: "https://i.postimg.cc/RZX6Y3jH/avatar.png",
+    role: "",
     password: "",
   });
 
@@ -27,7 +51,7 @@ export default function AddUser(): JSX.Element {
       <ModuleWrapper>
         <Form
           onSubmit={(e) => {
-            console.log(formState);
+            formState.role = roleState.selectRole;
             e.preventDefault();
             createUser({
               variables: {
@@ -38,45 +62,54 @@ export default function AddUser(): JSX.Element {
             });
           }}
         >
-          <TextField
-            value={formState.firstname}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                firstname: e.target.value,
-              })
-            }
-            type="text"
-            label="firstname"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-          />
-          <TextField
-            value={formState.lastname}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                lastname: e.target.value,
-              })
-            }
-            type="text"
-            label="lastname"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-          />
-          <TextField
-            value={formState.email}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                email: e.target.value,
-              })
-            }
-            type="text"
-            label="email"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-          />
+          <FormControl>
+            <TextField
+              value={formState.firstname}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  firstname: e.target.value,
+                })
+              }
+              type="text"
+              label="firstname"
+              variant="outlined"
+              id="mui-theme-provider-outlined-input"
+            />
+            <FormHelperText>Required</FormHelperText>
+          </FormControl>
+          <FormControl>
+            <TextField
+              value={formState.lastname}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  lastname: e.target.value,
+                })
+              }
+              type="text"
+              label="lastname"
+              variant="outlined"
+              id="mui-theme-provider-outlined-input"
+            />
+            <FormHelperText>Required</FormHelperText>
+          </FormControl>
+          <FormControl>
+            <TextField
+              value={formState.email}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  email: e.target.value,
+                })
+              }
+              type="text"
+              label="email"
+              variant="outlined"
+              id="mui-theme-provider-outlined-input"
+            />
+            <FormHelperText>Required</FormHelperText>
+          </FormControl>
           <TextField
             value={formState.town}
             onChange={(e) =>
@@ -90,34 +123,59 @@ export default function AddUser(): JSX.Element {
             variant="outlined"
             id="mui-theme-provider-outlined-input"
           />
-          <TextField
-            value={formState.picture}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                picture: e.target.value,
-              })
-            }
-            type="text"
-            label="picture"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-          />
-          <TextField
-            value={formState.password}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                password: e.target.value,
-              })
-            }
-            type="text"
-            label="password"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-          />
+          <FormControl>
+            <TextField
+              value={formState.picture}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  picture: e.target.value,
+                })
+              }
+              type="text"
+              label="picture"
+              variant="outlined"
+              id="mui-theme-provider-outlined-input"
+            />
+          </FormControl>
+          <FormControl>
+            <TextField
+              value={formState.password}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  password: e.target.value,
+                })
+              }
+              type="text"
+              label="password"
+              variant="outlined"
+              id="mui-theme-provider-outlined-input"
+            />
+            <FormHelperText>Required</FormHelperText>
+          </FormControl>
+          <FormControl variant="outlined">
+            <InputLabel htmlFor="outlined-selectRole-native-simple">
+              Role
+            </InputLabel>
+            <Select
+              native
+              value={roleState.selectRole}
+              onChange={handleChange}
+              label="selectRole"
+              inputProps={{
+                name: "selectRole",
+                id: "outlined-selectRole-native-simple",
+              }}
+            >
+              <option aria-label="None" value="" />
+              <option value="STUDENT">Student</option>
+              <option value="TEACHER">Teacher</option>
+            </Select>
+            <FormHelperText>Required</FormHelperText>
+          </FormControl>
           <StyledButton type="submit" data-testid="submit-btn">
-            Ajouter cet élève
+            Ajouter cet utilisateur
           </StyledButton>
         </Form>
       </ModuleWrapper>
