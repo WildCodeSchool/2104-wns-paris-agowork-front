@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -149,7 +149,11 @@ export const Sidebar = (): JSX.Element => {
                     <GroupIcon />
                   </Link>
                 ) : null}
-                {index === 1 ? <SettingsOutlinedIcon /> : null}
+                {index === 1 ? (
+                  <Link to="/addUser">
+                    <SettingsOutlinedIcon />
+                  </Link>
+                ) : null}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -165,7 +169,9 @@ export const Sidebar = (): JSX.Element => {
           <Collapse in={openSubnav} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button className={classes.nested}>
-                <ListItemText primary="Modules du jour" />
+                <Link to="/modules">
+                  <ListItemText primary="Modules du jour" />
+                </Link>
               </ListItem>
             </List>
           </Collapse>

@@ -11,18 +11,10 @@ const Page = (): JSX.Element => {
     <Switch>
       <Route path="/" exact component={Dashboard} />
       <Route path="/addUser" exact component={AddUser} />
-      {/* <Route path="/addUser" exact>
-        <AddUser />
-      </Route>
-      <Route path="/login" exact>
-        <Login />
-      </Route>
-      <Route path="/moduleList" exact>
-        <ModuleList />
-      </Route>
-      <Route path="/ressources" exact>
-        <Ressources />
-      </Route> */}
+      <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/ressources" exact component={Ressources} />
+      <Route path="/modules" exact component={ModuleList} />
+      <Route path="/login" exact component={Login} />
     </Switch>
   );
 };
