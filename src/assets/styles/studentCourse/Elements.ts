@@ -3,7 +3,7 @@ import Radio from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
 import { TextareaAutosize } from "@material-ui/core";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
-import { colors, fonts } from "./Globals";
+import { colors } from "./Globals";
 
 export const Container = styled.div`
   width: 80%;

@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Link, NavLink } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -143,7 +144,11 @@ export const Sidebar = (): JSX.Element => {
           {["Campus de Paris", "Dashboard"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index === 0 ? <GroupIcon /> : null}
+                {index === 0 ? (
+                  <Link to="/campus">
+                    <GroupIcon />
+                  </Link>
+                ) : null}
                 {index === 1 ? <SettingsOutlinedIcon /> : null}
               </ListItemIcon>
               <ListItemText primary={text} />
