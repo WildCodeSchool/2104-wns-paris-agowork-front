@@ -174,9 +174,7 @@ export default function AddUser(): JSX.Element {
             </Select>
             <FormHelperText>Required</FormHelperText>
           </FormControl>
-          <StyledButton type="submit" data-testid="submit-btn">
-            Ajouter cet utilisateur
-          </StyledButton>
+          <StyledButton type="submit">Ajouter cet utilisateur</StyledButton>
         </Form>
       </ModuleWrapper>
     </Container>
