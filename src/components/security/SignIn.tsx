@@ -1,14 +1,8 @@
 import { FormControl, FormHelperText, TextField } from "@material-ui/core";
 import React, { useState } from "react";
-import { GraphQLError } from "graphql";
 import { useMutation } from "@apollo/client";
 import { Login } from "../../graphql/mutations/user";
-import {
-  Container,
-  Form,
-  ModuleWrapper,
-  StyledButton,
-} from "../../assets/styles/studentCourse/Elements";
+import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
 
 export default function SignIn(): JSX.Element {
   const [login, { data }] = useMutation(Login);
@@ -20,44 +14,40 @@ export default function SignIn(): JSX.Element {
     console.log("echec de connection");
   }
   return (
-    <Container>
-      <ModuleWrapper>
-        <Form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            login({
-              variables: {
-                email,
-                password,
-              },
-            });
-          }}
-        >
-          <FormControl>
-            <TextField
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="text"
-              label="email"
-              variant="outlined"
-              id="mui-theme-provider-outlined-input"
-            />
-            <FormHelperText>Required</FormHelperText>
-          </FormControl>
-          <FormControl>
-            <TextField
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="text"
-              label="password"
-              variant="outlined"
-              id="mui-theme-provider-outlined-input"
-            />
-            <FormHelperText>Required</FormHelperText>
-          </FormControl>
-          <StyledButton type="submit">Connexion</StyledButton>
-        </Form>
-      </ModuleWrapper>
-    </Container>
+    <Form
+      onSubmit={async (e) => {
+        e.preventDefault();
+        login({
+          variables: {
+            email,
+            password,
+          },
+        });
+      }}
+    >
+      <FormControl>
+        <TextField
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          label="email"
+          variant="outlined"
+          id="mui-theme-provider-outlined-input"
+        />
+        <FormHelperText>Required</FormHelperText>
+      </FormControl>
+      <FormControl>
+        <TextField
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="text"
+          label="password"
+          variant="outlined"
+          id="mui-theme-provider-outlined-input"
+        />
+        <FormHelperText>Required</FormHelperText>
+      </FormControl>
+      <StyledButton type="submit">Connexion</StyledButton>
+    </Form>
   );
 }

@@ -8,6 +8,9 @@ import App from "./App";
 const client = new ApolloClient({
   uri: "http://localhost:4000",
   cache: new InMemoryCache(),
+  // headers: {
+  //   authorization: Cookies.get('token') ? `Bearer ${Cookies.get('token')}` : ""},
+  // };
 });
 
 ReactDOM.render(
