@@ -6,7 +6,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import App from "./App";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000",
+  uri: "http://localhost:4001",
   cache: new InMemoryCache(),
   // headers: {
   //   authorization: Cookies.get('token') ? `Bearer ${Cookies.get('token')}` : ""},

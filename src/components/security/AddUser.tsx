@@ -30,7 +30,7 @@ export default function AddUser(): JSX.Element {
   };
 
   const [createUser, { data }] = useMutation(CreateUser);
-
+  console.log(data);
   const [formState, setFormState] = useState({
     firstname: "",
     lastname: "",
@@ -56,7 +56,6 @@ export default function AddUser(): JSX.Element {
             },
           });
           if (data) {
-            console.log(data);
             window.location.href = "/dashboard";
           } else {
             console.log("echec de création");
