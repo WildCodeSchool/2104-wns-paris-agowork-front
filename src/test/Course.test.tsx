@@ -7,30 +7,27 @@ import Course, {
   UPDATE_ISVALIDATED,
 } from "../components/course/students/Course";
 
-const mocks = [
-  {
-    request: {
-      query: UPDATE_ISVALIDATED,
-      variables: {
-        input: { id: "1", isValidated: "", comments: "" },
-      },
-    },
-    newData: jest.fn(() => ({
-      result: {
-        data: {
-          updateIsValidated: {
-            id: "1",
-            isValidated: "",
-            comments: "",
-          },
-        },
-      },
-    })),
-  },
-];
-
 describe("when button fuction", () => {
   it("function button", async () => {
+    const mocks = [
+      {
+        request: {
+          query: UPDATE_ISVALIDATED,
+          variables: {
+            input: { id: "1", isValidated: "", comments: "" },
+          },
+        },
+        newData: jest.fn(() => ({
+          data: {
+            updateIsValidated: {
+              id: "1",
+              isValidated: "",
+              comments: "",
+            },
+          },
+        })),
+      },
+    ];
     render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <Course
