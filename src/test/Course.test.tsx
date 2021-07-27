@@ -16,11 +16,13 @@ const mocks = [
       },
     },
     newData: jest.fn(() => ({
-      data: {
-        updateIsValidated: {
-          id: "1",
-          isValidated: "",
-          comments: "",
+      result: {
+        data: {
+          updateIsValidated: {
+            id: "1",
+            isValidated: "",
+            comments: "",
+          },
         },
       },
     })),
