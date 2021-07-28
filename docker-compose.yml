@@ -12,11 +12,6 @@ services:
     hostname: mongodb
     volumes:
       - ../data:/data/db
-    env_file: 
-      - .env
-    environment:
-      - MONGO_PASSWORD=${DB_PASS} \
-      - MONGO_DATABASE=${DB_DATABASE} \
   2104-wns-paris-agowork-front:
     container_name: agowork_front
     build: ./
