@@ -15,10 +15,10 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### GRAPHQL Faker
+
 Graphql-faker —open
 
 ### `npm run test`
-
 
 ### `npm run build`
 
@@ -54,20 +54,22 @@ commande:
 
 - listing des problèmes (logs): docker logs -f (container id)
 
-- pour build l'image:         docker-compose -f docker-compose.dev.yml up --build
-- pour lancer l'image:        docker-compose -f docker-compose.dev.yml up
-- pour stoper le container:   docker compose stop
-- pour détruire le container et limage:  docker system prune -a
-- pour vérifier les images:   docker image ls
-- pour vérifier les containers qui tournent:   docker ps
-- pour supprimer une image:   (vérifier que l'image ne tourne pas) docker image rm (id de l'image)
-- pour stoper un container avec l'id:  docker stop (id du container)
+- pour build l'image: docker-compose -f docker-compose.dev.yml up --build
+- pour lancer l'image: docker-compose -f docker-compose.dev.yml up
+- pour stoper le container: docker compose stop
+- pour détruire le container et limage: docker system prune -a
+- pour vérifier les images: docker image ls
+- pour vérifier les containers qui tournent: docker ps
+- pour supprimer une image: (vérifier que l'image ne tourne pas) docker image rm (id de l'image)
+- pour stoper un container avec l'id: docker stop (id du container)
 
-- vérifier la connection à mongode : 
-docker exec -it mongodb bash
-mongo
-use (le nom de la bdd)
-show collections
-db.(le nom de la collection).find().pretty()
-exit
-exit    
+- vérifier la connection à mongode :
+  docker exec -it mongodb bash
+  mongo
+  use (le nom de la bdd)
+  show collections
+  db.(le nom de la collection).find().pretty()
+  exit
+  exit
+
+test for ci
