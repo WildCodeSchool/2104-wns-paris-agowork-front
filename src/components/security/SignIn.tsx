@@ -1,30 +1,19 @@
-import { FormControl, FormHelperText, TextField } from "@material-ui/core";
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { Login } from "../../graphql/mutations/user";
+import { FormControl, FormHelperText, TextField } from "@material-ui/core";
+import { useLazyQuery } from "@apollo/client";
+import { Login } from "../../graphql/queries/user";
 import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
 
 export default function SignIn(): JSX.Element {
-  const [login, { data }] = useMutation(Login);
+  const [login, { data }] = useLazyQuery(Login);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  if (data && data.login) {
-    window.location.href = "/dashboard";
-  } else {
-    console.log("echec de connection");
-  }
+  if (data) {
+    localStorage.setItem("token", data.login.token);
+    console.log(data);
+  } 
   return (
-    <Form
-      onSubmit={async (e) => {
-        e.preventDefault();
-        login({
-          variables: {
-            email,
-            password,
-          },
-        });
-      }}
-    >
+    <Form>
       <FormControl>
         <TextField
           value={email}
@@ -47,7 +36,20 @@ export default function SignIn(): JSX.Element {
         />
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-      <StyledButton type="submit">Connexion</StyledButton>
+      <StyledButton 
+        onClick={async () => {
+          try {
+            await login({
+              variables: {
+                email,
+                password,
+              },
+            });
+          } catch (err){
+            console.log("Login error :", err);
+          }
+        }}
+      >Connexion</StyledButton>
     </Form>
   );
 }

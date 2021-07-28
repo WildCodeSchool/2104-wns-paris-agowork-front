@@ -2,15 +2,27 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import App from "./App";
 
-const client = new ApolloClient({
+const httpLink = createHttpLink({
   uri: "http://localhost:4001",
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token,
+    },
+  };
+});
+
+const client = new ApolloClient({
   cache: new InMemoryCache(),
-  // headers: {
-  //   authorization: Cookies.get('token') ? `Bearer ${Cookies.get('token')}` : ""},
-  // };
+  link: authLink.concat(httpLink),
 });
 
 ReactDOM.render(
@@ -21,3 +33,5 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root")
 );
+
+

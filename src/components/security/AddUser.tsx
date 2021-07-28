@@ -30,38 +30,25 @@ export default function AddUser(): JSX.Element {
   };
 
   const [createUser, { data }] = useMutation(CreateUser);
-  console.log(data);
+
   const [formState, setFormState] = useState({
     firstname: "",
     lastname: "",
     email: "",
     town: "",
-    picture: "https://i.postimg.cc/RZX6Y3jH/avatar.png",
+    picture: "https://images.unsplash.com/photo-1627434880836-e94b1bdc2098?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     role: "",
     password: "",
   });
 
+  if (data) {
+    localStorage.setItem("token", data.createUser.token);
+  } 
+
   return (
     <>
       <h1>Ajouter un utilisateur</h1>
-      <Form
-        onSubmit={(e) => {
-          formState.role = roleState.selectRole;
-          e.preventDefault();
-          createUser({
-            variables: {
-              input: {
-                ...formState,
-              },
-            },
-          });
-          if (data) {
-            window.location.href = "/dashboard";
-          } else {
-            console.log("echec de création");
-          }
-        }}
-      >
+      <Form>
         <FormControl>
           <TextField
             value={formState.firstname}
@@ -174,7 +161,22 @@ export default function AddUser(): JSX.Element {
           </Select>
           <FormHelperText>Required</FormHelperText>
         </FormControl>
-        <StyledButton type="submit">Ajouter cet utilisateur</StyledButton>
+        <StyledButton 
+        onClick={ async () => {
+          try {
+            formState.role = roleState.selectRole;
+           await createUser({
+              variables: {
+                input: {
+                  ...formState,
+                },
+              },
+            });
+          } catch (err){
+            console.log("Registration error :", err);
+          }
+        }}
+        >Ajouter cet utilisateur</StyledButton>
       </Form>
     </>
   );
