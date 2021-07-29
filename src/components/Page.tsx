@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from "react";
+import React, {useContext} from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import ModuleList from "./course/students/ModuleList";
@@ -11,35 +11,34 @@ import {
   ModuleWrapper,
 } from "../assets/styles/studentCourse/Elements";
 import Sidebar from "./sidebar/Sidebar";
-import { useAuth } from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
 const Page = (): JSX.Element => {
-  // const ProtectedRoute = ({children, ...rest}) => {
-    const { currentUser } = useAuth();
+  const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
   return (
     <>
     <Sidebar />
     <Container>
       <ModuleWrapper>
         <Switch>
-          
-    
-          { currentUser ? 
-          <>
-          <Route exact path="/"> 
-            <Dashboard/>
-          </Route>
-          <Route exact path="/addUser"> 
-            <AddUser/>
-          </Route>
-          {/* <Route path="/ressources" exact component={Ressources} />
-          <Route path="/modules" exact component={ModuleList} /> */}
-          </>  : 
+
+          { currentUser != null ? (
+            <>
+          <Route exact path="/" exact component={Dashboard}/> 
+          <Route exact path="/addUser" exact component={AddUser}/> 
+          <Route path="/ressources" exact component={Ressources} />
+          <Route path="/modules" exact component={ModuleList} /> 
+          </> 
+          )
+         : 
             (
-              <Redirect 
-                to={{ pathname: '/login'
-                }}
-              />
+              // <Redirect 
+              //   to={{ pathname: '/login'
+              //   }}
+              // />
+              <Route path="/login" exact component={SignIn} />
+              
             )
           }
         </Switch>
