@@ -28,7 +28,6 @@ export default function AddUser(): JSX.Element {
       [name]: event.target.value,
     });
   };
-
   const [createUser, { data }] = useMutation(CreateUser);
 
   const [formState, setFormState] = useState({
@@ -36,14 +35,15 @@ export default function AddUser(): JSX.Element {
     lastname: "",
     email: "",
     town: "",
-    picture: "https://images.unsplash.com/photo-1627434880836-e94b1bdc2098?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-    role: "",
+    picture:
+      "https://images.unsplash.com/photo-1627434880836-e94b1bdc2098?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    role: {} as any,
     password: "",
   });
 
   if (data) {
     localStorage.setItem("token", data.createUser.token);
-  } 
+  }
 
   return (
     <>
@@ -161,22 +161,24 @@ export default function AddUser(): JSX.Element {
           </Select>
           <FormHelperText>Required</FormHelperText>
         </FormControl>
-        <StyledButton 
-        onClick={ async () => {
-          try {
-            formState.role = roleState.selectRole;
-           await createUser({
-              variables: {
-                input: {
-                  ...formState,
+        <StyledButton
+          onClick={async () => {
+            try {
+              formState.role = roleState.selectRole;
+              await createUser({
+                variables: {
+                  input: {
+                    ...formState,
+                  },
                 },
-              },
-            });
-          } catch (err){
-            console.log("Registration error :", err);
-          }
-        }}
-        >Ajouter cet utilisateur</StyledButton>
+              });
+            } catch (err) {
+              console.log("Registration error :", err);
+            }
+          }}
+        >
+          Ajouter cet utilisateur
+        </StyledButton>
       </Form>
     </>
   );

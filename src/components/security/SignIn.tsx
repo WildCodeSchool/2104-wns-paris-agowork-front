@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { FormControl, FormHelperText, TextField } from "@material-ui/core";
 import { useLazyQuery } from "@apollo/client";
 import { Login } from "../../graphql/queries/user";
 import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
+import Context from "../../context/UserContext";
 
 export default function SignIn(): JSX.Element {
   const [login, { data }] = useLazyQuery(Login);
@@ -10,7 +11,7 @@ export default function SignIn(): JSX.Element {
   const [password, setPassword] = useState<string>("");
   if (data) {
     localStorage.setItem("token", data.login.token);
-    console.log(data);
+    <Context {...data}/>
   } 
   return (
     <Form>

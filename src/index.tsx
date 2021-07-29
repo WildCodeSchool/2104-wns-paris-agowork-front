@@ -5,6 +5,7 @@ import "./index.css";
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import App from "./App";
+import Context from "./context/UserContext";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4001",
@@ -28,7 +29,9 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <App />
+      <Context>
+        <App />
+      </Context>
     </BrowserRouter>
   </ApolloProvider>,
   document.getElementById("root")
