@@ -1,18 +1,23 @@
-import React, { createContext, useState } from "react";
+// @ts-nocheck
+import React, { useContext, useState, useEffect } from "react";
 import { FormControl, FormHelperText, TextField } from "@material-ui/core";
 import { useLazyQuery } from "@apollo/client";
 import { Login } from "../../graphql/queries/user";
 import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
-import Context from "../../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 export default function SignIn(): JSX.Element {
+  const { user, setUser } = useContext(UserContext);
   const [login, { data }] = useLazyQuery(Login);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   if (data) {
     localStorage.setItem("token", data.login.token);
-    <Context {...data}/>
-  } 
+  }
+  useEffect(() => {
+    setUser(data);
+  }, []);
+  console.log(user)
   return (
     <Form>
       <FormControl>
@@ -37,7 +42,7 @@ export default function SignIn(): JSX.Element {
         />
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-      <StyledButton 
+      <StyledButton
         onClick={async () => {
           try {
             await login({
@@ -46,11 +51,13 @@ export default function SignIn(): JSX.Element {
                 password,
               },
             });
-          } catch (err){
+          } catch (err) {
             console.log("Login error :", err);
           }
         }}
-      >Connexion</StyledButton>
+      >
+        Connexion
+      </StyledButton>
     </Form>
   );
 }
