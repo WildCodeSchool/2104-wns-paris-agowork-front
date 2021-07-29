@@ -1,23 +1,22 @@
 // @ts-nocheck
-import React, { useContext, useState, useEffect } from "react";
+import React, {  useState } from "react";
 import { FormControl, FormHelperText, TextField } from "@material-ui/core";
 import { useLazyQuery } from "@apollo/client";
 import { Login } from "../../graphql/queries/user";
 import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
-import { UserContext } from "../../context/UserContext";
+import { useAuth } from "../../context/UserContext";
 
 export default function SignIn(): JSX.Element {
-  const { user, setUser } = useContext(UserContext);
+  const { currentUser, setcurrentUser } = useAuth();
   const [login, { data }] = useLazyQuery(Login);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   if (data) {
     localStorage.setItem("token", data.login.token);
+    sessionStorage.setItem("user", data);
+    setcurrentUser(data);
+    console.log(currentUser)
   }
-  useEffect(() => {
-    setUser(data);
-  }, []);
-  console.log(user)
   return (
     <Form>
       <FormControl>

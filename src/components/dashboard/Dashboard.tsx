@@ -1,10 +1,10 @@
 // @ts-nocheck
-import React, { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import React from "react";
+import { useAuth } from "../../context/UserContext";
 
 export default function Dashboard(): JSX.Element {
-  const {user} = useContext(UserContext);
-  console.log(user);
+  const {currentUser} = useAuth();
+  console.log(currentUser);
   return (
   <p>Hey</p>
   );
