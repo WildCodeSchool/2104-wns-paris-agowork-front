@@ -1,22 +1,16 @@
-// @ts-nocheck
 import React, {  useState, useContext } from "react";
 import { FormControl, FormHelperText, TextField } from "@material-ui/core";
 import { useLazyQuery } from "@apollo/client";
 import { Login } from "../../graphql/queries/user";
 import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
-import { UserContext } from "../../context/UserContext";
+import { AuthContext } from "../../context/Auth";
 
-export default function SignIn(): JSX.Element {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
+export default function SignIn(props: any): JSX.Element {
+  const context = useContext(AuthContext);
   const [login, { data }] = useLazyQuery(Login);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  if (data) {
-    localStorage.setItem("token", data.login.token);
-    setCurrentUser(data);
-    console.log(currentUser)
-  }
+
   return (
     <Form>
       <FormControl>
@@ -50,6 +44,11 @@ export default function SignIn(): JSX.Element {
                 password,
               },
             });
+            if (data) {
+              localStorage.setItem("token", data.login.token);
+              context.login(data);
+              props.history.push('/');
+            };
           } catch (err) {
             console.log("Login error :", err);
           }
