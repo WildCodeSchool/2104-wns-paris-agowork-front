@@ -10,14 +10,15 @@ export default function Login(props: any): JSX.Element {
   const [loginUser, { data }] = useMutation(LOGIN_USER);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const userData = data;
   
   useEffect(() => {
-    if (data) {
-      localStorage.setItem("token", data.login.token);
-      context.login(data);
+    if (userData) {
+      localStorage.setItem("token", userData.login.token);
+      context.login(userData.login);
       props.history.push("/");
     }
-  }, [data]);
+  }, [userData]);
 
   return (
     <Form

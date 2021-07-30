@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
-import Router from "./components/Router";
+import Router from "./routing/Router";
 
 function App(): JSX.Element {
   return (

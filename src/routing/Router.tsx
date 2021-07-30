@@ -1,16 +1,16 @@
 // @ts-nocheck
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Dashboard from "./dashboard/Dashboard";
-import ModuleList from "./course/students/ModuleList";
-import Ressources from "./ressources/Ressources";
-import AddUser from "./admin/AddUser";
-import SignIn from "./security/Login";
+import Dashboard from "../components/dashboard/Dashboard";
+import ModuleList from "../components/course/students/ModuleList";
+import Ressources from "../components/ressources/Ressources";
+import AddUser from "../components/admin/AddUser";
+import SignIn from "../components/security/Login";
 import {
   Container,
   ModuleWrapper,
 } from "../assets/styles/studentCourse/Elements";
-import Sidebar from "./sidebar/Sidebar";
+import Sidebar from "../components/sidebar/Sidebar";
 import AuthRoute from "./AuthRoute";
 import { AuthProvider } from "../context/Auth";
 
@@ -23,9 +23,9 @@ const Router = (): JSX.Element => {
           <Switch>
             <Route exact path="/" exact component={Dashboard} />
             <Route exact path="/addUser" exact component={AddUser} />
-            <Route path="/ressources" exact component={Ressources} />
-            <Route path="/modules" exact component={ModuleList} />
-            <AuthRoute path="/login" exact component={SignIn} />
+            <Route exact path="/ressources" exact component={Ressources} />
+            <Route exact path="/modules" exact component={ModuleList} />
+            <AuthRoute exact path="/login" exact component={SignIn} />
           </Switch>
         </ModuleWrapper>
       </Container>
