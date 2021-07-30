@@ -15,7 +15,7 @@ export default function Login(props: any): JSX.Element {
   useEffect(() => {
     if (userData) {
       localStorage.setItem("token", userData.login.token);
-      context.login(userData.login);
+      context.login(userData);
       props.history.push("/");
     }
   }, [userData]);

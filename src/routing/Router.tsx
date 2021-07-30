@@ -12,11 +12,10 @@ import {
 } from "../assets/styles/studentCourse/Elements";
 import Sidebar from "../components/sidebar/Sidebar";
 import AuthRoute from "./AuthRoute";
-import { AuthProvider } from "../context/Auth";
 
 const Router = (): JSX.Element => {
   return (
-    <AuthProvider>
+    <>
       <Sidebar />
       <Container>
         <ModuleWrapper>
@@ -29,7 +28,7 @@ const Router = (): JSX.Element => {
           </Switch>
         </ModuleWrapper>
       </Container>
-    </AuthProvider>
+    </>
   );
 };
 

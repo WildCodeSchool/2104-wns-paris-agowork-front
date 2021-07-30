@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../context/Auth";
 
 export default function Dashboard(): JSX.Element {
-  const {user, login } = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   if (user) {
-    console.log(user!);
+    console.log(user!.userFistname);
   }
   return (
   <p>Hey</p>
