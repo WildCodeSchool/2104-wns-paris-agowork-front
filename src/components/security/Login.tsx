@@ -1,18 +1,36 @@
-import React, {  useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FormControl, FormHelperText, TextField } from "@material-ui/core";
-import { useLazyQuery } from "@apollo/client";
-import { Login } from "../../graphql/queries/user";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../graphql/mutations/user";
 import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
 import { AuthContext } from "../../context/Auth";
 
-export default function SignIn(props: any): JSX.Element {
+export default function Login(props: any): JSX.Element {
   const context = useContext(AuthContext);
-  const [login, { data }] = useLazyQuery(Login);
+  const [loginUser, { data }] = useMutation(LOGIN_USER);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  
+  useEffect(() => {
+    if (data) {
+      localStorage.setItem("token", data.login.token);
+      context.login(data);
+      props.history.push("/");
+    }
+  }, [data]);
 
   return (
-    <Form>
+    <Form
+      onSubmit={async (e) => {
+        e.preventDefault();
+        loginUser({
+          variables: {
+            email,
+            password,
+          },
+        });
+      }}
+    >
       <FormControl>
         <TextField
           value={email}
@@ -35,27 +53,7 @@ export default function SignIn(props: any): JSX.Element {
         />
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-      <StyledButton
-        onClick={async () => {
-          try {
-            await login({
-              variables: {
-                email,
-                password,
-              },
-            });
-            if (data) {
-              localStorage.setItem("token", data.login.token);
-              context.login(data);
-              props.history.push('/');
-            };
-          } catch (err) {
-            console.log("Login error :", err);
-          }
-        }}
-      >
-        Connexion
-      </StyledButton>
+      <StyledButton type="submit">Connexion</StyledButton>
     </Form>
   );
 }

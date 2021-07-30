@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/Auth";
 
 export default function Dashboard(): JSX.Element {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
   return (
   <p>Hey </p>
   );

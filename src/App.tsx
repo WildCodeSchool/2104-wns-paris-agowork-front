@@ -1,15 +1,18 @@
 // @ts-nocheck
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
-import Page from "./components/Page";
+import Router from "./components/Router";
 
 function App(): JSX.Element {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Page />
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
       </ThemeProvider>
     </div>
   );

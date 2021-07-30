@@ -4,8 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import ModuleList from "./course/students/ModuleList";
 import Ressources from "./ressources/Ressources";
-import AddUser from "./security/AddUser";
-import SignIn from "./security/SignIn";
+import AddUser from "./admin/AddUser";
+import SignIn from "./security/Login";
 import {
   Container,
   ModuleWrapper,
@@ -14,7 +14,7 @@ import Sidebar from "./sidebar/Sidebar";
 import AuthRoute from "./AuthRoute";
 import { AuthProvider } from "../context/Auth";
 
-const Page = (): JSX.Element => {
+const Router = (): JSX.Element => {
   return (
     <AuthProvider>
       <Sidebar />
@@ -33,4 +33,4 @@ const Page = (): JSX.Element => {
   );
 };
 
-export default Page;
+export default Router;
