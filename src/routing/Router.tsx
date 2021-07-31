@@ -20,11 +20,11 @@ const Router = (): JSX.Element => {
       <Container>
         <ModuleWrapper>
           <Switch>
-            <Route exact path="/" exact component={Dashboard} />
-            <Route exact path="/addUser" exact component={AddUser} />
-            <Route exact path="/ressources" exact component={Ressources} />
-            <Route exact path="/modules" exact component={ModuleList} />
-            <AuthRoute exact path="/login" exact component={SignIn} />
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/addUser" component={AddUser} />
+            <Route exact path="/ressources" component={Ressources} />
+            <Route exact path="/modules" component={ModuleList} />
+            <AuthRoute exact path="/login" component={SignIn} />
           </Switch>
         </ModuleWrapper>
       </Container>
