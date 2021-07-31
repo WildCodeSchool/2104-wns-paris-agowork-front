@@ -1,11 +1,11 @@
 // @ts-nocheck
-import React, { useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
 
-import { AuthContext } from '../context/Auth';
+import { AuthContext } from "../context/Auth";
 
-function AuthRoute({ component: Component, ...rest }) {
-  const { user, login } = useContext(AuthContext);
+function AuthRoute({ component: Component, ...rest }): JSX.Element {
+  const { user } = useContext(AuthContext);
 
   return (
     <Route
