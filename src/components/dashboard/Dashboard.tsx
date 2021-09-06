@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/Auth";
 
-function Dashboard(): JSX.Element {
-  return <h1>Coucou</h1>;
+export default function Dashboard(): JSX.Element {
+  const { user } = useContext(AuthContext);
+  if (user) {
+    console.log(user);
+  }
+  return <p>Hey </p>;
 }
-
-export default Dashboard;

@@ -39,7 +39,7 @@ import useStyles, {
   BtnSwitch,
 } from "../../assets/styles/sidebar/StyleSidebar";
 
-export const Sidebar = (): JSX.Element => {
+const Sidebar = (): JSX.Element => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
