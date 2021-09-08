@@ -72,4 +72,11 @@ commande:
   exit
   exit
 
-test for ci
+- TO EXECUTE FIXTURES 
+  If you want to execute without docker, change connexion URL of files environment.dev.ts and of fixtures files, then run the command 
+  at the root of the back repository 
+  node -e 'require("./src/Fixtures/userData.js").createUser()'
+
+  With docker, go to the root of the back repository and execute this command :
+  . for user :
+  docker exec -it agowork_back node -e 'require("./src/Fixtures/userData.js").createUser()'
