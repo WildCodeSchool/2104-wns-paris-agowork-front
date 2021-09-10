@@ -9,7 +9,6 @@ export type CourseModuleProps = {
 };
 
 function CourseModule({
-  id,
   moduleTitle,
   courses,
 }: CourseModuleProps): JSX.Element {
