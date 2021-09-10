@@ -80,3 +80,6 @@ commande:
   With docker, go to the root of the back repository and execute this command :
   . for user :
   docker exec -it agowork_back node -e 'require("./src/Fixtures/userData.js").createUser()'
+
+  . for module: 
+  docker exec -it agowork_back node -e 'require("./src/Fixtures/moduleData.js").createModule()'
