@@ -83,3 +83,9 @@ commande:
 
   . for module: 
   docker exec -it agowork_back node -e 'require("./src/Fixtures/moduleData.js").createModule()'
+
+  . for production:
+  docker exec -it 2104-wns-paris-agowork-front_server_1 node -e 'require("./src/fixtures/userData.js").createUser()'
+
+- docker ps : list all running docker containers
+- docker kill containerID
