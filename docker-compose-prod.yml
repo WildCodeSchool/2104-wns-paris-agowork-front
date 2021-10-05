@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-  2104-wns-paris-agowork-back:
+  server:
     build: ../2104-wns-paris-agowork-back
     command: sh -c "npm run build && npm run prod"
     expose:
-      - 5000
+      - 4000
     environment:
       - NODE_ENV=production
-      - SERVER_PORT=5000
+      - SERVER_PORT=4000
     depends_on:
       - mongodb
-  2104-wns-paris-agowork-front:
+  client:
     build: ./
     command: sh -c "npm run build"
     volumes:
@@ -30,8 +30,8 @@ services:
   nginx:
     image: nginx:1.21.3
     depends_on:
-      - 2104-wns-paris-agowork-back
-      - 2104-wns-paris-agowork-front
+      - server
+      - client
     restart: always
     ports:
       - ${GATEWAY_PORT}:80
