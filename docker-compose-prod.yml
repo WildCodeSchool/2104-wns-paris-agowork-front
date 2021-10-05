@@ -4,8 +4,6 @@ services:
   server:
     build: ../2104-wns-paris-agowork-back
     command: sh -c "npm run build && npm run prod"
-    expose:
-      - 4000
     environment:
       - NODE_ENV=production
       - SERVER_PORT=4000
