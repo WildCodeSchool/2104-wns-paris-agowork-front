@@ -89,3 +89,4 @@ commande:
 
 - docker ps : list all running docker containers
 - docker kill containerID
+- To add graphql faker to the client Dockerfile : COPY schema.faker.graphql
