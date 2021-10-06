@@ -1,10 +1,10 @@
 services:
     2104-wns-paris-agowork-back:
       container_name: agowork_back
-      build: ../2104-wns-paris-agowork-back
+      build: ../${FILE_BACK}
       command: npm run dev
       volumes:
-        - ../2104-wns-paris-agowork-back/src/:/app/src/
+        - ../${FILE_BACK}/src/:/app/src/
       ports:
         - 4001:4000
     mongodb:
@@ -16,7 +16,7 @@ services:
       env_file: 
         - .env
       environment:
-        - MONGO_PASSWORD=${DB_PASS} \
+        - MONGO_PORT=${DB_PORT} \
         - MONGO_DATABASE=${DB_DATABASE} \
     2104-wns-paris-agowork-front:
       container_name: agowork_front

@@ -90,3 +90,17 @@ commande:
 - docker ps : list all running docker containers
 - docker kill containerID
 - To add graphql faker to the client Dockerfile : COPY schema.faker.graphql
+
+- TO SETUP ENVIRONMENT 
+  Create .env.local and .env on the front end root repository with the following information :
+  - FILE_BACK : name of the file where is the back end 
+  - FILE_FRONT : name of the file where is the front end 
+  -> Don't forget to check in the Dockercompose files that variables are set 
+  - DB_DATABASE : name of the database if secret
+  - DB_PASS : password of the database 
+
+  Create .env.local and .env on the back end root repository with the following information : 
+  - DB_DATABASE : name of the database if secret
+  - DB_PASS : password of the database 
+  - SECRET_JWT : Secret for connection (JWT) 
+  -> Don't forget to check in the src/config/environment.dev.ts that variables are set 
