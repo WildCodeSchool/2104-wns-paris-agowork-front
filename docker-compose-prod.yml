@@ -2,7 +2,7 @@ version: '3'
 
 services:
   server:
-    build: ../2104-wns-paris-agowork-back
+    build: ../${FILE_BACK}
     command: sh -c "npm run build && npm run prod"
     environment:
       - NODE_ENV=production
@@ -21,7 +21,7 @@ services:
     env_file: 
       - .env
     environment:
-      - MONGO_PASSWORD=${DB_PASS} \
+      - MONGO_PORT=${DB_PORT} \
       - MONGO_DATABASE=${DB_DATABASE} \
   nginx:
     image: nginx:1.21.3
