@@ -6,5 +6,5 @@ export default function Dashboard(): JSX.Element {
   if (user) {
     console.log(user);
   }
-  return <p>Hey </p>;
+  return <p>Hello World </p>;
 }
