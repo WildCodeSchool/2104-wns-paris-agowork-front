@@ -87,9 +87,9 @@ commande:
   . for production:
   docker exec -it 2104-wns-paris-agowork-front_server_1 node -e 'require("./src/fixtures/userData.js").createUser()'
 
-- docker ps : list all running docker containers
-- docker kill containerID
-- To add graphql faker to the client Dockerfile : COPY schema.faker.graphql
+### docker ps : list all running docker containers
+### docker kill containerID
+### To add graphql faker to the client Dockerfile : COPY schema.faker.graphql
 
 # TO SETUP ENVIRONMENT 
   Create .env.local and .env on the front end root repository with the following information :
