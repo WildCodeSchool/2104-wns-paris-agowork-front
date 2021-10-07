@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../context/Auth";
-import NewsCard from "./NewsCard";
+import MoodCard from "./MoodCard";
 
-export default function News(): JSX.Element {
+export default function Mood(): JSX.Element {
   const { user } = useContext(AuthContext);
   if (user) {
     console.log(user);
   }
-  return <NewsCard />;
+  return <MoodCard />;
 }

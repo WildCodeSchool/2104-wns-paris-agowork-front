@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import { AuthContext } from "../../../context/Auth";
-import { News, Hr } from "../../../assets/styles/dashboard/News";
+import { News } from "../../../assets/styles/dashboard/News";
+import { Hr } from "../../../assets/styles/dashboard/Dashboard";
 
 const news = [
   {
