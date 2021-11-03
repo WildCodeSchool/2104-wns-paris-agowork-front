@@ -31,4 +31,22 @@ export const News = styled.div`
     margin-top: 3%;
     width: 90%;
   }
+
+  @media only screen and (max-width: 768px) {
+    div.card {
+      display: flex;
+      flex-direction: column;
+    }
+    p {
+      font-size: 20px;
+      padding: 0;
+    }
+    span {
+      font-size: 17px;
+    }
+    img {
+      width: 201px;
+      height: 122px;
+    }
+  } ;
 `;

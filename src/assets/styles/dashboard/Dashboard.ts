@@ -11,6 +11,17 @@ export const Title = styled.div`
     font-size: 48px;
     font-weight: 500;
   }
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    h1 {
+      font-size: 25px;
+      margin-top: 15%;
+    }
+    p {
+      margin: 0;
+    }
+  } ;
 `;
 
 export const Hr = styled.hr`

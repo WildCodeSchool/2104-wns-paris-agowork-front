@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
-import { AuthContext } from "../../../context/Auth";
 import { News } from "../../../assets/styles/dashboard/News";
 import { Hr } from "../../../assets/styles/dashboard/Dashboard";
 
@@ -24,11 +23,6 @@ const news = [
   },
 ];
 export default function NewsCard(): JSX.Element {
-  const { user } = useContext(AuthContext);
-  if (user) {
-    console.log(user);
-  }
-
   return (
     <News>
       {news.map((u) => {

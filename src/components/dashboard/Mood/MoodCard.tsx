@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../../context/Auth";
 import { MoodsEnum } from "./Mood.enum";
 import {
   Mood,
@@ -32,11 +31,6 @@ const moods = [
   },
 ];
 export default function MoodCard(): JSX.Element {
-  const { user } = useContext(AuthContext);
-  if (user) {
-    console.log(user);
-  }
-
   return (
     <>
       <Question>Comment te sens-tu aujourd&apos;hui ?</Question>

@@ -16,12 +16,22 @@ export const Mood = styled.div`
   .icone {
     display: flex;
   }
+  @media only screen and (max-width: 768px) {
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  } ;
 `;
 
 export const Question = styled.p`
   text-align: center;
   font-size: 30px;
   font-weight: 400;
+  @media only screen and (max-width: 768px) {
+    font-size: 20px;
+    text-align: start;
+  } ;
 `;
 
 export const InputAchievment = styled(Radio)`
@@ -41,4 +51,10 @@ export const ButtonValidation = styled(Button)`
 export const Div = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const img = styled.img`
+  width: 139px;
+  height: 139px;
+  margin-bottom: 5%;
 `;

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../context/Auth";
 import News from "./News/News";
 import Mood from "./Mood/Mood";
+import Chill from "./Chill/Chill";
 import { Title, Hr, Space } from "../../assets/styles/dashboard/Dashboard";
 
 export default function Dashboard(): JSX.Element {
@@ -24,11 +25,13 @@ export default function Dashboard(): JSX.Element {
       </Title>
       <Hr />
       <Mood />
+      <Space />
       <Title>
         <h1>Détente</h1>
         <p>Voir tous les jeux</p>
       </Title>
       <Hr />
+      <Chill />
     </>
   );
 }
