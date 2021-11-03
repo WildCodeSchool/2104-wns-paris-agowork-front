@@ -3,9 +3,8 @@ FROM node:alpine
 RUN mkdir /app
 WORKDIR /app
 
-COPY package.json ./
+COPY package*.json ./
 COPY tsconfig.json ./
-COPY schema.faker.graphql ./
 
 RUN npm install
 
