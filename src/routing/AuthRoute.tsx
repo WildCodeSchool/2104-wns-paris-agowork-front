@@ -11,9 +11,6 @@ const AuthRoute = ({
 }): JSX.Element => {
   const { user } = useContext(AuthContext);
 
-  // eslint-disable-next-line no-console
-  console.log(user);
-
   // si on a un user, on redirige vers le composant, sinon on redirige vers login
 
   return (
