@@ -10,8 +10,16 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import App from "./App";
 
+let url : string | undefined = "";
+
+if (process.env.NODE_ENV !== 'production') {
+  url = "http://localhost:4001";
+} else {
+  url = "/graphql";
+}
+
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: url,
 });
 
 const authLink = setContext((_, { headers }) => {
