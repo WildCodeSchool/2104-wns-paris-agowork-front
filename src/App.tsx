@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 // @ts-nocheck
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
