@@ -13,7 +13,12 @@ import App from "./App";
 let url: string | undefined = "";
 
 if (process.env.NODE_ENV !== "production") {
-  url = "http://localhost:4001";
+  console.log(process.env.REACT_APP_LOCALHOST);
+  if (process.env.REACT_APP_LOCALHOST) {
+    url = "http://localhost:4000";
+  } else {
+    url = "http://localhost:4001";
+  }
 } else {
   url = "/graphql";
 }

@@ -109,3 +109,4 @@ Commandes:
   - DB_LINK : nom de l'image docker ou localhost si lancement du projet sans docker et en environement de developpement 
   - SECRET_JWT : Secret for connection (JWT) 
   -> Don't forget to check in the src/config/environment.dev.ts that variables are set 
+  - REACT_APP_LOCALHOST : set this variable to true if not using docker
