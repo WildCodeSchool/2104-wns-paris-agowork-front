@@ -1,6 +1,5 @@
-// eslint-disable-next-line
-// @ts-nocheck
 import React from "react";
+
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { ThemeProvider } from "@material-ui/core/styles";

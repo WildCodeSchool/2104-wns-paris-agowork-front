@@ -7,6 +7,7 @@ import { Title, Hr, Space } from "../../assets/styles/dashboard/Dashboard";
 
 export default function Dashboard(): JSX.Element {
   const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <>
       <Title>

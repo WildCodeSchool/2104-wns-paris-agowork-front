@@ -8,8 +8,6 @@ const AuthRoute = ({
 }: {
   component: React.ComponentClass;
 }): JSX.Element => {
-  const { user } = useContext(AuthContext);
-
   // si on a un user, on redirige vers le composant, sinon on redirige vers login
 
   return (
@@ -18,7 +16,11 @@ const AuthRoute = ({
       {...rest}
       render={(props) =>
         // eslint-disable-next-line react/jsx-props-no-spreading
-        user ? <Component {...props} /> : <Redirect to="/login" />
+        localStorage.getItem("token") ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
       }
     />
   );
