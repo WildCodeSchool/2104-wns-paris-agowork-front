@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import clsx from "clsx";
 import { useHistory, Link } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
@@ -30,6 +30,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import Avatar from "@material-ui/core/Avatar";
 import Switch from "@material-ui/core/Switch";
+import { AuthContext } from "../../context/Auth";
 import logo from "../../assets/pictures/logo.png";
 import useStyles, {
   Logo,
@@ -46,7 +47,8 @@ const Sidebar = (): JSX.Element => {
   const [open, setOpen] = useState(false);
   const [openSubnav, setOpenSubnav] = useState(false);
   const [checkedLogin, setCheckedLogin] = useState(true);
-
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const handleLogout = (event: any) => {
     setCheckedLogin(event.target.checked);
     localStorage.clear();
@@ -124,7 +126,7 @@ const Sidebar = (): JSX.Element => {
               />
             </ListItemIcon>
             <ListItemText>
-              <p>Jean Moulin</p>
+              <p>{user.firstname + user.lastname}</p>
             </ListItemText>
           </ListItem>
           <ListItem>

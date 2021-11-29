@@ -18,7 +18,7 @@ export default function Login(): JSX.Element {
     onCompleted: (data) => {
       const userData = data;
       localStorage.setItem("token", userData.login.token);
-      context.login(userData);
+      context.login(userData.login);
       history.push("/");
     },
     onError: (error) => {

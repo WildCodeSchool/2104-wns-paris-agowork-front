@@ -41,9 +41,9 @@ export default function AddUser(): JSX.Element {
     password: "",
   });
 
-  if (data) {
-    localStorage.setItem("token", data.createUser.token);
-  }
+  // if (data) {
+  //   localStorage.setItem("token", data.createUser.token);
+  // }
 
   return (
     <>

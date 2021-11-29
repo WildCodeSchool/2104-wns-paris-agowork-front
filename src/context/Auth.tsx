@@ -1,8 +1,16 @@
 import React, { createContext } from "react";
 import jwt_decode from "jwt-decode";
+import UserType from "../types/User";
 
 const initialState = {
-  user: null,
+  user: {
+    firstname: "",
+    lastname: "",
+    city: "",
+    picture: "",
+    email: "",
+    role: "",
+  },
 };
 
 if (localStorage.getItem("token")) {
@@ -10,18 +18,31 @@ if (localStorage.getItem("token")) {
   if (decodedToken.exp * 1000 < Date.now()) {
     localStorage.removeItem("token");
   } else {
-    initialState.user = decodedToken;
+    initialState.user = {
+      firstname: decodedToken.userFirstname,
+      lastname: decodedToken.userLastname,
+      email: decodedToken.userEmail,
+      picture: decodedToken.userPicture || undefined,
+      role: decodedToken.userRole,
+      city: decodedToken.userCity,
+    };
   }
 }
-
 const AuthContext = createContext({
-  user: null,
-  login: (userData: any) => {},
+  user: {
+    firstname: "",
+    lastname: "",
+    city: "",
+    picture: "",
+    email: "",
+    role: "",
+  },
+  login: (userData: UserType) => {},
   logout: () => {},
 });
 
 function AuthProvider(props: any) {
-  function login(userData: any) {}
+  function login(userData: UserType) {}
 
   function logout() {
     localStorage.removeItem("token");
