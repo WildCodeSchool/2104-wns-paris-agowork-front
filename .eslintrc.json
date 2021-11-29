@@ -26,7 +26,8 @@
         "jest"
     ],
     "rules": {
-            "linebreak-style": "off",
+        "object-shorthand": 0,
+        "linebreak-style": "off",
         "prettier/prettier": [
             "error",
             {

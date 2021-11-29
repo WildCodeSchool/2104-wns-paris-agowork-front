@@ -5,6 +5,7 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY tsconfig.json ./
+COPY .eslintrc.json ./
 
 RUN npm install
 

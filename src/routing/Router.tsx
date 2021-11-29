@@ -6,13 +6,13 @@ import Dashboard from "../components/dashboard/Dashboard";
 import ModuleList from "../components/course/students/ModuleList";
 import Ressources from "../components/ressources/Ressources";
 import AddUser from "../components/admin/AddUser";
-import SignIn from "../components/security/Login";
+import Login from "../components/security/Login";
+import Sidebar from "../components/sidebar/Sidebar";
+import AuthRoute from "./AuthRoute";
 import {
   Container,
   ModuleWrapper,
 } from "../assets/styles/studentCourse/Elements";
-import Sidebar from "../components/sidebar/Sidebar";
-import AuthRoute from "./AuthRoute";
 
 const Router = (): JSX.Element => {
   return (
@@ -25,7 +25,7 @@ const Router = (): JSX.Element => {
             <AuthRoute exact path="/addUser" component={AddUser} />
             <AuthRoute exact path="/ressources" component={Ressources} />
             <AuthRoute exact path="/modules" component={ModuleList} />
-            <Route exact path="/login" component={SignIn} />
+            <Route exact path="/login" component={Login} />
           </Switch>
         </ModuleWrapper>
       </Container>

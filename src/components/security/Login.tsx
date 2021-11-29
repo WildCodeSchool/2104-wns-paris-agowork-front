@@ -9,34 +9,47 @@ import { AuthContext } from "../../context/Auth";
 export default function Login(): JSX.Element {
   const history = useHistory();
   const context = useContext(AuthContext);
-  const [loginUser, { data }] = useMutation(LOGIN_USER);
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const userData = data;
-  useEffect(() => {
-    if (userData) {
+  const [formState, setFormState] = useState({
+    login: true,
+    email: "",
+    password: "",
+  });
+  const [login, { loading }] = useMutation(LOGIN_USER, {
+    onCompleted: (data) => {
+      const userData = data;
       localStorage.setItem("token", userData.login.token);
       context.login(userData);
       history.push("/");
-    }
-  }, [userData, history, context]);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    login({
+      variables: {
+        email: formState.email,
+        password: formState.password,
+      },
+    });
+  };
+
+  if (loading) {
+    console.log(loading);
+  }
   return (
-    <Form
-      onSubmit={async (e) => {
-        e.preventDefault();
-        loginUser({
-          variables: {
-            email,
-            password,
-          },
-        });
-      }}
-    >
+    <Form onSubmit={handleLogin}>
       <FormControl>
         <TextField
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={formState.email}
+          onChange={(e) =>
+            setFormState({
+              ...formState,
+              email: e.target.value,
+            })
+          }
           type="text"
           label="email"
           variant="outlined"
@@ -46,9 +59,14 @@ export default function Login(): JSX.Element {
       </FormControl>
       <FormControl>
         <TextField
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="text"
+          value={formState.password}
+          onChange={(e) =>
+            setFormState({
+              ...formState,
+              password: e.target.value,
+            })
+          }
+          type="password"
           label="password"
           variant="outlined"
           id="mui-theme-provider-outlined-input"

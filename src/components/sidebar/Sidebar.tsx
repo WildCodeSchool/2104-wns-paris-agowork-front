@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -42,12 +42,16 @@ import useStyles, {
 const Sidebar = (): JSX.Element => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [openSubnav, setOpenSubnav] = React.useState(false);
-  const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-  });
+  const history = useHistory();
+  const [open, setOpen] = useState(false);
+  const [openSubnav, setOpenSubnav] = useState(false);
+  const [checkedLogin, setCheckedLogin] = useState(true);
+
+  const handleLogout = (event: any) => {
+    setCheckedLogin(event.target.checked);
+    localStorage.clear();
+    history.push("/login");
+  };
 
   const handleClick = () => {
     setOpenSubnav(!openSubnav);
@@ -59,10 +63,6 @@ const Sidebar = (): JSX.Element => {
 
   const handleDrawerClose = () => {
     setOpen(false);
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
@@ -134,10 +134,9 @@ const Sidebar = (): JSX.Element => {
           </ListItem>
           <BtnSwitch>
             <Switch
-              checked={state.checkedA}
-              onChange={handleChange}
-              name="checkedA"
-              inputProps={{ "aria-label": "secondary checkbox" }}
+              checked={checkedLogin}
+              onChange={handleLogout}
+              inputProps={{ "aria-label": "controlled" }}
               className="small"
             />
           </BtnSwitch>
@@ -170,6 +169,9 @@ const Sidebar = (): JSX.Element => {
             <List component="div" disablePadding>
               <ListItem button className={classes.nested}>
                 <Link to="/modules">
+                  <ListItemIcon>
+                    <MenuBookOutlinedIcon />
+                  </ListItemIcon>
                   <ListItemText primary="Modules du jour" />
                 </Link>
               </ListItem>

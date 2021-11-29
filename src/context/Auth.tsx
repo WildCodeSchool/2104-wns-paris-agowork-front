@@ -2,16 +2,22 @@ import React, { createContext } from "react";
 import jwt_decode from "jwt-decode";
 
 const initialState = {
-  user: null,
+  user: {
+    firstname: "",
+    lastname: "",
+    email: "",
+    token: "",
+    picture: "",
+  },
 };
 
 if (localStorage.getItem("token")) {
   const decodedToken: any = jwt_decode(localStorage.getItem("token") || "");
   if (decodedToken.exp * 1000 < Date.now()) {
     localStorage.removeItem("token");
-    initialState.user = null;
+    // initialState.user = {...user};
   } else {
-    initialState.user = decodedToken;
+    initialState.user.token = decodedToken;
   }
 }
 
