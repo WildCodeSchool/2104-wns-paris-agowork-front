@@ -7,7 +7,3 @@ export const colors = {
   },
   secondary: "#e5e5e5",
 };
-
-export const fonts = {
-  ralewayRegular: "'Raleway', sans-serif",
-};

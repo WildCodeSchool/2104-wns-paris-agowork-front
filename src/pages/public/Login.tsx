@@ -1,9 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { FormControl, FormHelperText, TextField } from "@material-ui/core";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../graphql/mutations/user";
-import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
+import { LOGIN_USER } from "../../graphql/mutations/user/User";
+import { Form, StyledButton } from "../../assets/styles/course/Elements";
 import { AuthContext } from "../../context/Auth";
 
 export default function Login(): JSX.Element {

@@ -1,6 +1,6 @@
 import React from "react";
 import Course, { CourseProps } from "./Course";
-import { ModuleWrapper } from "../../../assets/styles/studentCourse/Elements";
+import { ModuleWrapper } from "../../../assets/styles/course/Elements";
 
 export type CourseModuleProps = {
   id?: string;

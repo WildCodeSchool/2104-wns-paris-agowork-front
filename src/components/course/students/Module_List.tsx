@@ -5,8 +5,8 @@ import {
   Container,
   BgCalendar,
   Date,
-} from "../../../assets/styles/studentCourse/Elements";
-import CourseModule, { CourseModuleProps } from "./CourseModule";
+} from "../../../assets/styles/course/Elements";
+import CourseModule, { CourseModuleProps } from "./Course_Module";
 
 export const ALL_MODULES = gql`
   query GetAllCourseModules {

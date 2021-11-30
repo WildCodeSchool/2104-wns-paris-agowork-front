@@ -1,19 +1,15 @@
 // eslint-disable-next-line
 // @ts-nocheck
-import React, { useContext, useState } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import Dashboard from "../components/dashboard/Dashboard";
-import ModuleList from "../components/course/students/ModuleList";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import UserCreation from "../pages/admin/User_Creation";
+import Dashboard from "../pages/public/Dashboard";
+import Login from "../pages/public/Login";
+import ModuleList from "../components/course/students/Module_List";
 import Ressources from "../components/ressources/Ressources";
-import AddUser from "../components/admin/AddUser";
-import Login from "../components/security/Login";
 import Sidebar from "../components/sidebar/Sidebar";
+import { Container, ModuleWrapper } from "../assets/styles/course/Elements";
 import AuthRoute from "./AuthRoute";
-import { AuthContext } from "../context/Auth";
-import {
-  Container,
-  ModuleWrapper,
-} from "../assets/styles/studentCourse/Elements";
 
 const Router = (): JSX.Element => {
   return (
@@ -25,6 +21,7 @@ const Router = (): JSX.Element => {
             <AuthRoute exact path="/" component={Dashboard} />
             <AuthRoute exact path="/ressources" component={Ressources} />
             <AuthRoute exact path="/modules" component={ModuleList} />
+            <AuthRoute exact path="/creation-user" component={UserCreation} />
             <Route exact path="/login" component={Login} />
           </Switch>
         </ModuleWrapper>

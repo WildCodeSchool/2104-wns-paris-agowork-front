@@ -1,7 +1,6 @@
 import Radio from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
-import { colors, fonts } from "../studentCourse/Globals";
 
 export const Mood = styled.div`
   width: 100%;

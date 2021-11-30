@@ -6,7 +6,7 @@ const initialState = {
   user: {
     firstname: "",
     lastname: "",
-    city: "",
+    town: "",
     picture: "",
     email: "",
     role: "",
@@ -24,7 +24,7 @@ if (localStorage.getItem("token")) {
       email: decodedToken.userEmail,
       picture: decodedToken.userPicture || undefined,
       role: decodedToken.userRole,
-      city: decodedToken.userCity,
+      town: decodedToken.userTown,
     };
   }
 }
@@ -32,7 +32,7 @@ const AuthContext = createContext({
   user: {
     firstname: "",
     lastname: "",
-    city: "",
+    town: "",
     picture: "",
     email: "",
     role: "",

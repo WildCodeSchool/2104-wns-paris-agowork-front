@@ -1,5 +1,3 @@
-import React from "react";
-
 export enum MoodsEnum {
   top = 1,
   oui = 2,

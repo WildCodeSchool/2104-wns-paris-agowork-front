@@ -2,7 +2,7 @@ type UserType = {
   id: string;
   firstname: string;
   lastname: string;
-  city: string;
+  town: string;
   picture: string;
   email: string;
   role: string;

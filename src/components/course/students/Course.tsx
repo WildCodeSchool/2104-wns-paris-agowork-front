@@ -17,7 +17,7 @@ import {
   Message,
   CourseTitle,
   AchievmentStatus,
-} from "../../../assets/styles/studentCourse/Elements";
+} from "../../../assets/styles/course/Elements";
 
 export type CourseProps = {
   id?: string;

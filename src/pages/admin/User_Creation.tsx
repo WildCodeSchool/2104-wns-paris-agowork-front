@@ -7,10 +7,10 @@ import {
   InputLabel,
   Select,
 } from "@material-ui/core";
-import { CreateUser } from "../../graphql/mutations/user";
-import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
+import { CreateUser } from "../../graphql/mutations/user/User";
+import { Form, StyledButton } from "../../assets/styles/course/Elements";
 
-export default function AddUser(): JSX.Element {
+export default function UserCreation(): JSX.Element {
   const [roleState, setRoleState] = React.useState<{
     selectRole: string;
     name: string;

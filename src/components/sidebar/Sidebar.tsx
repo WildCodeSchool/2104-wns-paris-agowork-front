@@ -38,7 +38,7 @@ import useStyles, {
   SocialClose,
   Initial,
   BtnSwitch,
-} from "../../assets/styles/sidebar/StyleSidebar";
+} from "../../assets/styles/sidebar/Sidebar";
 
 const Sidebar = (): JSX.Element => {
   const classes = useStyles();
@@ -48,7 +48,6 @@ const Sidebar = (): JSX.Element => {
   const [openSubnav, setOpenSubnav] = useState(false);
   const [checkedLogin, setCheckedLogin] = useState(true);
   const { user } = useContext(AuthContext);
-  console.log(user);
   const handleLogout = (event: any) => {
     setCheckedLogin(event.target.checked);
     localStorage.clear();
@@ -151,7 +150,7 @@ const Sidebar = (): JSX.Element => {
                   </Link>
                 ) : null}
                 {index === 1 ? (
-                  <Link to="/addUser">
+                  <Link to="/creation-user">
                     <SettingsOutlinedIcon />
                   </Link>
                 ) : null}

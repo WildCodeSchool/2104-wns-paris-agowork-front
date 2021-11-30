@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import { News } from "../../../assets/styles/dashboard/News";
 import { Hr } from "../../../assets/styles/dashboard/Dashboard";
@@ -27,10 +27,10 @@ export default function NewsCard(): JSX.Element {
     <News>
       {news.map((u) => {
         return (
-          <>
+          <div key={u.id}>
             <div className="card">
               <img src={u.photo} alt={u.title} />
-              <p key={u.id}>
+              <p>
                 {u.title}
                 <br />
                 <span>
@@ -39,7 +39,7 @@ export default function NewsCard(): JSX.Element {
               </p>
             </div>
             {u.id <= 2 && <Hr />}
-          </>
+          </div>
         );
       })}
     </News>
