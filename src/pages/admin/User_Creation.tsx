@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import TextField from "@material-ui/core/TextField";
+import TextField from "@mui/material/TextField";
 import {
   FormControl,
   FormHelperText,
   InputLabel,
   Select,
-} from "@material-ui/core";
+  SelectChangeEvent,
+} from "@mui/material";
 import { CreateUser } from "../../graphql/mutations/user/User";
 import { Form, StyledButton } from "../../assets/styles/course/Elements";
 
@@ -19,9 +20,7 @@ export default function UserCreation(): JSX.Element {
     name: "string",
   });
 
-  const handleChange = (
-    event: React.ChangeEvent<{ name?: string; value: unknown }>
-  ) => {
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
     const name = event.target.name as keyof typeof roleState;
     setRoleState({
       ...roleState,

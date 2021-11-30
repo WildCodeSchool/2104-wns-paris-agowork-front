@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { News } from "../../../assets/styles/dashboard/News";
 import { Hr } from "../../../assets/styles/dashboard/Dashboard";
 

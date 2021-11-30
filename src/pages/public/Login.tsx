@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { FormControl, FormHelperText, TextField } from "@material-ui/core";
+import { FormControl, FormHelperText, TextField } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../graphql/mutations/user/User";
 import { Form, StyledButton } from "../../assets/styles/course/Elements";

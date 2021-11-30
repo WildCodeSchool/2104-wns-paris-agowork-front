@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../context/Auth";
+import React from "react";
 import News from "../../components/dashboard/news/News";
 import Mood from "../../components/dashboard/mood/Mood";
 import Chill from "../../components/dashboard/chill/Chill";
 import { Title, Hr, Space } from "../../assets/styles/dashboard/Dashboard";
 
 export default function Dashboard(): JSX.Element {
-  const { user } = useContext(AuthContext);
-
   return (
     <>
       <Title>
