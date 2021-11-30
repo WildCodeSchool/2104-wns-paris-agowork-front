@@ -2,13 +2,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: [
-      "'Raleway'",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
+    fontFamily: ["Roboto", "Raleway", "sans-serif"].join(","),
   },
   palette: {
     primary: {
@@ -30,7 +24,8 @@ const theme = createMuiTheme({
       // Name of the rule
       text: {
         // Some CSS
-        background: "#0845BC",
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, "#004e92", "#000428"),  /* Chrome 10-25, Safari 5.1-6 */
         color: "white",
       },
     },
