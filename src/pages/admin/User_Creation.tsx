@@ -60,7 +60,7 @@ export default function UserCreation(): JSX.Element {
             type="text"
             label="firstname"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-firstname"
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>
@@ -76,7 +76,7 @@ export default function UserCreation(): JSX.Element {
             type="text"
             label="lastname"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-lastname"
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>
@@ -92,7 +92,7 @@ export default function UserCreation(): JSX.Element {
             type="text"
             label="email"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-email"
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>
@@ -107,7 +107,7 @@ export default function UserCreation(): JSX.Element {
           type="text"
           label="town"
           variant="outlined"
-          id="mui-theme-provider-outlined-input"
+          id="mui-theme-provider-outlined-input-town"
         />
         <FormControl>
           <TextField
@@ -121,7 +121,7 @@ export default function UserCreation(): JSX.Element {
             type="text"
             label="picture"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-picture"
           />
         </FormControl>
         <FormControl>
@@ -136,7 +136,7 @@ export default function UserCreation(): JSX.Element {
             type="text"
             label="password"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-password"
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>

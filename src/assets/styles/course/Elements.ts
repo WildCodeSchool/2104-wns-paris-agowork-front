@@ -3,7 +3,7 @@ import Radio from "@mui/material/Radio";
 import Button from "@mui/material/Button";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import { colors } from "./Globals";
+import { colors } from "../Global";
 
 export const Container = styled.div`
   width: 80%;

@@ -18,6 +18,7 @@ const Router = (): JSX.Element => {
       <Container>
         <ModuleWrapper>
           <Switch>
+      
             <AuthRoute exact path="/" component={Dashboard} />
             <AuthRoute exact path="/ressources" component={Ressources} />
             <AuthRoute exact path="/modules" component={ModuleList} />
