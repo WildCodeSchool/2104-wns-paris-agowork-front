@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Date = styled.span`
   font-size: 25px;
-  color: ${colors.primary};
+  color: ${colors.darkBlue};
   text-transform: uppercase;
   letter-spacing: 1px;
 `;
@@ -38,7 +38,7 @@ export const Card = styled.article`
   margin-bottom: 3rem;
   h3,
   h4 {
-    color: ${colors.primary};
+    color: ${colors.darkBlue};
     font-size: 25px;
     text-align: left;
     padding-left: 20px;
@@ -84,7 +84,7 @@ export const StyledButton = styled(Button)`
   }
   &: hover {
     color: black;
-    border 1px solid ${colors.primary};
+    border 1px solid ${colors.darkBlue};
     background-color: transparent;
   }
 `;
@@ -107,7 +107,7 @@ export const AchievmentStatus = styled.div`
 
 export const CourseTitle = styled.span`
   font-size: 35px;
-  color: ${colors.primary};
+  color: ${colors.darkBlue};
 `;
 
 export const Message = styled.span`

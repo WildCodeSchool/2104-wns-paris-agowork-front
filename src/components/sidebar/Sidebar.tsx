@@ -43,9 +43,7 @@ const Sidebar = (): JSX.Element => {
           >
             <Menu />
           </IconButton>
-          <CompanyName variant="h6" color="black" noWrap>
-            Company name
-          </CompanyName>
+          <CompanyName>Company name</CompanyName>
           <SocialMedia />
         </TopBar>
       </AppBar>

@@ -14,6 +14,7 @@ export const colors = {
   pinkLinearGradient: "linear-gradient(to left, #F4E2D8, #BA5370)",
   bpLinearGradient: "linear-gradient(to right, #004e92, #BA5370)",
   lightBlue: "#004e92",
+  pink: "#BA5370",
   darkBlue: "#000428",
 };
 
@@ -38,9 +39,15 @@ export const ContainerButton = styled.div`
 
 export const Container = styled(Box)`
   flex-grow: 1;
-  padding: 6rem;
+  padding: 4rem;
   min-height: 100vh;
   background-color: ${colors.lightGrey};
+  @media only screen and (min-width: 760px) and (max-width: 1000px) {
+    padding: 4rem;
+  }
+  @media only screen and (max-width: 760px) {
+    padding: 3rem;
+  } ;
 `;
 
 export const Form = styled.form`

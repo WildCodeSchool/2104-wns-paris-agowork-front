@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { shapes } from "../Global";
 
 export const News = styled.div`
   width: 100%;
@@ -12,7 +13,7 @@ export const News = styled.div`
     display: flex;
     padding-left: 3%;
     margin: 0;
-    font-size: 30px;
+    font-size: 25px;
     justify-content: space-between;
     flex-direction: column;
   }
@@ -22,10 +23,10 @@ export const News = styled.div`
     font-size: 24px;
     font-weight: light;
   }
-
   img {
     width: 288px;
     height: 203px;
+    border-radius: ${shapes.borderRadius};
   }
   hr {
     margin-top: 3%;
@@ -38,15 +39,15 @@ export const News = styled.div`
       flex-direction: column;
     }
     p {
-      font-size: 20px;
+      font-size: 22px;
       padding: 0;
     }
     span {
       font-size: 17px;
     }
     img {
-      width: 201px;
-      height: 122px;
+      width: 250px;
+      height: 155px;
     }
   } ;
 `;

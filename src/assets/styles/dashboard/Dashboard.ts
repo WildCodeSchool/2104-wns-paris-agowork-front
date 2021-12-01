@@ -5,18 +5,24 @@ export const Title = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  color: ${colors.primary};
+  color: ${colors.darkBlue};
   h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: 35px;
     font-weight: 500;
+    margin-top: 2%;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (min-width: 760px) and (max-width: 1000px) {
+    h1 {
+      margin-top: 6%;
+    }
+  }
+  @media only screen and (max-width: 760px) {
     flex-direction: column;
     align-items: flex-start;
     h1 {
       font-size: 25px;
-      margin-top: 15%;
+      margin-top: 10%;
     }
     p {
       margin: 0;
