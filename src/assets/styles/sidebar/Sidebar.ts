@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Toolbar, Avatar, Typography } from "@mui/material";
+import { Toolbar, Avatar, Typography, IconButton } from "@mui/material";
 import { Home } from "@mui/icons-material";
 import { Drawer } from "./Mui_sidebar";
 import { colors } from "../Global";
@@ -19,7 +19,13 @@ export const ProfileAvatar = styled(Avatar)`
     ${colors.lightBlue},
     ${colors.pink}
   );
-  background: ${colors.blueLinearGradient};
+  background: ${colors.bpLinearGradient};
+`;
+
+export const ColoredSvg = styled.div`
+  svg {
+    color: ${colors.darkGrey};
+  }
 `;
 
 export const SideNav = styled(Drawer)`
@@ -40,6 +46,15 @@ export const HomeIcon = styled(Home)`
   color: #004e92;
 `;
 
+export const BurgerButton = styled(IconButton)`
+  background: #e9e9e9;
+  color: #000000;
+  margin-left: -9px;
+  @media only screen and (max-width: 830px) {
+    margin-left: 0px;
+  } ;
+`;
+
 export const nested = styled.li`
   padding-left: 3rem;
 `;
@@ -48,7 +63,18 @@ export const Social = styled.div`
   margin-left: 58%;
   a {
     padding: 0 0.8rem 0 0.8rem;
-    color: #004e92;
+  }
+  a:nth-child(1) {
+    color: ${colors.mediumBlue};
+  }
+  a:nth-child(2) {
+    color: ${colors.lightBlue};
+  }
+  a:nth-child(3) {
+    color: ${colors.pink};
+  }
+  a:nth-child(4) {
+    color: ${colors.mediumPink};
   }
   @media only screen and (min-width: 830px) and (max-width: 1250px) {
     margin-left: 38%;

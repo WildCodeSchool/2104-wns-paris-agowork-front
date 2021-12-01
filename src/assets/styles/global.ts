@@ -10,11 +10,15 @@ export const colors = {
   },
   secondary: "#e5e5e5",
   lightGrey: "#fafafa",
+  darkGrey: "#2c2c2c",
   blueLinearGradient: "linear-gradient(to left, #004e92, #000428)",
   pinkLinearGradient: "linear-gradient(to left, #F4E2D8, #BA5370)",
   bpLinearGradient: "linear-gradient(to right, #004e92, #BA5370)",
   lightBlue: "#004e92",
   pink: "#BA5370",
+  lightPink: "#F4E2D8",
+  mediumBlue: "#154e8f",
+  mediumPink: "#a75374",
   darkBlue: "#000428",
 };
 

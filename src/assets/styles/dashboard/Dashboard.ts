@@ -32,7 +32,7 @@ export const Title = styled.div`
 
 export const Hr = styled.hr`
   border: none;
-  border-top: 0.5px double rgba(8, 69, 188, 0.5);
+  border-top: 0.5px double ${colors.lightBlue};
 `;
 
 export const Space = styled.div`

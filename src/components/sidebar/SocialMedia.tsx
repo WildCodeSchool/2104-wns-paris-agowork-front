@@ -1,12 +1,12 @@
 import React from "react";
-import { Facebook, Twitter, LinkedIn, YouTube } from "@mui/icons-material";
+import { FacebookSharp, Twitter, LinkedIn, YouTube } from "@mui/icons-material";
 import { Social } from "../../assets/styles/sidebar/Sidebar";
 
 const SocialMedia = (): JSX.Element => {
   return (
     <Social>
       <a href="/">
-        <Facebook />
+        <FacebookSharp />
       </a>
       <a href="/">
         <Twitter />

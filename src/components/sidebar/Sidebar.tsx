@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
-import { CssBaseline, Divider, IconButton, List, Drawer } from "@mui/material";
+import { CssBaseline, Divider, IconButton } from "@mui/material";
 import { ChevronLeft, Menu, ChevronRight } from "@mui/icons-material";
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/Mui_sidebar";
 import ProfileSidebar from "./ProfileSidebar";
@@ -11,6 +11,8 @@ import {
   TopBar,
   SideNav,
   CompanyName,
+  ColoredSvg,
+  BurgerButton,
 } from "../../assets/styles/sidebar/Sidebar";
 
 const Sidebar = (): JSX.Element => {
@@ -30,19 +32,16 @@ const Sidebar = (): JSX.Element => {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <TopBar>
-          <IconButton
+          <BurgerButton
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
-              background: "#dbdfea",
-              color: "#000000",
-              marginLeft: "-9px",
               ...(open && { display: "none" }),
             }}
           >
             <Menu />
-          </IconButton>
+          </BurgerButton>
           <CompanyName>Company name</CompanyName>
           <SocialMedia />
         </TopBar>
@@ -53,10 +52,12 @@ const Sidebar = (): JSX.Element => {
             {theme.direction === "rtl" ? <ChevronRight /> : <ChevronLeft />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
-        <ProfileSidebar sidebarState={open} />
-        <Subnav />
-        <Elements />
+        <ColoredSvg>
+          <Divider />
+          <ProfileSidebar sidebarState={open} />
+          <Subnav />
+          <Elements />
+        </ColoredSvg>
       </SideNav>
     </>
   );
