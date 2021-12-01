@@ -10,7 +10,9 @@ export const colors = {
   },
   secondary: "#e5e5e5",
   lightGrey: "#fafafa",
-  linearGradient: "linear-gradient(to left, #004e92, #000428)",
+  blueLinearGradient: "linear-gradient(to left, #004e92, #000428)",
+  pinkLinearGradient: "linear-gradient(to left, #F4E2D8, #BA5370)",
+  bpLinearGradient: "linear-gradient(to right, #004e92, #BA5370)",
   lightBlue: "#004e92",
   darkBlue: "#000428",
 };
@@ -25,7 +27,7 @@ export const BoxShaddow = styled.div`
 `;
 
 export const ColoredButton = styled(Button)`
-  background: ${colors.linearGradient};
+  background: ${colors.pinkLinearGradient};
   color: "#ffffd";
   width: 100%;
 `;

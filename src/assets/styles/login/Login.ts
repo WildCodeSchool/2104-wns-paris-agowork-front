@@ -3,7 +3,7 @@ import { FormControl, Box } from "@mui/material";
 import { colors, shapes } from "../Global";
 
 export const LoginContainer = styled(Box)`
-  background: ${colors.linearGradient};
+  background: ${colors.blueLinearGradient};
   display: flex;
   position: relative;
   flex-grow: 1;
@@ -42,6 +42,11 @@ export const LoginCard = styled.div`
   background-color: ${colors.lightGrey};
   text-align: center;
   border-radius: 20px;
+  @media only screen and (max-width: 710px) {
+    padding: 50px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  } ;
 `;
 
 export const CardContent = styled.div`
@@ -53,10 +58,14 @@ export const Form = styled.form`
   border-radius: ${shapes.borderRadius};
   text-decoration: none;
   display: flex;
+  flex-direction: column;
   margin-left: 8rem;
   margin-right: 8rem;
-  flex-direction: column;
   color: #aaa;
+  @media only screen and (max-width: 710px) {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  } ;
 `;
 
 export const GroupForm = styled(FormControl)`
@@ -68,7 +77,7 @@ export const Title = styled.h1`
   margin-top: -2rem;
   font-size: 45px;
   background-color: ${colors.darkBlue};
-  background-image: ${colors.linearGradient};
+  background-image: ${colors.blueLinearGradient};
 
   background-size: 100%;
   background-repeat: repeat;
