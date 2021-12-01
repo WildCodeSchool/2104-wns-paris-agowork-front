@@ -1,7 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { useLocation } from "react-router-dom";
-
+import { Container } from "../assets/styles/Global";
+import { ColoredContainer, LoginContainer } from "../assets/styles/login/Login";
 import Page from "./Page";
 import Sidebar from "../components/sidebar/Sidebar";
 
@@ -11,12 +12,15 @@ const Router = (): JSX.Element => {
       {useLocation().pathname !== "/login" ? (
         <Box sx={{ display: "flex" }}>
           <Sidebar />
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Container component="main">
             <Page />
-          </Box>
+          </Container>
         </Box>
       ) : (
-        <Page />
+        <LoginContainer component="main">
+          <ColoredContainer />
+          <Page />
+        </LoginContainer>
       )}
     </>
   );

@@ -5,11 +5,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import {
   Card,
-  Form,
   Achievment,
   InputAchievment,
   RadioButtons,
-  FormElements,
   InputComments,
   StyledButton,
   AccordionComments,
@@ -17,6 +15,8 @@ import {
   CourseTitle,
   AchievmentStatus,
 } from "../../../assets/styles/course/Elements";
+
+import { Form, FormElements } from "../../../assets/styles/Global";
 
 export type CourseProps = {
   id?: string;

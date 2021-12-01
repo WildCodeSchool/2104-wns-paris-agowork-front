@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useTheme } from "@mui/material/styles";
-import { CssBaseline, Divider, IconButton, List } from "@mui/material";
+import { CssBaseline, Divider, IconButton, List, Drawer } from "@mui/material";
 import { ChevronLeft, Menu, ChevronRight } from "@mui/icons-material";
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/Mui_sidebar";
 import ProfileSidebar from "./ProfileSidebar";

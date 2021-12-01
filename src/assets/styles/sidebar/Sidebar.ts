@@ -53,3 +53,7 @@ export const Social = styled.div`
     }
   } ;
 `;
+
+export const hide = styled.div`
+  display: none;
+`;

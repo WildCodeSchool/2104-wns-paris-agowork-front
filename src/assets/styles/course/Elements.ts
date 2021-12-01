@@ -53,21 +53,6 @@ export const ModuleWrapper = styled.div`
   }
 `;
 
-export const Form = styled.form`
-  font-size: 20px;
-  text-decoration: none;
-  color: #aaa;
-`;
-
-export const FormElements = styled.div`
-  font-size: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-decoration: none;
-  color: #aaa;
-`;
-
 export const RadioButtons = styled.div`
   font-size: 20px;
   color: black;

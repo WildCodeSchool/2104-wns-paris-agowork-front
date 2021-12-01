@@ -1,9 +1,15 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { FormControl, FormHelperText, TextField, Box } from "@mui/material";
+import { FormHelperText, TextField } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../graphql/mutations/user/User";
-import { Form } from "../../assets/styles/course/Elements";
+import {
+  GroupForm,
+  Title,
+  Form,
+  LoginCard,
+  CardContent,
+} from "../../assets/styles/login/Login";
 import { AuthContext } from "../../context/Auth";
 import SolidButton from "../../components/buttons/SolidButton";
 
@@ -41,42 +47,45 @@ export default function Login(): JSX.Element {
     console.log(loading);
   }
   return (
-    <Form onSubmit={handleLogin}>
-      <Box sx={{ justifyContent: "center", flexDirection: "row" }}>
-        <FormControl>
-          <TextField
-            value={formState.email}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                email: e.target.value,
-              })
-            }
-            type="text"
-            label="email"
-            variant="outlined"
-            id="email-mui-theme-provider-outlined-input"
-          />
-          <FormHelperText>Required</FormHelperText>
-        </FormControl>
-        <FormControl>
-          <TextField
-            value={formState.password}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                password: e.target.value,
-              })
-            }
-            type="password"
-            label="password"
-            variant="outlined"
-            id="password-mui-theme-provider-outlined-input"
-          />
-          <FormHelperText>Required</FormHelperText>
-        </FormControl>
-      </Box>
-      <SolidButton type="submit" textButton="Connexion" />
-    </Form>
+    <LoginCard>
+      <CardContent>
+        <Title>Login</Title>
+        <Form onSubmit={handleLogin}>
+          <GroupForm>
+            <TextField
+              value={formState.email}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  email: e.target.value,
+                })
+              }
+              type="text"
+              label="email"
+              variant="outlined"
+              id="email-mui-theme-provider-outlined-input"
+            />
+            <FormHelperText>Required</FormHelperText>
+          </GroupForm>
+          <GroupForm>
+            <TextField
+              value={formState.password}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  password: e.target.value,
+                })
+              }
+              type="password"
+              label="password"
+              variant="outlined"
+              id="password-mui-theme-provider-outlined-input"
+            />
+            <FormHelperText>Required</FormHelperText>
+          </GroupForm>
+          <SolidButton type="submit" textButton="Connexion" />
+        </Form>
+      </CardContent>
+    </LoginCard>
   );
 }
