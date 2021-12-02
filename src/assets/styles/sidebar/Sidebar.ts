@@ -19,7 +19,7 @@ export const ProfileAvatar = styled(Avatar)`
     ${colors.lightBlue},
     ${colors.pink}
   );
-  background: ${colors.bpLinearGradient};
+  background: ${colors.punchybpLinearGradient};
 `;
 
 export const ColoredSvg = styled.div`
@@ -74,7 +74,7 @@ export const Social = styled.div`
     color: ${colors.pink};
   }
   a:nth-child(4) {
-    color: ${colors.mediumPink};
+    color: ${colors.fushia};
   }
   @media only screen and (min-width: 830px) and (max-width: 1250px) {
     margin-left: 38%;

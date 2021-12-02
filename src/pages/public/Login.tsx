@@ -13,10 +13,12 @@ import {
 import Loading from "../../components/loading/Loading";
 import { AuthContext } from "../../context/Auth";
 import SolidButton from "../../components/buttons/SolidButton";
+import ErrorPopup from "../../components/error/ErrorPopup";
 
 export default function Login(): JSX.Element {
   const history = useHistory();
   const context = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formState, setFormState] = useState({
     login: true,
     email: "",
@@ -30,7 +32,7 @@ export default function Login(): JSX.Element {
       history.push("/");
     },
     onError: (error) => {
-      console.log(error);
+      error.graphQLErrors.map(({ message }) => setErrorMessage(message));
     },
   });
 
@@ -43,6 +45,16 @@ export default function Login(): JSX.Element {
       },
     });
   };
+
+  if (errorMessage !== "") {
+    return (
+      <LoginCard>
+        <CardContent>
+          <ErrorPopup errorMessage={errorMessage} />
+        </CardContent>
+      </LoginCard>
+    );
+  }
 
   return (
     <LoginCard>
