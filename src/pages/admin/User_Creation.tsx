@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import TextField from "@material-ui/core/TextField";
+import TextField from "@mui/material/TextField";
 import {
   FormControl,
   FormHelperText,
   InputLabel,
   Select,
-} from "@material-ui/core";
-import { CreateUser } from "../../graphql/mutations/user";
-import { Form, StyledButton } from "../../assets/styles/studentCourse/Elements";
+  SelectChangeEvent,
+} from "@mui/material";
+import { CreateUser } from "../../graphql/mutations/user/User";
+import { StyledButton } from "../../assets/styles/course/Elements";
+import { Form } from "../../assets/styles/Global";
 
-export default function AddUser(): JSX.Element {
+export default function UserCreation(): JSX.Element {
   const [roleState, setRoleState] = React.useState<{
     selectRole: string;
     name: string;
@@ -19,9 +21,7 @@ export default function AddUser(): JSX.Element {
     name: "string",
   });
 
-  const handleChange = (
-    event: React.ChangeEvent<{ name?: string; value: unknown }>
-  ) => {
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
     const name = event.target.name as keyof typeof roleState;
     setRoleState({
       ...roleState,
@@ -41,9 +41,9 @@ export default function AddUser(): JSX.Element {
     password: "",
   });
 
-  if (data) {
-    localStorage.setItem("token", data.createUser.token);
-  }
+  // if (data) {
+  //   localStorage.setItem("token", data.createUser.token);
+  // }
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function AddUser(): JSX.Element {
             type="text"
             label="firstname"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-firstname"
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>
@@ -77,7 +77,7 @@ export default function AddUser(): JSX.Element {
             type="text"
             label="lastname"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-lastname"
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>
@@ -93,7 +93,7 @@ export default function AddUser(): JSX.Element {
             type="text"
             label="email"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-email"
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>
@@ -108,7 +108,7 @@ export default function AddUser(): JSX.Element {
           type="text"
           label="town"
           variant="outlined"
-          id="mui-theme-provider-outlined-input"
+          id="mui-theme-provider-outlined-input-town"
         />
         <FormControl>
           <TextField
@@ -122,7 +122,7 @@ export default function AddUser(): JSX.Element {
             type="text"
             label="picture"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-picture"
           />
         </FormControl>
         <FormControl>
@@ -137,7 +137,7 @@ export default function AddUser(): JSX.Element {
             type="text"
             label="password"
             variant="outlined"
-            id="mui-theme-provider-outlined-input"
+            id="mui-theme-provider-outlined-input-password"
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>

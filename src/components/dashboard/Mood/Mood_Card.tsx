@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { MoodsEnum } from "./Mood.enum";
 import {
   Mood,
@@ -37,12 +37,10 @@ export default function MoodCard(): JSX.Element {
       <Mood>
         {moods.map((u) => {
           return (
-            <>
-              <div className="icones">
-                <img src={u.icone} alt="icone" />
-                <InputAchievment />
-              </div>
-            </>
+            <div className="icones" key={u.id}>
+              <img src={u.icone} alt="icone" />
+              <InputAchievment />
+            </div>
           );
         })}
       </Mood>
