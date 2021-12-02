@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
-import Accordion from "@material-ui/core/Accordion";
-import EditIcon from "@material-ui/icons/Edit";
-import Typography from "@material-ui/core/Typography";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Accordion from "@mui/material/Accordion";
+import EditIcon from "@mui/icons-material/Edit";
+import AccordionDetails from "@mui/material/AccordionDetails";
 import {
   Card,
-  Form,
   Achievment,
   InputAchievment,
   RadioButtons,
-  FormElements,
   InputComments,
   StyledButton,
   AccordionComments,
   Message,
   CourseTitle,
   AchievmentStatus,
-} from "../../../assets/styles/studentCourse/Elements";
+} from "../../../assets/styles/course/Elements";
+
+import { Form, FormElements } from "../../../assets/styles/Global";
 
 export type CourseProps = {
   id?: string;
@@ -123,7 +122,7 @@ function Course({
             id="panel1a-header"
           >
             {comments ? (
-              <Typography>{comments}</Typography>
+              <p>{comments}</p>
             ) : (
               <p>Ajoutez des notes sur ce cours</p>
             )}

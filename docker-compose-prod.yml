@@ -4,6 +4,8 @@ services:
   server:
     build: ../${FILE_BACK}
     command: sh -c "npm run build && npm run prod"
+    env_file: 
+      - ../${FILE_BACK}/.env
     environment:
       - NODE_ENV=production
       - SERVER_PORT=4000

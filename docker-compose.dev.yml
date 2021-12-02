@@ -1,12 +1,4 @@
 services:
-    2104-wns-paris-agowork-back:
-      container_name: agowork_back
-      build: ../${FILE_BACK}
-      command: npm run dev
-      volumes:
-        - ../${FILE_BACK}/src/:/app/src/
-      ports:
-        - 4001:4000
     mongodb:
       image: mongo
       container_name: mongodb
@@ -14,7 +6,7 @@ services:
       volumes:
         - ../data:/data/db
       env_file: 
-        - .env
+        - .env.local
       environment:
         - MONGO_PORT=${DB_PORT} \
         - MONGO_DATABASE=${DB_DATABASE} \
@@ -27,3 +19,14 @@ services:
         - ./src:/app/src/
       environment:
         - CHOKIDAR_USEPOLLING=true
+
+    2104-wns-paris-agowork-back:
+      container_name: agowork_back
+      build: ../${FILE_BACK}
+      command: npm run dev
+      volumes:
+        - ../${FILE_BACK}/src/:/app/src/
+      env_file: 
+        - ../${FILE_BACK}/.env.local
+      ports:
+        - 4001:4000

@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Radio from "@material-ui/core/Radio";
-import Button from "@material-ui/core/Button";
-import { TextareaAutosize } from "@material-ui/core";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import { colors } from "./Globals";
+import Radio from "@mui/material/Radio";
+import Button from "@mui/material/Button";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import { colors } from "../Global";
 
 export const Container = styled.div`
   width: 80%;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Date = styled.span`
   font-size: 25px;
-  color: ${colors.primary};
+  color: ${colors.darkBlue};
   text-transform: uppercase;
   letter-spacing: 1px;
 `;
@@ -38,7 +38,7 @@ export const Card = styled.article`
   margin-bottom: 3rem;
   h3,
   h4 {
-    color: ${colors.primary};
+    color: ${colors.darkBlue};
     font-size: 25px;
     text-align: left;
     padding-left: 20px;
@@ -51,21 +51,6 @@ export const ModuleWrapper = styled.div`
     text-align: left;
     margin-top: 55px;
   }
-`;
-
-export const Form = styled.form`
-  font-size: 20px;
-  text-decoration: none;
-  color: #aaa;
-`;
-
-export const FormElements = styled.div`
-  font-size: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-decoration: none;
-  color: #aaa;
 `;
 
 export const RadioButtons = styled.div`
@@ -99,7 +84,7 @@ export const StyledButton = styled(Button)`
   }
   &: hover {
     color: black;
-    border 1px solid ${colors.primary};
+    border 1px solid ${colors.darkBlue};
     background-color: transparent;
   }
 `;
@@ -122,7 +107,7 @@ export const AchievmentStatus = styled.div`
 
 export const CourseTitle = styled.span`
   font-size: 35px;
-  color: ${colors.primary};
+  color: ${colors.darkBlue};
 `;
 
 export const Message = styled.span`

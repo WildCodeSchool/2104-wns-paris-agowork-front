@@ -1,33 +1,27 @@
-// @ts-nocheck
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import Dashboard from "../components/dashboard/Dashboard";
-import ModuleList from "../components/course/students/ModuleList";
-import Ressources from "../components/ressources/Ressources";
-import AddUser from "../components/admin/AddUser";
-import SignIn from "../components/security/Login";
-import {
-  Container,
-  ModuleWrapper,
-} from "../assets/styles/studentCourse/Elements";
+import Box from "@mui/material/Box";
+import { useLocation } from "react-router-dom";
+import { Container } from "../assets/styles/Global";
+import { ColoredContainer, LoginContainer } from "../assets/styles/login/Login";
+import Page from "./Page";
 import Sidebar from "../components/sidebar/Sidebar";
-import AuthRoute from "./AuthRoute";
 
 const Router = (): JSX.Element => {
   return (
     <>
-      <Sidebar />
-      <Container>
-        <ModuleWrapper>
-          <Switch>
-            <AuthRoute exact path="/" component={Dashboard} />
-            <AuthRoute exact path="/addUser" component={AddUser} />
-            <AuthRoute exact path="/ressources" component={Ressources} />
-            <AuthRoute exact path="/modules" component={ModuleList} />
-            <Route exact path="/login" component={SignIn} />
-          </Switch>
-        </ModuleWrapper>
-      </Container>
+      {useLocation().pathname !== "/login" ? (
+        <Box sx={{ display: "flex" }}>
+          <Sidebar />
+          <Container component="main">
+            <Page />
+          </Container>
+        </Box>
+      ) : (
+        <LoginContainer component="main">
+          <ColoredContainer />
+          <Page />
+        </LoginContainer>
+      )}
     </>
   );
 };
