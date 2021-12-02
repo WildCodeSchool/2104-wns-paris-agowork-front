@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, Box } from "@mui/material";
+import { Button, Box, Stack } from "@mui/material";
 
 export const colors = {
   primary: "#0845BC",
@@ -70,4 +70,12 @@ export const FormElements = styled.div`
   justify-content: center;
   text-decoration: none;
   color: #aaa;
+`;
+
+export const hide = styled.div`
+  visibility: hidden;
+`;
+
+export const Snackbar = styled(Stack)`
+  visibility ${(props) => (props.hidden ? "hidden" : "visible")}
 `;

@@ -19,6 +19,7 @@ export default function Login(): JSX.Element {
   const history = useHistory();
   const context = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorHidden, setErrorHidden] = useState(true);
   const [formState, setFormState] = useState({
     login: true,
     email: "",
@@ -26,13 +27,17 @@ export default function Login(): JSX.Element {
   });
   const [login, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {
+      setErrorMessage("");
       const userData = data;
       localStorage.setItem("token", userData.login.token);
       context.login(userData.login);
       history.push("/");
     },
     onError: (error) => {
-      error.graphQLErrors.map(({ message }) => setErrorMessage(message));
+      error.graphQLErrors.map(
+        ({ message }) => setErrorMessage(message),
+        setErrorHidden(false)
+      );
     },
   });
 
@@ -46,21 +51,11 @@ export default function Login(): JSX.Element {
     });
   };
 
-  if (errorMessage !== "") {
-    return (
-      <LoginCard>
-        <CardContent>
-          <ErrorPopup errorMessage={errorMessage} />
-        </CardContent>
-      </LoginCard>
-    );
-  }
-
   return (
     <LoginCard>
       <CardContent>
         <Title>Login</Title>
-        {loading ? (
+        {loading && errorHidden ? (
           <Loading />
         ) : (
           <Form onSubmit={handleLogin}>
@@ -98,6 +93,11 @@ export default function Login(): JSX.Element {
             </GroupForm>
             <SolidButton type="submit" textButton="Connexion" />
           </Form>
+        )}
+        {errorMessage !== "" && !errorHidden ? (
+          <ErrorPopup errorMessage={errorMessage} errorHidden={errorHidden} />
+        ) : (
+          <> </>
         )}
       </CardContent>
     </LoginCard>

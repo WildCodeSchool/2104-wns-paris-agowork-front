@@ -1,19 +1,16 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import Stack from "@mui/material/Stack";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import Alert from "@mui/material/Alert";
+import { Snackbar } from "../../assets/styles/Global";
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref
-) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
-const ErrorPopup = ({ errorMessage }: any): JSX.Element => {
+const ErrorPopup = ({ errorMessage, errorHidden }: any): JSX.Element => {
   return (
-    <Stack spacing={2} sx={{ width: "100%" }}>
-      <Alert severity="error">{errorMessage}</Alert>
-    </Stack>
+    <Snackbar hidden={errorHidden}>
+      <Alert severity="error" elevation={6} variant="filled">
+        {errorMessage}
+      </Alert>
+    </Snackbar>
   );
 };
 
