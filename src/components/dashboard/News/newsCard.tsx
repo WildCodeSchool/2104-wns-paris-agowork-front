@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { News } from "../../../assets/styles/dashboard/News";
-import { Hr } from "../../../assets/styles/dashboard/Dashboard";
+import { News } from "../../../assets/styles/dashboard/news";
+import { Hr } from "../../../assets/styles/dashboard/dashboard";
 
 const news = [
   {

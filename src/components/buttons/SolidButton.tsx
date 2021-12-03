@@ -1,5 +1,5 @@
 import React from "react";
-import { ColoredButton, ContainerButton } from "../../assets/styles/Global";
+import { ColoredButton, ContainerButton } from "../../assets/styles/global";
 
 const SolidButton = ({ textButton, type }: any): JSX.Element => {
   return (

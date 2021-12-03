@@ -3,7 +3,7 @@ import { MockedProvider } from "@apollo/client/testing";
 import { render, screen, waitFor, within } from "@testing-library/react";
 import ModuleList, {
   ALL_MODULES,
-} from "../components/course/students/Module_List";
+} from "../components/course/students/moduleList";
 
 const GET_MODULES_SUCCESS_MOCK = {
   request: {

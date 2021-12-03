@@ -1,12 +1,12 @@
 import React from "react";
-import { MoodsEnum } from "./Mood.enum";
+import { MoodsEnum } from "./mood.enum";
 import {
   Mood,
   Question,
   InputAchievment,
   ButtonValidation,
   Div,
-} from "../../../assets/styles/dashboard/Mood";
+} from "../../../assets/styles/dashboard/mood";
 
 const moods = [
   {

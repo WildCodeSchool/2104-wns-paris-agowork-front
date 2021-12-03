@@ -8,9 +8,9 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { CreateUser } from "../../graphql/mutations/user/User";
-import { StyledButton } from "../../assets/styles/course/Elements";
-import { Form } from "../../assets/styles/Global";
+import { CreateUser } from "../../graphql/mutations/user/user";
+import { StyledButton } from "../../assets/styles/course/elements";
+import { Form } from "../../assets/styles/global";
 
 export default function UserCreation(): JSX.Element {
   const [roleState, setRoleState] = React.useState<{

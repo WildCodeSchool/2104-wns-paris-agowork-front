@@ -2,18 +2,18 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { FormHelperText, TextField } from "@mui/material";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../graphql/mutations/user/User";
+import { LOGIN_USER } from "../../graphql/mutations/user/user";
 import {
   GroupForm,
   Title,
   Form,
   LoginCard,
   CardContent,
-} from "../../assets/styles/login/Login";
-import Loading from "../../components/loading/Loading";
-import { AuthContext } from "../../context/Auth";
-import SolidButton from "../../components/buttons/SolidButton";
-import ErrorPopup from "../../components/error/ErrorPopup";
+} from "../../assets/styles/login/login";
+import Loading from "../../components/loading/loading";
+import { AuthContext } from "../../context/auth";
+import SolidButton from "../../components/buttons/solidButton";
+import ErrorPopup from "../../components/error/errorPopup";
 
 export default function Login(): JSX.Element {
   const history = useHistory();

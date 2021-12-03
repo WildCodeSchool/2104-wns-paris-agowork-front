@@ -14,9 +14,9 @@ import {
   Message,
   CourseTitle,
   AchievmentStatus,
-} from "../../../assets/styles/course/Elements";
+} from "../../../assets/styles/course/elements";
 
-import { Form, FormElements } from "../../../assets/styles/Global";
+import { Form, FormElements } from "../../../assets/styles/global";
 
 export type CourseProps = {
   id?: string;

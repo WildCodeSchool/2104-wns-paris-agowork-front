@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ListItem, List, ListItemIcon, ListItemText } from "@mui/material";
-import { AuthContext } from "../../context/Auth";
+import { AuthContext } from "../../context/auth";
 import {
   Initial,
   ProfileAvatar,
   HomeIcon,
-} from "../../assets/styles/sidebar/Sidebar";
+} from "../../assets/styles/sidebar/sidebar";
 
 const ProfileSidebar = ({ sidebarState }: any): JSX.Element => {
   const { user } = useContext(AuthContext);

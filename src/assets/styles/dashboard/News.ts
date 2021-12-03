@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { shapes } from "../Global";
+import { shapes } from "../global";
 
 export const News = styled.div`
   width: 100%;
