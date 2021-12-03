@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 import jwt_decode from "jwt-decode";
-import UserType from "../types/user1";
+import UserType from "../types/user";
 
 const initialState = {
   user: {
