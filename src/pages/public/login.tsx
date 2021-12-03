@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { FormHelperText, TextField } from "@mui/material";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../graphql/mutations/user/user1";
+import { LOGIN_USER } from "../../graphql/mutations/user/user";
 import {
   GroupForm,
   Title,

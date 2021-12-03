@@ -8,7 +8,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { CreateUser } from "../../graphql/mutations/user/user1";
+import { CreateUser } from "../../graphql/mutations/user/user";
 import { StyledButton } from "../../assets/styles/course/elements";
 import { Form } from "../../assets/styles/global";
 
