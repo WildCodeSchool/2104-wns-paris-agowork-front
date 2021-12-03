@@ -3,7 +3,7 @@ import {
   Question,
   Subtext,
   Arrow,
-} from "../../../assets/styles/dashboard/Chill";
+} from "../../../assets/styles/dashboard/chill";
 import arrow from "../../../assets/pictures/Arrow-1.png";
 
 export default function ChillCard(): JSX.Element {

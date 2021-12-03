@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 import Course, {
   UPDATE_ISVALIDATED,
-} from "../components/course/students/Course";
+} from "../components/course/students/course";
 
 describe("when button fuction", () => {
   it("function button", async () => {

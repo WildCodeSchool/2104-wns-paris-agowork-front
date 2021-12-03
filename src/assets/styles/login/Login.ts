@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FormControl, Box } from "@mui/material";
-import { colors, shapes } from "../Global";
+import { colors, shapes } from "../global";
 
 export const LoginContainer = styled(Box)`
   background: ${colors.blueLinearGradient};

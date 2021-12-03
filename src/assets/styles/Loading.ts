@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { colors } from "./Global";
+import { colors } from "./global";
 
 const variables = {
   size: "2em",

@@ -2,12 +2,12 @@
 // @ts-nocheck
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import UserCreation from "../pages/admin/User_Creation";
-import Dashboard from "../pages/public/Dashboard";
-import Login from "../pages/public/Login";
-import ModuleList from "../components/course/students/Module_List";
-import Ressources from "../components/ressources/Ressources";
-import AuthRoute from "./AuthRoute";
+import UserCreation from "../pages/admin/userCreation";
+import Dashboard from "../pages/public/dashboard";
+import Login from "../pages/public/login";
+import ModuleList from "../components/course/students/moduleList";
+import Ressources from "../components/ressources/ressources";
+import AuthRoute from "./authRoute";
 
 const Page = (): JSX.Element => {
   return (

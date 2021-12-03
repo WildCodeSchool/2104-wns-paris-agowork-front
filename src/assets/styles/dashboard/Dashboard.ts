@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../Global";
+import { colors } from "../global";
 
 export const Title = styled.div`
   display: flex;

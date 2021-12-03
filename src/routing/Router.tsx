@@ -1,10 +1,10 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { useLocation } from "react-router-dom";
-import { Container } from "../assets/styles/Global";
-import { ColoredContainer, LoginContainer } from "../assets/styles/login/Login";
-import Page from "./Page";
-import Sidebar from "../components/sidebar/Sidebar";
+import { Container } from "../assets/styles/global";
+import { ColoredContainer, LoginContainer } from "../assets/styles/login/login";
+import Page from "./page";
+import Sidebar from "../components/sidebar/sidebar";
 
 const Router = (): JSX.Element => {
   return (

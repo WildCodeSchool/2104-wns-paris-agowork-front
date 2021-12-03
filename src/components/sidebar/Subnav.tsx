@@ -14,7 +14,7 @@ import {
   ExpandMore,
   StarBorder,
 } from "@mui/icons-material";
-import { nested } from "../../assets/styles/sidebar/Sidebar";
+import { nested } from "../../assets/styles/sidebar/sidebar";
 
 const Subnav = (): JSX.Element => {
   const [openSubnav, setOpenSubnav] = useState(false);

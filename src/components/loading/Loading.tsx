@@ -1,5 +1,5 @@
 import React from "react";
-import { Spinner } from "../../assets/styles/Loading";
+import { Spinner } from "../../assets/styles/loading";
 
 const Loading = (): JSX.Element => {
   return <Spinner />;

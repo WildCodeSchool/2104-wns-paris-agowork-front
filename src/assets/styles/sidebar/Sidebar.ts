@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Toolbar, Avatar, Typography, IconButton } from "@mui/material";
 import { Home } from "@mui/icons-material";
-import { Drawer } from "./Mui_sidebar";
-import { colors } from "../Global";
+import { Drawer } from "./muiSidebar";
+import { colors } from "../global";
 
 export const Initial = styled.div`
   margin-top: -2rem;
