@@ -1,6 +1,12 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { ListItem, List, ListItemIcon, ListItemText } from "@mui/material";
+import { useHistory, NavLink } from "react-router-dom";
+import {
+  ListItem,
+  List,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@mui/material";
 import { AuthContext } from "../../context/auth";
 import {
   Initial,
@@ -35,12 +41,18 @@ const ProfileSidebar = ({ sidebarState }: any): JSX.Element => {
           <Initial>{sidebarState ? null : <h3>J M</h3>}</Initial>
         </ListItemText>
       </ListItem>
-      <ListItem>
-        <ListItemIcon>
-          <HomeIcon />
-        </ListItemIcon>
-        <ListItemText>Dashboard</ListItemText>
-      </ListItem>
+      <NavLink
+        to="/"
+        className={({ isActive }: any) => (isActive ? "active" : "inactive")}
+      >
+        <ListItem>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText>Dashboard</ListItemText>
+        </ListItem>
+      </NavLink>
+      <Divider />
     </List>
   );
 };

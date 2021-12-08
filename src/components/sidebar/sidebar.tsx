@@ -72,7 +72,7 @@ const Sidebar = (): JSX.Element => {
           <Elements
             text="Favoris"
             icon={<StarHalfOutlined />}
-            path="/addUser"
+            path="/creation-user"
           />
         </ColoredSvg>
       </SideNav>

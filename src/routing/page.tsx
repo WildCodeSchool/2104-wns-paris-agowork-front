@@ -14,8 +14,8 @@ const Page = (): JSX.Element => {
     <>
       <Switch>
         <AuthRoute exact path="/" component={Dashboard} />
-        <AuthRoute exact path="/ressources" component={Ressources} />
-        <AuthRoute exact path="/modules" component={ModuleList} />
+        <AuthRoute exact path="/mes-ressources" component={Ressources} />
+        <AuthRoute exact path="/cours" component={ModuleList} />
         <AuthRoute exact path="/creation-user" component={UserCreation} />
         <Route exact path="/login" component={Login} />
       </Switch>

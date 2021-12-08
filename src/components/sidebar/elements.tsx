@@ -8,7 +8,7 @@ const Elements = ({ text, icon, path }: any): JSX.Element => {
       <Divider />
       <NavLink
         to={path}
-        className={({ isActive }: any) => (isActive ? "active" : "inactive")}
+        className={({ isActive }: any) => (isActive ? "active" : "")}
       >
         <ListItem key={text}>
           <ListItemIcon>{icon}</ListItemIcon>
