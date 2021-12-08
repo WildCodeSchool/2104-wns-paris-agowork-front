@@ -29,8 +29,11 @@ export const ColoredSvg = styled.div`
 `;
 
 export const SideNav = styled(Drawer)`
-  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
-    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  & > div {
+    background-color: ${colors.mediumGrey};
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+      0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  }
 `;
 
 export const CompanyName = styled(Typography)`
@@ -47,7 +50,6 @@ export const HomeIcon = styled(Home)`
 `;
 
 export const BurgerButton = styled(IconButton)`
-  background: #e9e9e9;
   color: #000000;
   margin-left: -9px;
   @media only screen and (max-width: 830px) {

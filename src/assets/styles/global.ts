@@ -10,6 +10,7 @@ export const colors = {
   },
   secondary: "#e5e5e5",
   lightGrey: "#fafafa",
+  mediumGrey: "#efeeee",
   darkGrey: "#2c2c2c",
   blueLinearGradient: "linear-gradient(to left, #004e92, #000428)",
   pinkLinearGradient: "linear-gradient(to left, #F4E2D8, #BA5370)",
