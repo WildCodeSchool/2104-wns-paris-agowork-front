@@ -39,6 +39,7 @@ const Subnav = (): JSX.Element => {
         <List>
           <NavLink
             to="/cours"
+            exact
             onClick={handleActiveLink}
             className={({ isActive }: any) => (isActive ? "active" : "")}
           >
