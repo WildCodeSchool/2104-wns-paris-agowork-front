@@ -23,8 +23,19 @@ export const ProfileAvatar = styled(Avatar)`
 `;
 
 export const ColoredSvg = styled.div`
-  svg {
+  svg,
+  li {
     color: ${colors.darkGrey};
+  }
+  a {
+    text-decoration: none;
+  }
+  .active > li {
+    color: white;
+    background: ${colors.punchybpLinearGradient};
+    svg {
+      color: white;
+    }
   }
 `;
 

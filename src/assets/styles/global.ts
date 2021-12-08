@@ -78,5 +78,5 @@ export const hide = styled.div`
 `;
 
 export const Snackbar = styled(Stack)`
-  visibility ${(props) => (props.hidden ? "hidden" : "visible")}
+  visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
 `;

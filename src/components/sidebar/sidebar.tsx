@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { CssBaseline, Divider, IconButton } from "@mui/material";
-import { ChevronLeft, Menu, ChevronRight } from "@mui/icons-material";
+import {
+  ChevronLeft,
+  Menu,
+  ChevronRight,
+  SchoolOutlined,
+  StarHalfOutlined,
+  DoneOutlineOutlined,
+} from "@mui/icons-material";
+
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/muiSidebar";
 import ProfileSidebar from "./profileSidebar";
 import Elements from "./elements";
@@ -56,7 +64,16 @@ const Sidebar = (): JSX.Element => {
           <Divider />
           <ProfileSidebar sidebarState={open} />
           <Subnav />
-          <Elements />
+          <Elements
+            text="Ressources"
+            icon={<SchoolOutlined />}
+            path="/mes-ressources"
+          />
+          <Elements
+            text="Favoris"
+            icon={<StarHalfOutlined />}
+            path="/addUser"
+          />
         </ColoredSvg>
       </SideNav>
     </>
