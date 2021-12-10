@@ -41,7 +41,7 @@ export const LoginCard = styled.div`
   position: relative;
   background-color: ${colors.lightGrey};
   text-align: center;
-  border-radius: 20px;
+  border-radius: ${shapes.borderRadiusB};
   @media only screen and (max-width: 710px) {
     padding: 50px;
     margin-left: 2rem;
@@ -55,7 +55,7 @@ export const CardContent = styled.div`
 `;
 
 export const Form = styled.form`
-  border-radius: ${shapes.borderRadius};
+  border-radius: ${shapes.borderRadiusMed};
   text-decoration: none;
   display: flex;
   flex-direction: column;

@@ -26,7 +26,7 @@ export const News = styled.div`
   img {
     width: 288px;
     height: 203px;
-    border-radius: ${shapes.borderRadius};
+    border-radius: ${shapes.borderRadiusMed};
   }
   hr {
     margin-top: 3%;

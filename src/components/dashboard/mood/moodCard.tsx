@@ -48,13 +48,13 @@ export default function MoodCard(): JSX.Element {
           {moods.map((el) => {
             return (
               <FormGroup key={el.mood}>
-                <IconMood src={el.icon} alt="icone" />
                 <MoodInput
                   name="mood"
                   value={el.mood}
                   checked={currentMood === el.mood}
                   onChange={(e) => setCurrentMood(e.target.value)}
                 />
+                <IconMood src={el.icon} alt="icone" />
               </FormGroup>
             );
           })}
