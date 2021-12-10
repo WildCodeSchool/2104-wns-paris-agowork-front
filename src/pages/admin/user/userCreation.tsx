@@ -8,9 +8,9 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { CreateUser } from "../../graphql/mutations/user/user";
-import { StyledButton } from "../../assets/styles/course/elements";
-import { Form } from "../../assets/styles/global";
+import { CreateUser } from "../../../graphql/mutations/user/user";
+import { StyledButton } from "../../../assets/styles/course/elements";
+import { Form } from "../../../assets/styles/global";
 
 export default function UserCreation(): JSX.Element {
   const [roleState, setRoleState] = React.useState<{
@@ -35,8 +35,6 @@ export default function UserCreation(): JSX.Element {
     lastname: "",
     email: "",
     town: "",
-    picture:
-      "https://images.unsplash.com/photo-1627434880836-e94b1bdc2098?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     role: {} as any,
     password: "",
   });
@@ -111,7 +109,7 @@ export default function UserCreation(): JSX.Element {
           id="mui-theme-provider-outlined-input-town"
         />
         <FormControl>
-          <TextField
+          {/* <TextField
             value={formState.picture}
             onChange={(e) =>
               setFormState({
@@ -123,7 +121,7 @@ export default function UserCreation(): JSX.Element {
             label="picture"
             variant="outlined"
             id="mui-theme-provider-outlined-input-picture"
-          />
+          /> */}
         </FormControl>
         <FormControl>
           <TextField

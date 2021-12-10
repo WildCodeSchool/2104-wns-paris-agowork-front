@@ -11,8 +11,9 @@ export const CardsBoard = styled(Box)`
   flex: 1;
 `;
 
-export const ContentCard = styled(Box)`
+export const ContentCard = styled.div`
   background: white;
+  border: 1px solid ${colors.mediumBlue};
   text-align: center;
   text-align: center;
   margin: 0 1rem 2rem 0;
@@ -33,3 +34,6 @@ export const MoodName = styled(Typography)`
   font-weight: 500;
 `;
 
+export const IconTeamMood = styled.img`
+  width: 30px;
+`;
