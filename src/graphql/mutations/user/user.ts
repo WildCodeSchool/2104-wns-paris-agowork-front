@@ -27,3 +27,12 @@ export const CreateUser = gql`
     }
   }
 `;
+
+export const UPDATE_MOOD = gql`
+  mutation updateMood($input: MoodInput!) {
+    updateMood(input: $input) {
+      email
+      mood
+    }
+  }
+`;

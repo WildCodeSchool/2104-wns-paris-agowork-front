@@ -16,6 +16,8 @@ export const colors = {
   pinkLinearGradient: "linear-gradient(to left, #F4E2D8, #BA5370)",
   bpLinearGradient: "linear-gradient(to right, #004e92, #BA5370)",
   punchybpLinearGradient: "linear-gradient(240deg,#f34dac,#ce55b0 36%,#0580e6)",
+  trigradient:
+    "linear-gradient(36deg, rgba(0,4,40,1) 0%, rgba(0,78,146,1) 32%, rgba(186,83,112,1) 95%)",
   fushia: "#ce55b0",
   lightBlue: "#004e92",
   pink: "#BA5370",

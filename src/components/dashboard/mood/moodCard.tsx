@@ -1,52 +1,66 @@
-import React from "react";
-import { MoodsEnum } from "./mood.enum";
+import React, { useState, useContext } from "react";
+import { useMutation } from "@apollo/client";
+import { AuthContext } from "../../../context/auth";
+import { moods } from "./mood.enum";
 import {
-  Mood,
-  Question,
-  InputAchievment,
-  ButtonValidation,
-  Div,
+  Card,
+  ContentCard,
+  FormGroup,
+  IconMood,
+  TitleMood,
+  MoodInput,
 } from "../../../assets/styles/dashboard/mood";
+import { UPDATE_MOOD } from "../../../graphql/mutations/user/user";
+import SolidButton from "../../buttons/solidButton";
 
-const moods = [
-  {
-    id: 1,
-    mood: MoodsEnum.top,
-    icone: "https://i.postimg.cc/prGHKt0K/sun.png",
-  },
-  {
-    id: 2,
-    mood: MoodsEnum.oui,
-    icone: "https://i.postimg.cc/9MBVF9Z8/sun-1.png",
-  },
-  {
-    id: 3,
-    mood: MoodsEnum.moyen,
-    icone: "https://i.postimg.cc/WzbVD472/rain.png",
-  },
-  {
-    id: 4,
-    mood: MoodsEnum.non,
-    icone: "https://i.postimg.cc/PxHTjypv/rain-1.png",
-  },
-];
 export default function MoodCard(): JSX.Element {
+  const context = useContext(AuthContext);
+  const [currentMood, setCurrentMood] = useState(context.user.mood);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [mood, { loading }] = useMutation(UPDATE_MOOD, {
+    onCompleted: (data) => {
+      setErrorMessage("");
+      const userData = data;
+      console.log(userData);
+      context.login(userData.mood);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const handleMood = (e: any) => {
+    e.preventDefault();
+    mood({
+      variables: {
+        input: {
+          email: context.user.email,
+          mood: currentMood,
+        },
+      },
+    });
+  };
   return (
-    <>
-      <Question>Comment te sens-tu aujourd&apos;hui ?</Question>
-      <Mood>
-        {moods.map((u) => {
-          return (
-            <div className="icones" key={u.id}>
-              <img src={u.icone} alt="icone" />
-              <InputAchievment />
-            </div>
-          );
-        })}
-      </Mood>
-      <Div>
-        <ButtonValidation>Valider</ButtonValidation>
-      </Div>
-    </>
+    <Card>
+      <ContentCard>
+        <TitleMood>Mood du jour</TitleMood>
+        <form data-testid="formMood" onSubmit={handleMood}>
+          {moods.map((el) => {
+            return (
+              <FormGroup key={el.mood}>
+                <IconMood src={el.icon} alt="icone" />
+                <MoodInput
+                  name="mood"
+                  value={el.mood}
+                  checked={currentMood === el.mood}
+                  onChange={(e) => setCurrentMood(e.target.value)}
+                />
+              </FormGroup>
+            );
+          })}
+          <SolidButton type="submit" textButton="Mettre à jour" />
+        </form>
+      </ContentCard>
+    </Card>
   );
 }

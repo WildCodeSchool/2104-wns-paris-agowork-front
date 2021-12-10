@@ -1,6 +1,6 @@
-import Radio from "@mui/material/Radio";
-import Button from "@mui/material/Button";
 import styled from "styled-components";
+import { Box, Button, Radio, Typography } from "@mui/material";
+import { colors, shapes } from "../global";
 
 export const Mood = styled.div`
   width: 100%;
@@ -56,4 +56,53 @@ export const img = styled.img`
   width: 139px;
   height: 139px;
   margin-bottom: 5%;
+`;
+
+export const Card = styled(Box)`
+  background: ${colors.trigradient};
+  width: 256px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: ${shapes.borderRadius};
+`;
+
+export const ContentCard = styled(Box)`
+  background: white;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+  width: auto;
+  border-radius: ${shapes.borderRadius};
+`;
+
+export const IconMood = styled.img`
+  width: 0px;
+  height: auto;
+  flex: auto;
+`;
+
+export const TitleMood = styled(Typography)`
+  font-size: 15px;
+  margin-bottom: 2px;
+`;
+
+export const FormGroup = styled.div`
+  flex:direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 5%;
+`;
+
+export const MoodInput = styled(Radio)`
+  height: 2em;
+  flex: 1 1 auto;
+  .Mui-checked {
+    color: ${colors.darkBlue};
+  }
+  input[type="radio"]:focus {
+    outline: none;
+  }
 `;

@@ -1,15 +1,23 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import { useTheme } from "@mui/material/styles";
-import { CssBaseline, Divider, IconButton } from "@mui/material";
+import {
+  CssBaseline,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import {
   ChevronLeft,
   Menu,
   ChevronRight,
   SchoolOutlined,
   StarHalfOutlined,
+  Logout,
   DoneOutlineOutlined,
 } from "@mui/icons-material";
-
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/muiSidebar";
 import ProfileSidebar from "./profileSidebar";
 import Elements from "./elements";
@@ -24,6 +32,7 @@ import {
 } from "../../assets/styles/sidebar/sidebar";
 
 const Sidebar = (): JSX.Element => {
+  const history = useHistory();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -33,6 +42,11 @@ const Sidebar = (): JSX.Element => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleLogout = (event: any) => {
+    localStorage.clear();
+    history.push("/login");
   };
 
   return (
@@ -74,6 +88,12 @@ const Sidebar = (): JSX.Element => {
             icon={<StarHalfOutlined />}
             path="/creation-user"
           />
+          <ListItem onClick={handleLogout}>
+            <ListItemIcon>
+              <Logout />
+            </ListItemIcon>
+            <ListItemText primary="Déconnexion" />
+          </ListItem>
         </ColoredSvg>
       </SideNav>
     </>

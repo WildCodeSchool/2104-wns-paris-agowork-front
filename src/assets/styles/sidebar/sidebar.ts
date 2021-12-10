@@ -13,13 +13,12 @@ export const TopBar = styled(Toolbar)`
 `;
 
 export const ProfileAvatar = styled(Avatar)`
-  background: ${colors.lightBlue};
   background: -webkit-linear-gradient(
     to left,
     ${colors.lightBlue},
     ${colors.pink}
   );
-  background: ${colors.punchybpLinearGradient};
+  background: ${colors.trigradient};
 `;
 
 export const ColoredSvg = styled.div`
@@ -27,12 +26,15 @@ export const ColoredSvg = styled.div`
   li {
     color: ${colors.darkGrey};
   }
+  .avatar > div > svg {
+    color: white;
+  }
   a {
     text-decoration: none;
   }
   .active > li {
     color: white;
-    background: ${colors.punchybpLinearGradient};
+    background: ${colors.trigradient};
     svg {
       color: white;
     }
@@ -54,10 +56,6 @@ export const CompanyName = styled(Typography)`
   @media only screen and (max-width: 760px) {
     display: none;
   }
-`;
-
-export const HomeIcon = styled(Home)`
-  color: #004e92;
 `;
 
 export const BurgerButton = styled(IconButton)`

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useHistory, NavLink } from "react-router-dom";
+import { Home } from "@mui/icons-material";
 import {
   ListItem,
   List,
@@ -8,26 +9,14 @@ import {
   Divider,
 } from "@mui/material";
 import { AuthContext } from "../../context/auth";
-import {
-  Initial,
-  ProfileAvatar,
-  HomeIcon,
-} from "../../assets/styles/sidebar/sidebar";
+import { Initial, ProfileAvatar } from "../../assets/styles/sidebar/sidebar";
 
 const ProfileSidebar = ({ sidebarState }: any): JSX.Element => {
   const { user } = useContext(AuthContext);
-  const [checkedLogin, setCheckedLogin] = useState(true);
-  const history = useHistory();
-  const handleLogout = (event: any) => {
-    setCheckedLogin(event.target.checked);
-    localStorage.clear();
-    history.push("/login");
-  };
-
   return (
     <List>
       <ListItem>
-        <ListItemIcon>
+        <ListItemIcon className="avatar">
           <ProfileAvatar src="/broken-image.jpg" />
         </ListItemIcon>
         <ListItemText>
@@ -48,7 +37,7 @@ const ProfileSidebar = ({ sidebarState }: any): JSX.Element => {
       >
         <ListItem>
           <ListItemIcon>
-            <HomeIcon />
+            <Home />
           </ListItemIcon>
           <ListItemText>Dashboard</ListItemText>
         </ListItem>
