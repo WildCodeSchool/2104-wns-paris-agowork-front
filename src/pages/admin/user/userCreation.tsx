@@ -15,6 +15,7 @@ import { Form } from "../../../assets/styles/global";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
 import { CampusType, GetCampusType } from "../../../types/campus";
 import SolidButton from "../../../components/buttons/solidButton";
+import UserListing from "./userListing";
 
 export default function UserCreation(): JSX.Element {
   const {
@@ -176,6 +177,7 @@ export default function UserCreation(): JSX.Element {
         </FormControl>
         <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
       </Form>
+      <UserListing />
     </div>
   );
 }

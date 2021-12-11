@@ -1,4 +1,4 @@
-type UserType = {
+export type UserType = {
   id: string;
   firstname: string;
   lastname: string;
@@ -6,6 +6,10 @@ type UserType = {
   picture: string;
   email: string;
   role: string;
+  mood: string;
+  campus: string;
 };
 
-export default UserType;
+export type GetUsersType = {
+  getAllUsers: UserType[];
+};

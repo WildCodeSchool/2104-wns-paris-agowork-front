@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const GET_USERS = gql`
+export const GET_ALL_USERS = gql`
   query getAllUsers {
     getAllUsers {
       id
@@ -8,6 +8,7 @@ export const GET_USERS = gql`
       lastname
       picture
       mood
+      campus
     }
   }
 `;
