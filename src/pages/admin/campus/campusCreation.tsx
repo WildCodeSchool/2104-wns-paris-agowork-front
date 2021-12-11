@@ -4,6 +4,8 @@ import { useMutation } from "@apollo/client";
 import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus";
 import { GroupForm, Form } from "../../../assets/styles/login/login";
 import SolidButton from "../../../components/buttons/solidButton";
+import CampusListing from "./campusListing";
+import Popup from "../../../components/modal/popup";
 
 export default function CampusCreation(): JSX.Element {
   const [formState, setFormState] = useState({
@@ -11,9 +13,11 @@ export default function CampusCreation(): JSX.Element {
     address: "",
     phone: "",
   });
+  const [latestCampus, setLatestCampus] = useState({});
   const [campus, { loading }] = useMutation(CREATE_CAMPUS, {
     onCompleted: (data) => {
       console.log(data);
+      setLatestCampus({ data });
       setFormState({
         name: "",
         address: "",
@@ -69,7 +73,6 @@ export default function CampusCreation(): JSX.Element {
             variant="outlined"
             id="address-campus-input"
           />
-          <FormHelperText>Required</FormHelperText>
         </GroupForm>
         <GroupForm>
           <TextField
@@ -85,10 +88,11 @@ export default function CampusCreation(): JSX.Element {
             variant="outlined"
             id="phone-campus-input"
           />
-          <FormHelperText>Required</FormHelperText>
         </GroupForm>
         <SolidButton type="submit" textButton="Ajouter ce campus" />
       </Form>
+      <CampusListing />
+      <Popup createdCampus={latestCampus} />
     </>
   );
 }

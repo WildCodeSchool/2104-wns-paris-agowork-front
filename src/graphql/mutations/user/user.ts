@@ -14,16 +14,15 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const CreateUser = gql`
+export const CREATE_USER = gql`
   mutation createUser($input: UserInput!) {
     createUser(input: $input) {
       firstname
       lastname
       email
       town
-      picture
-      token
       role
+      campus
     }
   }
 `;

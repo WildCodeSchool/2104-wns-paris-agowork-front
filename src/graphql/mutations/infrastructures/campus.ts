@@ -5,6 +5,8 @@ export const CREATE_CAMPUS = gql`
     createCampus(input: $input) {
       id
       name
+      address
+      phone
     }
   }
 `;

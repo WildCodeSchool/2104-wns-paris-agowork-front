@@ -1,52 +1,65 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import TextField from "@mui/material/TextField";
 import {
   FormControl,
   FormHelperText,
   InputLabel,
+  MenuItem,
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { CreateUser } from "../../../graphql/mutations/user/user";
+import { CREATE_USER } from "../../../graphql/mutations/user/user";
 import { StyledButton } from "../../../assets/styles/course/elements";
 import { Form } from "../../../assets/styles/global";
+import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
+import { CampusType, GetCampusType } from "../../../types/campus";
+import SolidButton from "../../../components/buttons/solidButton";
 
 export default function UserCreation(): JSX.Element {
-  const [roleState, setRoleState] = React.useState<{
-    selectRole: string;
-    name: string;
-  }>({
-    selectRole: "",
-    name: "string",
-  });
+  const {
+    loading,
+    error: errorCampus,
+    data: allCampus,
+  } = useQuery<GetCampusType>(GET_ALL_CAMPUS);
 
-  const handleChange = (event: SelectChangeEvent<unknown>) => {
-    const name = event.target.name as keyof typeof roleState;
-    setRoleState({
-      ...roleState,
-      [name]: event.target.value,
-    });
+  const [role, setRole] = useState("");
+  const [campus, setCampus] = useState("");
+
+  const handleRoleChange = (event: SelectChangeEvent) => {
+    setRole(event.target.value);
   };
-  const [createUser, { data }] = useMutation(CreateUser);
+  const handleCampusChange = (event: SelectChangeEvent) => {
+    setCampus(event.target.value);
+  };
 
+  const [createUser, { data, error: errorCreation }] = useMutation(CREATE_USER);
   const [formState, setFormState] = useState({
     firstname: "",
     lastname: "",
     email: "",
     town: "",
-    role: {} as any,
+    role: "",
     password: "",
+    campus: {} as any,
   });
-
-  // if (data) {
-  //   localStorage.setItem("token", data.createUser.token);
-  // }
-
+  const handleCreation = (e: any) => {
+    e.preventDefault();
+    formState.role = role;
+    formState.campus = campus;
+    console.log(formState);
+    createUser({
+      variables: {
+        input: {
+          ...formState,
+        },
+      },
+    });
+  };
   return (
-    <>
+    <div>
       <h1>Ajouter un utilisateur</h1>
-      <Form>
+      <Form onSubmit={handleCreation}>
         <FormControl>
           <TextField
             value={formState.firstname}
@@ -109,21 +122,6 @@ export default function UserCreation(): JSX.Element {
           id="mui-theme-provider-outlined-input-town"
         />
         <FormControl>
-          {/* <TextField
-            value={formState.picture}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                picture: e.target.value,
-              })
-            }
-            type="text"
-            label="picture"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input-picture"
-          /> */}
-        </FormControl>
-        <FormControl>
           <TextField
             value={formState.password}
             onChange={(e) =>
@@ -139,45 +137,45 @@ export default function UserCreation(): JSX.Element {
           />
           <FormHelperText>Required</FormHelperText>
         </FormControl>
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="outlined-selectRole-native-simple">
-            Role
-          </InputLabel>
+        <FormControl>
+          <InputLabel id="select-label-role">Role</InputLabel>
           <Select
-            native
-            value={roleState.selectRole}
-            onChange={handleChange}
-            label="selectRole"
-            inputProps={{
-              name: "selectRole",
-              id: "outlined-selectRole-native-simple",
-            }}
+            labelId="select-label-role"
+            id="select-helper-role"
+            value={role}
+            label="Role"
+            onChange={handleRoleChange}
           >
-            <option aria-label="None" value="" />
-            <option value="STUDENT">Student</option>
-            <option value="TEACHER">Teacher</option>
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value="STUDENT">Student</MenuItem>
+            <MenuItem value="TEACHER">Teacher</MenuItem>
           </Select>
-          <FormHelperText>Required</FormHelperText>
+          <FormHelperText>Obligatoire</FormHelperText>
         </FormControl>
-        <StyledButton
-          onClick={async () => {
-            try {
-              formState.role = roleState.selectRole;
-              await createUser({
-                variables: {
-                  input: {
-                    ...formState,
-                  },
-                },
-              });
-            } catch (err) {
-              console.log("Registration error :", err);
-            }
-          }}
-        >
-          Ajouter cet utilisateur
-        </StyledButton>
+        <FormControl>
+          <InputLabel id="select-label-campus">Role</InputLabel>
+          <Select
+            labelId="select-label-campus"
+            id="select-helper-campus"
+            value={campus}
+            label="Campus"
+            onChange={handleCampusChange}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {allCampus?.getCampus.map((list: CampusType) => (
+              <MenuItem key={list.id} value={list.id}>
+                {list.name}
+              </MenuItem>
+            ))}
+          </Select>
+          <FormHelperText>Obligatoire</FormHelperText>
+        </FormControl>
+        <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
       </Form>
-    </>
+    </div>
   );
 }
