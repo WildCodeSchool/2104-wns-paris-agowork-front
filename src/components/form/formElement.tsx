@@ -18,7 +18,6 @@ export default function FormElement({
         variant="outlined"
         id={`${label}-input`}
       />
-      {required ? <FormHelperText>Obligatoire</FormHelperText> : ""}
     </GroupForm>
   );
 }

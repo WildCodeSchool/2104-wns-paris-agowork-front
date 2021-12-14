@@ -1,5 +1,5 @@
 export type UserType = {
-  id: string;
+  id?: string;
   firstname: string;
   lastname: string;
   town: string;

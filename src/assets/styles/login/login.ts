@@ -69,3 +69,17 @@ export const Title = styled.h1`
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
 `;
+
+export const LoginForm = styled.form`
+  border-radius: ${shapes.borderRadiusMed};
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  color: #aaa;
+  @media only screen and (max-width: 710px) {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  } ;
+`;

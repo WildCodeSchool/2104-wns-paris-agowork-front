@@ -7,8 +7,7 @@ export const Form = styled.form`
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  margin-left: 8rem;
-  margin-right: 8rem;
+  margin-left: 1rem;
   color: #aaa;
   @media only screen and (max-width: 710px) {
     margin-left: 2rem;
@@ -18,4 +17,10 @@ export const Form = styled.form`
 
 export const GroupForm = styled(FormControl)`
   margin-top: 1rem !important;
+`;
+
+export const FormBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
