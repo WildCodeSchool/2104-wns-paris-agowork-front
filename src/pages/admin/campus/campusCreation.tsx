@@ -1,98 +1,59 @@
 import React, { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { FormHelperText, TextField } from "@mui/material";
 import { useMutation } from "@apollo/client";
+import FormElement from "../../../components/form/formElement";
 import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus";
 import { GroupForm, Form } from "../../../assets/styles/login/login";
 import SolidButton from "../../../components/buttons/solidButton";
 import CampusListing from "./campusListing";
 import Popup from "../../../components/modal/popup";
 
+type FormValues = {
+  name: string;
+  address: string;
+  phone: string;
+};
+
 export default function CampusCreation(): JSX.Element {
-  const [formState, setFormState] = useState({
-    name: "",
-    address: "",
-    phone: "",
-  });
-  const [latestCampus, setLatestCampus] = useState({});
-  const [campus, { loading }] = useMutation(CREATE_CAMPUS, {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const [addCampus, { loading }] = useMutation(CREATE_CAMPUS, {
     onCompleted: (data) => {
       console.log(data);
-      setLatestCampus({ data });
-      setFormState({
-        name: "",
-        address: "",
-        phone: "",
-      });
     },
     onError: (error) => {
       console.log(error);
     },
   });
 
-  const handleCampus = (e: any) => {
-    e.preventDefault();
-    campus({
-      variables: {
-        input: {
-          ...formState,
-        },
-      },
-    });
+  const handleCampus: SubmitHandler<FormValues> = (input) => {
+    console.log(input);
+    addCampus({ variables: { input } });
+    reset();
   };
   return (
     <>
       <h1>Ajouter un campus</h1>
-      <Form onSubmit={handleCampus}>
+      <Form onSubmit={handleSubmit(handleCampus)}>
         <GroupForm>
-          <TextField
-            value={formState.name}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                name: e.target.value,
-              })
-            }
-            type="text"
-            label="Nom"
-            variant="outlined"
-            id="name-campus-input"
-          />
-          <FormHelperText>Required</FormHelperText>
+          <FormElement label="name" type="text" register={register} required />
+          <FormHelperText>Obligatoire</FormHelperText>
         </GroupForm>
         <GroupForm>
-          <TextField
-            value={formState.address}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                address: e.target.value,
-              })
-            }
-            type="text"
-            label="addresse"
-            variant="outlined"
-            id="address-campus-input"
-          />
+          <FormElement label="phone" type="text" register={register} false />
         </GroupForm>
         <GroupForm>
-          <TextField
-            value={formState.phone}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                phone: e.target.value,
-              })
-            }
-            type="text"
-            label="Téléphone"
-            variant="outlined"
-            id="phone-campus-input"
-          />
+          <FormElement label="address" type="text" register={register} false />
         </GroupForm>
         <SolidButton type="submit" textButton="Ajouter ce campus" />
       </Form>
       <CampusListing />
-      <Popup createdCampus={latestCampus} />
+      {/* <Popup createdCampus={latestCampus} /> */}
     </>
   );
 }

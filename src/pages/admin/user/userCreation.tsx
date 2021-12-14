@@ -10,7 +10,6 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { CREATE_USER } from "../../../graphql/mutations/user/user";
-import { StyledButton } from "../../../assets/styles/course/elements";
 import { Form } from "../../../assets/styles/global";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
 import { CampusType, GetCampusType } from "../../../types/campus";
@@ -156,7 +155,7 @@ export default function UserCreation(): JSX.Element {
           <FormHelperText>Obligatoire</FormHelperText>
         </FormControl>
         <FormControl>
-          <InputLabel id="select-label-campus">Role</InputLabel>
+          <InputLabel id="select-label-campus">Campus</InputLabel>
           <Select
             labelId="select-label-campus"
             id="select-helper-campus"
