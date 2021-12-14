@@ -13,3 +13,15 @@ export type UserType = {
 export type GetUsersType = {
   getAllUsers: UserType[];
 };
+
+export const roles = [
+  {
+    name: "STUDENT",
+  },
+  {
+    name: "TEACHER",
+  },
+  {
+    name: "ADMIN",
+  },
+];

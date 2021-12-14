@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormHelperText, TextField } from "@mui/material";
+import { FormHelperText } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import FormElement from "../../../components/form/formElement";
 import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus";
-import { GroupForm, Form } from "../../../assets/styles/login/login";
+import { GroupForm, Form } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
 import CampusListing from "./campusListing";
 import Popup from "../../../components/modal/popup";
@@ -32,7 +32,6 @@ export default function CampusCreation(): JSX.Element {
   });
 
   const handleCampus: SubmitHandler<FormValues> = (input) => {
-    console.log(input);
     addCampus({ variables: { input } });
     reset();
   };

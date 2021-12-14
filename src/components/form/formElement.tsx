@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import React from "react";
 import { FormHelperText, TextField } from "@mui/material";
-import { CREATE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
-import { GroupForm } from "../../assets/styles/login/login";
+import { GroupForm } from "../../assets/styles/form";
 
 export default function FormElement({
   label,
@@ -11,13 +9,16 @@ export default function FormElement({
   type,
 }: any): JSX.Element {
   return (
-    <TextField
-      {...register(label, { required })}
-      type={type}
-      required={required}
-      label={label}
-      variant="outlined"
-      id={`${label}-input`}
-    />
+    <GroupForm>
+      <TextField
+        {...register(label, { required })}
+        type={type}
+        required={required}
+        label={label}
+        variant="outlined"
+        id={`${label}-input`}
+      />
+      {required ? <FormHelperText>Obligatoire</FormHelperText> : ""}
+    </GroupForm>
   );
 }

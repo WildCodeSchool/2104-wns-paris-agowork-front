@@ -61,13 +61,6 @@ export const Container = styled(Box)`
   } ;
 `;
 
-export const Form = styled.form`
-  font-size: 20px;
-  text-align: center;
-  text-decoration: none;
-  color: #aaa;
-`;
-
 export const FormElements = styled.div`
   font-size: 20px;
   display: flex;
