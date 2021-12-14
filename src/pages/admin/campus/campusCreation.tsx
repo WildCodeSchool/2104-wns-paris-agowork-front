@@ -39,16 +39,9 @@ export default function CampusCreation(): JSX.Element {
     <>
       <h1>Ajouter un campus</h1>
       <Form onSubmit={handleSubmit(handleCampus)}>
-        <GroupForm>
-          <FormElement label="name" type="text" register={register} required />
-          <FormHelperText>Obligatoire</FormHelperText>
-        </GroupForm>
-        <GroupForm>
-          <FormElement label="phone" type="text" register={register} false />
-        </GroupForm>
-        <GroupForm>
-          <FormElement label="address" type="text" register={register} false />
-        </GroupForm>
+        <FormElement label="name" type="text" register={register} required />
+        <FormElement label="phone" type="text" register={register} false />
+        <FormElement label="address" type="text" register={register} false />
         <SolidButton type="submit" textButton="Ajouter ce campus" />
       </Form>
       <CampusListing />
