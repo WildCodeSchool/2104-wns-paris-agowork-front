@@ -6,7 +6,7 @@ import {
   ColoredButton,
   Popup,
 } from "../../assets/styles/global";
-import { BoxIcon } from "../../assets/styles/list/userList";
+import { BoxIcon } from "../../assets/styles/list/list";
 
 const ConfirmationModal = ({
   handleDelete,

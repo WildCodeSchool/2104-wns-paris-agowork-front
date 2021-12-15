@@ -1,3 +1,6 @@
+import { CampusType } from "./campus";
+import { MoodType } from "./moods";
+
 export type UserType = {
   id?: string;
   firstname: string;
@@ -6,8 +9,8 @@ export type UserType = {
   picture: string;
   email: string;
   role: string;
-  mood: string;
-  campus: any;
+  mood: MoodType;
+  campus: CampusType;
 };
 
 export type GetUsersType = {

@@ -4,11 +4,10 @@ import { colors, shapes } from "../global";
 
 export const CardsBoard = styled(Box)`
   display: flex;
-  margin-top: 1rem;
+  margin: 2rem 0 2rem 0;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  flex: 1;
 `;
 
 export const ContentCard = styled.div`

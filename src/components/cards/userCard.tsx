@@ -1,22 +1,18 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  CardActions,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Modal,
-  Typography,
-} from "@mui/material";
+import { CardContent, CardMedia, Typography } from "@mui/material";
 import { Delete, ImageSearch, Report, School } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
 import { DELETE_USER } from "../../graphql/mutations/user/user";
 import {
+  ActionsCard,
   BoxIcon,
   BrokenImage,
+  BtnDelete,
   CardList,
-} from "../../assets/styles/list/userList";
+  CardTitle,
+  IconParagraph,
+  Paragraph,
+} from "../../assets/styles/list/list";
 import { UserType } from "../../types/user";
 import ConfirmationModal from "../modal/confirmationModal";
 
@@ -24,7 +20,6 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const [deleteUser] = useMutation(DELETE_USER, {
     onCompleted: (data) => {
       console.log(data);
@@ -45,7 +40,7 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
   };
   return (
     <>
-      <CardList sx={{ width: 165, margin: 1 }}>
+      <CardList sx={{ width: 200, margin: 1 }}>
         {user.picture ? (
           <CardMedia
             component="img"
@@ -60,9 +55,17 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
         )}
         <CardContent>
           <Typography>{user.role}</Typography>
-          <Typography>
+          <CardTitle>
             {user.firstname} {user.lastname}
-          </Typography>
+          </CardTitle>
+          {user.mood != null && user.mood.icon != null ? (
+            <Typography>
+              <IconParagraph>{user.mood.icon}</IconParagraph>
+            </Typography>
+          ) : (
+            <></>
+          )}
+          <Paragraph>{user.email}</Paragraph>
           {user.campus != null && user.campus.name != null ? (
             <BoxIcon>
               <School />
@@ -71,13 +74,12 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
           ) : (
             <></>
           )}
-          {user.mood ? <Typography>{user.mood}</Typography> : <></>}
         </CardContent>
-        <CardActions disableSpacing>
-          <IconButton onClick={handleOpen}>
+        <ActionsCard disableSpacing>
+          <BtnDelete onClick={handleOpen}>
             <Delete />
-          </IconButton>
-        </CardActions>
+          </BtnDelete>
+        </ActionsCard>
       </CardList>
       <ConfirmationModal
         open={open}

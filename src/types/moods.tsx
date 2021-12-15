@@ -1,8 +1,7 @@
 export type MoodType = {
   id: string;
   name: string;
-  phone: string;
-  address: string;
+  icon: string;
 };
 
 export type GetMoodsType = {

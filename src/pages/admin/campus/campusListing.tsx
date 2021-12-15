@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { Delete, LocalPhone, Map } from "@mui/icons-material";
-import { BoxIcon, CardList } from "../../../assets/styles/list/userList";
+import { BoxIcon, CardList } from "../../../assets/styles/list/list";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
 import { CardsBoard } from "../../../assets/styles/dashboard/teamMood";
 import { CampusType, GetCampusType } from "../../../types/campus";
@@ -24,7 +24,9 @@ export default function CampusListing(): JSX.Element {
   return (
     <>
       {loading ? (
-        <Loading />
+        <CardsBoard>
+          <Loading />
+        </CardsBoard>
       ) : (
         <CardsBoard>
           {data?.getCampus.map((campus: CampusType) => (

@@ -24,7 +24,6 @@ export default function FormSelect({
             value={value || ""}
             labelId={labelId}
             label={label}
-            sx={{ minWidth: 120 }}
           >
             {children}
           </Select>

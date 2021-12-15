@@ -3,9 +3,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import FormElement from "../../../components/form/formElement";
 import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus";
-import { Form } from "../../../assets/styles/form";
+import { CampusForm, Form, FormBox } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
 import CampusListing from "./campusListing";
+import { CardTitle, FormTitle } from "../../../assets/styles/list/list";
 
 type FormValues = {
   name: string;
@@ -35,13 +36,27 @@ export default function CampusCreation(): JSX.Element {
   };
   return (
     <>
-      <h1>Ajouter un campus</h1>
-      <Form onSubmit={handleSubmit(handleCampus)}>
-        <FormElement label="name" type="text" register={register} required />
-        <FormElement label="phone" type="text" register={register} false />
-        <FormElement label="address" type="text" register={register} false />
-        <SolidButton type="submit" textButton="Ajouter ce campus" />
-      </Form>
+      <FormBox>
+        <CampusForm>
+          <FormTitle>Ajouter un campus</FormTitle>
+          <Form onSubmit={handleSubmit(handleCampus)}>
+            <FormElement
+              label="name"
+              type="text"
+              register={register}
+              required
+            />
+            <FormElement label="phone" type="text" register={register} false />
+            <FormElement
+              label="address"
+              type="text"
+              register={register}
+              false
+            />
+            <SolidButton type="submit" textButton="Ajouter ce campus" />
+          </Form>
+        </CampusForm>
+      </FormBox>
       <CampusListing />
     </>
   );

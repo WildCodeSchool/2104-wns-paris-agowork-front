@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import {
-  CardActions,
-  CardContent,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { CardContent } from "@mui/material";
 import { Delete, LocalPhone, Map } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
-import { BoxIcon, CardList } from "../../assets/styles/list/userList";
+import {
+  BoxIcon,
+  CardTitle,
+  CardList,
+  BtnDelete,
+  ActionsCard,
+  IconParagraph,
+} from "../../assets/styles/list/list";
 import ConfirmationModal from "../modal/confirmationModal";
 import { CampusType } from "../../types/campus";
 import { DELETE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
@@ -38,11 +40,14 @@ const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
     <>
       <CardList sx={{ width: 250, margin: 0.2 }} key={campus.id}>
         <CardContent>
-          <Typography>{campus.name}</Typography>
+          <CardTitle>{campus.name}</CardTitle>
           {campus.address ? (
             <BoxIcon>
               <Map />
-              <span>&nbsp;&nbsp;{campus.address}</span>
+              <IconParagraph>
+                &nbsp;&nbsp;
+                {campus.address}
+              </IconParagraph>
             </BoxIcon>
           ) : (
             <></>
@@ -50,17 +55,20 @@ const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
           {campus.phone ? (
             <BoxIcon>
               <LocalPhone />
-              <span>&nbsp;&nbsp;{campus.phone}</span>
+              <IconParagraph>
+                &nbsp;&nbsp;
+                {campus.phone}
+              </IconParagraph>
             </BoxIcon>
           ) : (
             <></>
           )}
         </CardContent>
-        <CardActions disableSpacing>
-          <IconButton onClick={handleOpen}>
+        <ActionsCard disableSpacing>
+          <BtnDelete onClick={handleOpen}>
             <Delete />
-          </IconButton>
-        </CardActions>
+          </BtnDelete>
+        </ActionsCard>
         <ConfirmationModal
           open={open}
           handleClose={handleClose}

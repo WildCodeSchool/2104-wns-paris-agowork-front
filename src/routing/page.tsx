@@ -10,7 +10,8 @@ import Ressources from "../components/ressources/ressources";
 import AuthRoute from "./authRoute";
 import CampusCreation from "../pages/admin/campus/campusCreation";
 import { AuthContext } from "../context/auth";
-import GeneralForm from "../pages/admin/generalForm";
+import GeneralForm from "../pages/admin/administrationGeneral";
+import MoodCreation from "../pages/admin/mood/moodCreation";
 
 const Page = (): JSX.Element => {
   const context = useContext(AuthContext);
@@ -21,19 +22,12 @@ const Page = (): JSX.Element => {
         <AuthRoute exact path="/mes-ressources" component={Ressources} />
         <AuthRoute exact path="/cours" component={ModuleList} />
         <Route exact path="/login" component={Login} />
-        {context.user.role && context.user.role === "SUPERADMIN" ? (
+        {context.user.role === "ADMIN" || context.user.role === "SUPERADMIN" ? (
           <>
-            <AuthRoute exact path="/creation-user" component={UserCreation} />
-            <AuthRoute
-              exact
-              path="/creation-campus"
-              component={CampusCreation}
-            />
-            <AuthRoute
-              exact
-              path="/administration-generale"
-              component={GeneralForm}
-            />
+            <AuthRoute exact path="/utilisateur" component={UserCreation} />
+            <AuthRoute exact path="/campus" component={CampusCreation} />
+            <AuthRoute exact path="/general" component={GeneralForm} />
+            <AuthRoute exact path="/mood" component={MoodCreation} />
           </>
         ) : (
           <Redirect to="/" />

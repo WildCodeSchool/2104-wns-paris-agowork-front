@@ -10,7 +10,7 @@ import {
   TitleMood,
   MoodInput,
 } from "../../../assets/styles/dashboard/mood";
-import { UPDATE_MOOD } from "../../../graphql/mutations/user/user";
+import { UPDATE_MOOD } from "../../../graphql/mutations/social/mood";
 import SolidButton from "../../buttons/solidButton";
 
 export default function MoodCard(): JSX.Element {

@@ -42,7 +42,6 @@ const ProfileSidebar = ({ sidebarState }: any): JSX.Element => {
           <ListItemText>Dashboard</ListItemText>
         </ListItem>
       </NavLink>
-      <Divider />
     </List>
   );
 };

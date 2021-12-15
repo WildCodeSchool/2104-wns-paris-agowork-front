@@ -54,10 +54,10 @@ export const ContainerButton = styled.div`
 `;
 
 export const Container = styled(Box)`
-  flex-grow: 1;
   padding: 4rem;
   margin-top: 2%;
   min-height: 100vh;
+  flex: auto;
   background-color: ${colors.lightGrey};
   @media only screen and (min-width: 760px) and (max-width: 1000px) {
     padding: 4rem;

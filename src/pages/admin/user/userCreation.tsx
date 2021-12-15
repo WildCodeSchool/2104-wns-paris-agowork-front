@@ -2,15 +2,9 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ExpandMore } from "@mui/icons-material";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { MenuItem } from "@mui/material";
 import { CREATE_USER } from "../../../graphql/mutations/user/user";
-import { Form, FormBox } from "../../../assets/styles/form";
+import { Form, FormBox, UserForm } from "../../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
 import { CampusType, GetCampusType } from "../../../types/campus";
 import SolidButton from "../../../components/buttons/solidButton";
@@ -19,6 +13,7 @@ import FormElement from "../../../components/form/formElement";
 import FormSelect from "../../../components/form/formSelect";
 import { roles, UserType } from "../../../types/user";
 import UserCard from "../../../components/cards/userCard";
+import { FormTitle } from "../../../assets/styles/list/list";
 
 export type FormValues = {
   firstname: string;
@@ -40,11 +35,6 @@ export default function UserCreation(): JSX.Element {
     reset,
     formState: { errors },
   } = useForm();
-  const [expanded, setExpanded] = useState<string | true>(true);
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : true);
-    };
   const {
     loading,
     error: errorCampus,
@@ -65,30 +55,12 @@ export default function UserCreation(): JSX.Element {
     reset();
   };
   return (
-    <div>
-      <Accordion
-        expanded={expanded === "createUser"}
-        onChange={handleChange("createUser")}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMore />}
-          aria-controls="createUser-content"
-          id="createUser-header"
-        >
-          <Typography
-            sx={{
-              width: "35%",
-              fontWeight: "bold",
-              marginLeft: 2,
-              flexShrink: 0,
-            }}
-          >
-            Ajouter des utilisateurs
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <FormBox>
-            <Form onSubmit={handleSubmit(handleUser)}>
+    <>
+      <FormBox>
+        <UserForm>
+          <FormTitle>Ajouter un utilisateur</FormTitle>
+          <Form onSubmit={handleSubmit(handleUser)}>
+            <FormBox>
               <FormElement
                 label="firstname"
                 type="text"
@@ -101,6 +73,8 @@ export default function UserCreation(): JSX.Element {
                 register={register}
                 required
               />
+            </FormBox>
+            <FormBox>
               <FormElement
                 label="email"
                 type="text"
@@ -108,30 +82,19 @@ export default function UserCreation(): JSX.Element {
                 required
               />
               <FormElement
+                label="password"
+                type="password"
+                register={register}
+                required
+              />
+            </FormBox>
+            <FormBox>
+              <FormElement
                 label="town"
                 type="text"
                 register={register}
                 required
               />
-              <FormElement
-                label="password"
-                type="text"
-                register={register}
-                required
-              />
-              <FormSelect
-                id="role-select"
-                name="role"
-                label="Role"
-                control={control}
-                required
-              >
-                {roles.map((list: any) => (
-                  <MenuItem key={list.name} value={list.name}>
-                    {list.name}
-                  </MenuItem>
-                ))}
-              </FormSelect>
               <FormSelect
                 id="campus-select"
                 name="campus"
@@ -144,17 +107,30 @@ export default function UserCreation(): JSX.Element {
                   </MenuItem>
                 ))}
               </FormSelect>
-              <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
-            </Form>
-            {latestUser ? (
-              <UserCard {...latestUser} key={latestUser.email} />
-            ) : (
-              <></>
-            )}
-          </FormBox>
-        </AccordionDetails>
-      </Accordion>
+            </FormBox>
+            <FormSelect
+              id="role-select"
+              name="role"
+              label="Role"
+              control={control}
+              required
+            >
+              {roles.map((list: any) => (
+                <MenuItem key={list.name} value={list.name}>
+                  {list.name}
+                </MenuItem>
+              ))}
+            </FormSelect>
+            <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
+          </Form>
+          {latestUser ? (
+            <UserCard {...latestUser} key={latestUser.email} />
+          ) : (
+            <></>
+          )}
+        </UserForm>
+      </FormBox>
       <UserListing />
-    </div>
+    </>
   );
 }

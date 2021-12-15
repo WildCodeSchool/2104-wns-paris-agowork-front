@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  MenuItem,
-  Typography,
-} from "@mui/material";
-import { ArrowForwardIos, ExpandMore } from "@mui/icons-material";
+import { MenuItem, Typography } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import FormElement from "../../../components/form/formElement";
-import { CREATE_MOOD } from "../../../graphql/mutations/user/mood";
-import { Form, FormBox } from "../../../assets/styles/form";
+import { CREATE_MOOD } from "../../../graphql/mutations/social/mood";
+import { Form, FormBox, MoodForm } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
-import { BoxIcon } from "../../../assets/styles/list/userList";
+import { BoxIcon, FormTitle } from "../../../assets/styles/list/list";
 import FormSelect from "../../../components/form/formSelect";
 import { moods } from "../../../components/mood/mood.enum";
 import MoodListing from "./moodListing";
@@ -24,11 +17,6 @@ type FormValues = {
 };
 
 export default function MoodCreation(): JSX.Element {
-  const [expanded, setExpanded] = useState<string | true>(true);
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : true);
-    };
   const {
     register,
     handleSubmit,
@@ -64,28 +52,10 @@ export default function MoodCreation(): JSX.Element {
     reset();
   };
   return (
-    <Accordion
-      expanded={expanded === "createMood"}
-      onChange={handleChange("createMood")}
-    >
-      <AccordionSummary
-        expandIcon={<ExpandMore />}
-        aria-controls="createMood-content"
-        id="createMood-header"
-      >
-        <Typography
-          sx={{
-            width: "35%",
-            fontWeight: "bold",
-            marginLeft: 2,
-            flexShrink: 0,
-          }}
-        >
-          Ajouter un mood
-        </Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <FormBox>
+    <>
+      <FormBox>
+        <MoodForm>
+          <FormTitle>Ajouter un mood</FormTitle>
           <Form onSubmit={handleSubmit(handleMood)}>
             <BoxIcon>
               <FormElement
@@ -123,13 +93,9 @@ export default function MoodCreation(): JSX.Element {
             </Typography>
             <SolidButton type="submit" textButton="Ajouter ce mood" />
           </Form>
-          <MoodListing />
-        </FormBox>
-        <Typography>
-          Voir tous les moods
-          <ArrowForwardIos />
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
+        </MoodForm>
+      </FormBox>
+      <MoodListing />
+    </>
   );
 }
