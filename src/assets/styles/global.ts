@@ -39,7 +39,13 @@ export const BoxShaddow = styled.div`
 
 export const ColoredButton = styled(Button)`
   background: ${colors.pinkLinearGradient};
-  color: "#ffffd";
+  color: white;
+  width: 100%;
+`;
+
+export const BorderedButton = styled(Button)`
+  border: 2px solid ${colors.fushia};
+  color: ${colors.fushia};
   width: 100%;
 `;
 
@@ -76,4 +82,24 @@ export const hide = styled.div`
 
 export const Snackbar = styled(Stack)`
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
+`;
+
+export const Popup = styled(Box)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: ${colors.darkBlue};
+  border: 1px solid #000;
+  box-shadow: 24px;
+  padding: 2rem;
+  color: white;
+  border-radius: ${shapes.borderRadiusMed};
+  text-align: center;
+  & svg {
+    color: ${colors.mediumPink};
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
 `;
