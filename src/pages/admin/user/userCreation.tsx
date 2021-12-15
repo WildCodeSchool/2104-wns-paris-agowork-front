@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { BrokenImage, ExpandMore, ImageSearch } from "@mui/icons-material";
+import { ExpandMore } from "@mui/icons-material";
 import {
   Accordion,
   AccordionDetails,
@@ -18,7 +18,6 @@ import UserListing from "./userListing";
 import FormElement from "../../../components/form/formElement";
 import FormSelect from "../../../components/form/formSelect";
 import { roles, UserType } from "../../../types/user";
-import { CardList } from "../../../assets/styles/list/userList";
 import UserCard from "../../../components/cards/userCard";
 
 export type FormValues = {

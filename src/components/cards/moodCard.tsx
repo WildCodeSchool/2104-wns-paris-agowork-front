@@ -5,19 +5,18 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import { Delete, LocalPhone, Map } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
-import { BoxIcon, CardList } from "../../assets/styles/list/userList";
+import { CardList } from "../../assets/styles/list/userList";
 import ConfirmationModal from "../modal/confirmationModal";
-import { CampusType } from "../../types/campus";
-import { DELETE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
+import { DELETE_MOOD } from "../../graphql/mutations/social/mood";
 
-const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
+const MoodCard = ({ ...mood }: any): JSX.Element => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [deleteCampus] = useMutation(DELETE_CAMPUS, {
+  const [deleteMood] = useMutation(DELETE_MOOD, {
     onCompleted: (data) => {
       console.log(data);
       setOpen(false);
@@ -28,33 +27,18 @@ const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
   });
   const handleDelete = (e: any) => {
     e.preventDefault();
-    deleteCampus({
+    deleteMood({
       variables: {
-        id: campus.id,
+        id: mood.id,
       },
     });
   };
   return (
     <>
-      <CardList sx={{ width: 250, margin: 0.2 }} key={campus.id}>
+      <CardList sx={{ width: 250, margin: 0.2 }} key={mood.id}>
         <CardContent>
-          <Typography>{campus.name}</Typography>
-          {campus.address ? (
-            <BoxIcon>
-              <Map />
-              <span>&nbsp;&nbsp;{campus.address}</span>
-            </BoxIcon>
-          ) : (
-            <></>
-          )}
-          {campus.phone ? (
-            <BoxIcon>
-              <LocalPhone />
-              <span>&nbsp;&nbsp;{campus.phone}</span>
-            </BoxIcon>
-          ) : (
-            <></>
-          )}
+          {mood.icon}
+          <Typography>{mood.name}</Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton onClick={handleOpen}>
@@ -71,4 +55,4 @@ const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
   );
 };
 
-export default CampusCard;
+export default MoodCard;

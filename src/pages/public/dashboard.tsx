@@ -8,7 +8,7 @@ import {
   MoodSection,
 } from "../../assets/styles/dashboard/dashboard";
 import MoodBoard from "../../components/dashboard/teamMood/moodBoard";
-import MoodCard from "../../components/dashboard/mood/moodCard";
+import MoodCard from "../../components/dashboard/mood/moodDashboard";
 
 export default function Dashboard(): JSX.Element {
   return (

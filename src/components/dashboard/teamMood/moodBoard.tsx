@@ -17,7 +17,7 @@ type UserMoodType = {
   firstname: string;
   lastname: string;
   picture: string;
-  mood: string;
+  mood: any;
 };
 
 type GetUsersMoodType = {
@@ -26,7 +26,7 @@ type GetUsersMoodType = {
 
 export default function MoodBoard(): JSX.Element {
   const { data } = useQuery<GetUsersMoodType>(GET_STUDENTS_MOOD);
-  const [moodState, setMoodState] = useState("");
+  console.log(data);
   return (
     <CardsBoard>
       {data?.getAllStudentsByMood.map((user: UserMoodType) => (
@@ -39,7 +39,11 @@ export default function MoodBoard(): JSX.Element {
           <MoodName>
             {user.firstname} {user.lastname}
           </MoodName>
-          {user.mood ? <TeamMood userMood={user.mood} /> : <></>}
+          {user.mood && user.mood.icon ? (
+            <TeamMood userMood={user.mood} />
+          ) : (
+            <></>
+          )}
         </ContentCard>
       ))}
     </CardsBoard>

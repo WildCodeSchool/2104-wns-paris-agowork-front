@@ -7,7 +7,10 @@ export const GET_ALL_USERS = gql`
       firstname
       lastname
       picture
-      mood
+      mood {
+        icon
+        name
+      }
       campus {
         name
       }
@@ -22,7 +25,10 @@ export const GET_STUDENTS_MOOD = gql`
       firstname
       lastname
       picture
-      mood
+      mood {
+        name
+        icon
+      }
     }
   }
 `;
