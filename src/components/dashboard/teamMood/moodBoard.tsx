@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useQuery } from "@apollo/client";
-import { moods } from "../mood/mood.enum";
+import { moods } from "../../mood/mood.enum";
 import {
   CardsBoard,
   ContentCard,

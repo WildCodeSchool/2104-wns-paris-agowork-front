@@ -54,9 +54,7 @@ export default function UserCreation(): JSX.Element {
 
   const [createUser] = useMutation(CREATE_USER, {
     onCompleted: (data) => {
-      console.log(data);
       setLatestUser(data.createUser);
-      console.log("creation", latestUser);
     },
     onError: (error) => {
       console.log(error);
@@ -64,7 +62,6 @@ export default function UserCreation(): JSX.Element {
   });
 
   const handleUser: SubmitHandler<FormValues> = (input) => {
-    console.log(input);
     createUser({ variables: { input } });
     reset();
   };

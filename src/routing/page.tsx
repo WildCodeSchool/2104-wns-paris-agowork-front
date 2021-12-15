@@ -10,6 +10,7 @@ import Ressources from "../components/ressources/ressources";
 import AuthRoute from "./authRoute";
 import CampusCreation from "../pages/admin/campus/campusCreation";
 import { AuthContext } from "../context/auth";
+import GeneralForm from "../pages/admin/generalForm";
 
 const Page = (): JSX.Element => {
   const context = useContext(AuthContext);
@@ -27,6 +28,11 @@ const Page = (): JSX.Element => {
               exact
               path="/creation-campus"
               component={CampusCreation}
+            />
+            <AuthRoute
+              exact
+              path="/administration-generale"
+              component={GeneralForm}
             />
           </>
         ) : (

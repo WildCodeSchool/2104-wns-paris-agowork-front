@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Card, Typography } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import { colors } from "../global";
 
 export const BrokenImage = styled.div`
@@ -18,7 +18,7 @@ export const CardList = styled(Card)`
   } ;
 `;
 
-export const BoxIcon = styled(Typography)`
+export const BoxIcon = styled(Box)`
   display: inline-flex;
   vertical-align: middle;
 `;

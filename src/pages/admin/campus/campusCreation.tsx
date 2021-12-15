@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormHelperText } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import FormElement from "../../../components/form/formElement";
 import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus";
-import { GroupForm, Form } from "../../../assets/styles/form";
+import { Form } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
 import CampusListing from "./campusListing";
 

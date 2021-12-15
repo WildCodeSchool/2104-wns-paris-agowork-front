@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useMutation } from "@apollo/client";
 import { AuthContext } from "../../../context/auth";
-import { moods } from "./mood.enum";
+import { moods } from "../../mood/mood.enum";
 import {
   Card,
   ContentCard,
