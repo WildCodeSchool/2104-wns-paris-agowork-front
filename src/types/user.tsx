@@ -7,7 +7,7 @@ export type UserType = {
   email: string;
   role: string;
   mood: string;
-  campus: string;
+  campus: any;
 };
 
 export type GetUsersType = {

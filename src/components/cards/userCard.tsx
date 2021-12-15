@@ -63,10 +63,10 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
           <Typography>
             {user.firstname} {user.lastname}
           </Typography>
-          {user.campus ? (
+          {user.campus != null && user.campus.name != null ? (
             <BoxIcon>
               <School />
-              <span>&nbsp;&nbsp;{user.campus}</span>
+              <span>&nbsp;&nbsp;{user.campus.name}</span>
             </BoxIcon>
           ) : (
             <></>
