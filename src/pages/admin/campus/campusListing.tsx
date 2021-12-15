@@ -20,13 +20,13 @@ export default function CampusListing(): JSX.Element {
       ) : (
         <CardsBoard>
           {data?.getCampus.map((campus: CampusType) => (
-            <CardList sx={{ width: 200 }} key={campus.id}>
+            <CardList sx={{ width: 250, margin: 0.2 }} key={campus.id}>
               <CardContent>
                 <Typography>{campus.name}</Typography>
                 {campus.address ? (
                   <BoxIcon>
                     <Map />
-                    {campus.address}
+                    <span>&nbsp;&nbsp;{campus.address}</span>
                   </BoxIcon>
                 ) : (
                   <></>
@@ -34,7 +34,7 @@ export default function CampusListing(): JSX.Element {
                 {campus.phone ? (
                   <BoxIcon>
                     <LocalPhone />
-                    {campus.phone}
+                    <span>&nbsp;&nbsp;{campus.phone}</span>
                   </BoxIcon>
                 ) : (
                   <></>

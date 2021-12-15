@@ -6,8 +6,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  CardContent,
-  CardMedia,
   MenuItem,
   Typography,
 } from "@mui/material";
@@ -53,10 +51,11 @@ export default function UserCreation(): JSX.Element {
     error: errorCampus,
     data: allCampus,
   } = useQuery<GetCampusType>(GET_ALL_CAMPUS);
+
   const [createUser] = useMutation(CREATE_USER, {
     onCompleted: (data) => {
-      setLatestUser(data);
-      console.log(latestUser);
+      setLatestUser(data.createUser);
+      console.log("creation", latestUser);
     },
     onError: (error) => {
       console.log(error);
@@ -150,7 +149,11 @@ export default function UserCreation(): JSX.Element {
               </FormSelect>
               <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
             </Form>
-            {latestUser ? <UserCard {...latestUser} /> : <></>}
+            {latestUser ? (
+              <UserCard {...latestUser} key={latestUser.email} />
+            ) : (
+              <></>
+            )}
           </FormBox>
         </AccordionDetails>
       </Accordion>

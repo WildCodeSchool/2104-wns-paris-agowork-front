@@ -7,7 +7,6 @@ import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus
 import { GroupForm, Form } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
 import CampusListing from "./campusListing";
-import Popup from "../../../components/modal/popup";
 
 type FormValues = {
   name: string;
@@ -45,7 +44,6 @@ export default function CampusCreation(): JSX.Element {
         <SolidButton type="submit" textButton="Ajouter ce campus" />
       </Form>
       <CampusListing />
-      {/* <Popup createdCampus={latestCampus} /> */}
     </>
   );
 }

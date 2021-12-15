@@ -15,8 +15,9 @@ import {
 import { UserType } from "../../types/user";
 
 const UserCard = ({ ...user }: UserType): JSX.Element => {
+  console.log("card", user);
   return (
-    <CardList sx={{ width: 165 }}>
+    <CardList sx={{ width: 165, margin: 1 }}>
       {user.picture ? (
         <CardMedia
           component="img"
@@ -36,7 +37,8 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
         </Typography>
         {user.campus ? (
           <BoxIcon>
-            <School /> {user.campus}
+            <School />
+            <span>&nbsp;&nbsp;{user.campus}</span>
           </BoxIcon>
         ) : (
           <></>

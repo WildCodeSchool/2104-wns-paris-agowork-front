@@ -7,11 +7,10 @@ export const Form = styled.form`
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  margin-left: 1rem;
   color: #aaa;
   @media only screen and (max-width: 710px) {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   } ;
 `;
 

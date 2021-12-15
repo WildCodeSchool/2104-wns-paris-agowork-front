@@ -10,7 +10,6 @@ export const BrokenImage = styled.div`
 `;
 
 export const CardList = styled(Card)`
-  margin: 1rem;
   @media only screen and (min-width: 460px) and (max-width: 760px) {
     width: 195px;
   }
