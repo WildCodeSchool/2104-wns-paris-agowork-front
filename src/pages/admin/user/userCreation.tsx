@@ -17,7 +17,7 @@ import SolidButton from "../../../components/buttons/solidButton";
 import UserListing from "./userListing";
 import FormElement from "../../../components/form/formElement";
 import FormSelect from "../../../components/form/formSelect";
-import { roles } from "../../../types/user";
+import { roles, UserType } from "../../../types/user";
 import { CardList } from "../../../assets/styles/list/userList";
 import UserCard from "../../../components/cards/userCard";
 
@@ -33,7 +33,7 @@ export type FormValues = {
 };
 
 export default function UserCreation(): JSX.Element {
-  const [latestUser, setLatestUser] = useState<FormValues>();
+  const [latestUser, setLatestUser] = useState<UserType>();
   const {
     register,
     handleSubmit,
@@ -54,6 +54,7 @@ export default function UserCreation(): JSX.Element {
 
   const [createUser] = useMutation(CREATE_USER, {
     onCompleted: (data) => {
+      console.log(data);
       setLatestUser(data.createUser);
       console.log("creation", latestUser);
     },

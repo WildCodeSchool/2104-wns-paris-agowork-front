@@ -22,7 +22,9 @@ export const CREATE_USER = gql`
       email
       town
       role
-      campus
+      campus {
+        name
+      }
     }
   }
 `;
