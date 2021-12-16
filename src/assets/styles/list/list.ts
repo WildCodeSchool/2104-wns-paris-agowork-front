@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Delete } from "@mui/icons-material";
 import { Box, Card, CardActions, IconButton } from "@mui/material";
-import { colors } from "../global";
+import { colors, shapes } from "../global";
 
 export const BrokenImage = styled.div`
   background-color: ${colors.mediumGrey};
@@ -70,5 +70,23 @@ export const IconParagraph = styled.span`
 
 export const Paragraph = styled.p`
   font-size: 16px;
+  margin: 0.2rem;
   color: black;
 `;
+
+export const RoleTag = styled.div`
+  border-radius: 2px;
+  text-align: left;
+  color: white;
+  margin-right: 39%;
+  font-size: 13px;
+  margin-left: -2rem;
+  font-weight: 600;
+  padding: 2px;
+  padding-left: 2rem;
+  margin-top: -1.8rem;
+  background: ${colors.trigradient};
+  margin-bottom: 0.5rem;
+`;
+
+// 2.45 for exact up tag

@@ -123,12 +123,12 @@ export default function UserCreation(): JSX.Element {
             </FormSelect>
             <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
           </Form>
-          {latestUser ? (
-            <UserCard {...latestUser} key={latestUser.email} />
-          ) : (
-            <></>
-          )}
         </UserForm>
+        {latestUser ? (
+          <UserCard {...latestUser} key={latestUser.email} />
+        ) : (
+          <></>
+        )}
       </FormBox>
       <UserListing />
     </>

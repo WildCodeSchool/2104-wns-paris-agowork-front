@@ -6,6 +6,8 @@ export const GET_ALL_USERS = gql`
       id
       firstname
       lastname
+      email
+      role
       picture
       mood {
         icon

@@ -48,6 +48,8 @@ export const MoodForm = styled(Card)`
 export const UserForm = styled(Card)`
   padding: 2rem;
   width: 40%;
+  margin-right: 11rem;
+  margin-bottom: 1rem;
   max-width: 80%;
   text-align: center;
   @media only screen and (max-width: 1130px) {
