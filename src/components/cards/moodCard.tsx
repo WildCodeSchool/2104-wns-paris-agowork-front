@@ -19,8 +19,8 @@ const MoodCard = ({ ...mood }: any): JSX.Element => {
 
   const [deleteMood] = useMutation(DELETE_MOOD, {
     onCompleted: (data) => {
-      console.log(data);
       setOpen(false);
+      window.location.reload();
     },
     onError: (error) => {
       console.log(error);
@@ -41,16 +41,22 @@ const MoodCard = ({ ...mood }: any): JSX.Element => {
           <MoodIcon>{mood.icon}</MoodIcon>
           <CardTitle>{mood.name}</CardTitle>
         </CardContent>
-        <ActionsCard disableSpacing>
-          <BtnDelete onClick={handleOpen}>
-            <Delete />
-          </BtnDelete>
-        </ActionsCard>
-        <ConfirmationModal
-          open={open}
-          handleClose={handleClose}
-          handleDelete={handleDelete}
-        />
+        {mood.id === "61ba24253b74a6001ac83262" ? (
+          <></>
+        ) : (
+          <>
+            <ActionsCard disableSpacing>
+              <BtnDelete onClick={handleOpen}>
+                <Delete />
+              </BtnDelete>
+            </ActionsCard>
+            <ConfirmationModal
+              open={open}
+              handleClose={handleClose}
+              handleDelete={handleDelete}
+            />
+          </>
+        )}
       </CardList>
     </>
   );

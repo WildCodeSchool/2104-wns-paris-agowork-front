@@ -6,20 +6,15 @@ import { colors, shapes } from "../global";
 export const BrokenImage = styled.div`
   background-color: ${colors.mediumGrey};
   text-align: center;
-  padding-top: 34%;
+  padding-top: 23%;
   height: 140px;
 `;
 
 export const CardList = styled(Card)`
   display: flex;
+  max-height: 400px;
   margin: 0 1rem 1rem 0;
   flex-direction: column;
-  @media only screen and (min-width: 460px) and (max-width: 760px) {
-    width: 195px;
-  }
-  @media only screen and (max-width: 460px) {
-    width: 250px;
-  } ;
 `;
 
 export const BoxIcon = styled(Box)`
@@ -45,6 +40,12 @@ export const FormTitle = styled.h2`
   font-size: 25px;
   margin: 1px 0 2px 0;
   font-weight: 600;
+`;
+
+export const LatestCreatedTitle = styled.h3`
+  font-size: 22px;
+  margin: 1px 0 30px 0;
+  font-weight: 400;
 `;
 
 export const BtnDelete = styled(IconButton)`

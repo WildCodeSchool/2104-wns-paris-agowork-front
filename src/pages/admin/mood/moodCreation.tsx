@@ -1,15 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { MenuItem, Typography } from "@mui/material";
+import { Box, MenuItem, Typography } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import FormElement from "../../../components/form/formElement";
 import { CREATE_MOOD } from "../../../graphql/mutations/social/mood";
 import { Form, FormBox, MoodForm } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
-import { BoxIcon, FormTitle } from "../../../assets/styles/list/list";
+import {
+  BoxIcon,
+  FormTitle,
+  LatestCreatedTitle,
+} from "../../../assets/styles/list/list";
 import FormSelect from "../../../components/form/formSelect";
 import { moods } from "../../../components/mood/mood.enum";
 import MoodListing from "./moodListing";
+import { MoodType } from "../../../types/moods";
+import MoodCard from "../../../components/cards/moodCard";
 
 type FormValues = {
   name: string;
@@ -17,6 +23,7 @@ type FormValues = {
 };
 
 export default function MoodCreation(): JSX.Element {
+  const [latestMood, setLatestMood] = useState<MoodType>();
   const {
     register,
     handleSubmit,
@@ -25,9 +32,10 @@ export default function MoodCreation(): JSX.Element {
     watch,
     formState: { errors },
   } = useForm();
-  const [addMood, { loading }] = useMutation(CREATE_MOOD, {
+  const [createMood, { loading }] = useMutation(CREATE_MOOD, {
     onCompleted: (data) => {
       console.log(data);
+      setLatestMood(data.createMood);
     },
     onError: (error) => {
       console.log(error);
@@ -41,7 +49,7 @@ export default function MoodCreation(): JSX.Element {
     return () => subscription.unsubscribe();
   }, [watch]);
   const handleMood: SubmitHandler<FormValues> = (input) => {
-    addMood({
+    createMood({
       variables: {
         input: {
           name: input.name,
@@ -94,6 +102,14 @@ export default function MoodCreation(): JSX.Element {
             <SolidButton type="submit" textButton="Ajouter ce mood" />
           </Form>
         </MoodForm>
+        {latestMood ? (
+          <Box>
+            <LatestCreatedTitle>👉&nbsp;&nbsp;Nouveau mood</LatestCreatedTitle>
+            <MoodCard {...latestMood} key={latestMood.id} />
+          </Box>
+        ) : (
+          <></>
+        )}
       </FormBox>
       <MoodListing />
     </>

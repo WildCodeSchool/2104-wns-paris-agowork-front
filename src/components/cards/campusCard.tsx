@@ -21,8 +21,8 @@ const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
 
   const [deleteCampus] = useMutation(DELETE_CAMPUS, {
     onCompleted: (data) => {
-      console.log(data);
       setOpen(false);
+      window.location.reload();
     },
     onError: (error) => {
       console.log(error);

@@ -23,8 +23,8 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
   const handleClose = () => setOpen(false);
   const [deleteUser] = useMutation(DELETE_USER, {
     onCompleted: (data) => {
-      console.log(data);
       setOpen(false);
+      window.location.reload();
     },
     onError: (error) => {
       console.log(error);
@@ -41,7 +41,7 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
   };
   return (
     <>
-      <CardList sx={{ width: 245, margin: 1 }}>
+      <CardList sx={{ width: 255, margin: 1 }}>
         {user.picture ? (
           <CardMedia
             component="img"
