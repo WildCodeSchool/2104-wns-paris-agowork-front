@@ -4,12 +4,12 @@ import { FormHelperText, TextField } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../graphql/mutations/user/user";
 import {
-  GroupForm,
   Title,
-  Form,
   LoginCard,
   CardContent,
+  LoginForm,
 } from "../../assets/styles/login/login";
+import { GroupForm } from "../../assets/styles/form";
 import Loading from "../../components/loading/loading";
 import { AuthContext } from "../../context/auth";
 import SolidButton from "../../components/buttons/solidButton";
@@ -58,7 +58,7 @@ export default function Login(): JSX.Element {
         {loading && errorHidden ? (
           <Loading />
         ) : (
-          <Form onSubmit={handleLogin}>
+          <LoginForm onSubmit={handleLogin}>
             <GroupForm>
               <TextField
                 value={formState.email}
@@ -92,7 +92,7 @@ export default function Login(): JSX.Element {
               <FormHelperText>Required</FormHelperText>
             </GroupForm>
             <SolidButton type="submit" textButton="Connexion" />
-          </Form>
+          </LoginForm>
         )}
         {errorMessage !== "" && !errorHidden ? (
           <ErrorPopup errorMessage={errorMessage} errorHidden={errorHidden} />
