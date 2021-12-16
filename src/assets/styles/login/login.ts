@@ -41,7 +41,7 @@ export const LoginCard = styled.div`
   position: relative;
   background-color: ${colors.lightGrey};
   text-align: center;
-  border-radius: 20px;
+  border-radius: ${shapes.borderRadiusB};
   @media only screen and (max-width: 710px) {
     padding: 50px;
     margin-left: 2rem;
@@ -52,24 +52,6 @@ export const LoginCard = styled.div`
 export const CardContent = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const Form = styled.form`
-  border-radius: ${shapes.borderRadius};
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  margin-left: 8rem;
-  margin-right: 8rem;
-  color: #aaa;
-  @media only screen and (max-width: 710px) {
-    margin-left: 2rem;
-    margin-right: 2rem;
-  } ;
-`;
-
-export const GroupForm = styled(FormControl)`
-  margin-top: 1rem !important;
 `;
 
 export const Title = styled.h1`
@@ -86,4 +68,18 @@ export const Title = styled.h1`
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
+`;
+
+export const LoginForm = styled.form`
+  border-radius: ${shapes.borderRadiusMed};
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  color: #aaa;
+  @media only screen and (max-width: 710px) {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  } ;
 `;

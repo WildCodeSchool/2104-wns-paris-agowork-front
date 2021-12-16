@@ -10,11 +10,14 @@ export const colors = {
   },
   secondary: "#e5e5e5",
   lightGrey: "#fafafa",
+  mediumGrey: "#efeeee",
   darkGrey: "#2c2c2c",
   blueLinearGradient: "linear-gradient(to left, #004e92, #000428)",
   pinkLinearGradient: "linear-gradient(to left, #F4E2D8, #BA5370)",
   bpLinearGradient: "linear-gradient(to right, #004e92, #BA5370)",
   punchybpLinearGradient: "linear-gradient(240deg,#f34dac,#ce55b0 36%,#0580e6)",
+  trigradient:
+    "linear-gradient(36deg, rgba(0,4,40,1) 0%, rgba(0,78,146,1) 32%, rgba(186,83,112,1) 95%)",
   fushia: "#ce55b0",
   lightBlue: "#004e92",
   pink: "#BA5370",
@@ -25,7 +28,8 @@ export const colors = {
 };
 
 export const shapes = {
-  borderRadius: "15px",
+  borderRadiusMed: "15px",
+  borderRadiusB: "20px",
 };
 
 export const BoxShaddow = styled.div`
@@ -35,7 +39,13 @@ export const BoxShaddow = styled.div`
 
 export const ColoredButton = styled(Button)`
   background: ${colors.pinkLinearGradient};
-  color: "#ffffd";
+  color: white;
+  width: 100%;
+`;
+
+export const BorderedButton = styled(Button)`
+  border: 2px solid ${colors.fushia};
+  color: ${colors.fushia};
   width: 100%;
 `;
 
@@ -44,9 +54,10 @@ export const ContainerButton = styled.div`
 `;
 
 export const Container = styled(Box)`
-  flex-grow: 1;
   padding: 4rem;
+  margin-top: 2%;
   min-height: 100vh;
+  flex: auto;
   background-color: ${colors.lightGrey};
   @media only screen and (min-width: 760px) and (max-width: 1000px) {
     padding: 4rem;
@@ -54,13 +65,6 @@ export const Container = styled(Box)`
   @media only screen and (max-width: 760px) {
     padding: 3rem;
   } ;
-`;
-
-export const Form = styled.form`
-  font-size: 20px;
-  text-align: center;
-  text-decoration: none;
-  color: #aaa;
 `;
 
 export const FormElements = styled.div`
@@ -77,5 +81,25 @@ export const hide = styled.div`
 `;
 
 export const Snackbar = styled(Stack)`
-  visibility ${(props) => (props.hidden ? "hidden" : "visible")}
+  visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
+`;
+
+export const Popup = styled(Box)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: ${colors.darkBlue};
+  border: 1px solid #000;
+  box-shadow: 24px;
+  padding: 2rem;
+  color: white;
+  border-radius: ${shapes.borderRadiusMed};
+  text-align: center;
+  & svg {
+    color: ${colors.mediumPink};
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
 `;

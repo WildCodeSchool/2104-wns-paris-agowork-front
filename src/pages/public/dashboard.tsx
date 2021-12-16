@@ -1,25 +1,22 @@
 import React from "react";
 import News from "../../components/dashboard/news/news";
-import Mood from "../../components/dashboard/mood/mood";
 import Chill from "../../components/dashboard/chill/chill";
-import { Title, Hr, Space } from "../../assets/styles/dashboard/dashboard";
+import {
+  Title,
+  Hr,
+  Space,
+  MoodSection,
+} from "../../assets/styles/dashboard/dashboard";
+import MoodBoard from "../../components/dashboard/teamMood/moodBoard";
+import MoodCard from "../../components/dashboard/mood/moodDashboard";
 
 export default function Dashboard(): JSX.Element {
   return (
     <>
-      <Title>
-        <h1>News du campus</h1>
-        <p>Voir tous les articles</p>
-      </Title>
-      <Hr />
-      <News />
-      <Space />
-      <Title>
-        <h1>Mood du jour</h1>
-        <p>Voir le mood de ta promo</p>
-      </Title>
-      <Hr />
-      <Mood />
+      <MoodSection>
+        <MoodBoard />
+        <MoodCard />
+      </MoodSection>
       <Space />
       <Title>
         <h1>Détente</h1>
@@ -27,6 +24,14 @@ export default function Dashboard(): JSX.Element {
       </Title>
       <Hr />
       <Chill />
+      <Title>
+        <h1>News du campus</h1>
+        <p>Voir tous les articles</p>
+      </Title>
+      <Hr />
+      <News />
+      <Space />
+      <Hr />
     </>
   );
 }

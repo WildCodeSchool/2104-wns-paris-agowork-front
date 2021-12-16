@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 import jwt_decode from "jwt-decode";
-import UserType from "../types/user";
+import { UserType } from "../types/user";
 
 const initialState = {
   user: {
@@ -10,6 +10,7 @@ const initialState = {
     picture: "",
     email: "",
     role: "",
+    mood: "",
   },
 };
 
@@ -24,6 +25,7 @@ if (localStorage.getItem("token")) {
       email: decodedToken.userEmail,
       picture: decodedToken.userPicture || undefined,
       role: decodedToken.userRole,
+      mood: decodedToken.mood,
       town: decodedToken.userTown,
     };
   }
@@ -36,6 +38,7 @@ const AuthContext = createContext({
     picture: "",
     email: "",
     role: "",
+    mood: "",
   },
   login: (userData: UserType) => {},
   logout: () => {},

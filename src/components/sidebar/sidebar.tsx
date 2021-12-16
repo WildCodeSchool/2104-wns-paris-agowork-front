@@ -1,7 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useHistory } from "react-router";
 import { useTheme } from "@mui/material/styles";
-import { CssBaseline, Divider, IconButton } from "@mui/material";
-import { ChevronLeft, Menu, ChevronRight } from "@mui/icons-material";
+import {
+  CssBaseline,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import {
+  ChevronLeft,
+  Menu,
+  ChevronRight,
+  SchoolOutlined,
+  StarHalfOutlined,
+  Logout,
+  DoneOutlineOutlined,
+  AdminPanelSettings,
+} from "@mui/icons-material";
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/muiSidebar";
 import ProfileSidebar from "./profileSidebar";
 import Elements from "./elements";
@@ -14,8 +31,11 @@ import {
   ColoredSvg,
   BurgerButton,
 } from "../../assets/styles/sidebar/sidebar";
+import { AuthContext } from "../../context/auth";
 
 const Sidebar = (): JSX.Element => {
+  const context = useContext(AuthContext);
+  const history = useHistory();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -25,6 +45,11 @@ const Sidebar = (): JSX.Element => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleLogout = (event: any) => {
+    localStorage.clear();
+    history.push("/login");
   };
 
   return (
@@ -53,10 +78,28 @@ const Sidebar = (): JSX.Element => {
           </IconButton>
         </DrawerHeader>
         <ColoredSvg>
-          <Divider />
           <ProfileSidebar sidebarState={open} />
-          <Subnav />
-          <Elements />
+          <Elements
+            text="Ressources"
+            icon={<SchoolOutlined />}
+            path="/mes-ressources"
+          />
+          {context.user.role === "ADMIN" ||
+          context.user.role === "SUPERADMIN" ? (
+            <Elements
+              text="Administration"
+              icon={<AdminPanelSettings />}
+              path="/general"
+            />
+          ) : (
+            <></>
+          )}
+          <ListItem onClick={handleLogout}>
+            <ListItemIcon>
+              <Logout />
+            </ListItemIcon>
+            <ListItemText primary="Déconnexion" />
+          </ListItem>
         </ColoredSvg>
       </SideNav>
     </>

@@ -1,14 +1,34 @@
 import { gql } from "@apollo/client";
 
-export const GetAllUsers = gql`
+export const GET_ALL_USERS = gql`
   query getAllUsers {
-    getAllUsers{
+    getAllUsers {
+      id
       firstname
       lastname
-      email
-      town
       picture
-      role
+      mood {
+        icon
+        name
+      }
+      campus {
+        name
+      }
+    }
+  }
+`;
+
+export const GET_STUDENTS_MOOD = gql`
+  query getAllStudentsByMood {
+    getAllStudentsByMood {
+      id
+      firstname
+      lastname
+      picture
+      mood {
+        name
+        icon
+      }
     }
   }
 `;

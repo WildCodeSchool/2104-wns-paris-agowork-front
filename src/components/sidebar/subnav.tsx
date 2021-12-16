@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   ListItem,
   ListItemIcon,
@@ -14,16 +14,19 @@ import {
   ExpandMore,
   StarBorder,
 } from "@mui/icons-material";
-import { nested } from "../../assets/styles/sidebar/sidebar";
 
 const Subnav = (): JSX.Element => {
   const [openSubnav, setOpenSubnav] = useState(false);
+  const [activeLink, setActiveLink] = useState(false);
   const handleClick = () => {
     setOpenSubnav(!openSubnav);
   };
+
+  const handleActiveLink = () => {
+    setActiveLink(!activeLink);
+  };
   return (
     <>
-      <Divider />
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
           <MenuBookOutlined />
@@ -31,14 +34,22 @@ const Subnav = (): JSX.Element => {
         <ListItemText primary="Cours" />
         {openSubnav ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
+
       <Collapse in={openSubnav} timeout="auto" unmountOnExit>
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Modules de la journée" />
-          </ListItem>
+          <NavLink
+            to="/cours"
+            exact
+            onClick={handleActiveLink}
+            className={({ isActive }: any) => (isActive ? "active" : "")}
+          >
+            <ListItem>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="Modules de la journée" />
+            </ListItem>
+          </NavLink>
         </List>
       </Collapse>
       <Divider />

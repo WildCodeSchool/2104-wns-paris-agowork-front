@@ -16,7 +16,8 @@ import {
   AchievmentStatus,
 } from "../../../assets/styles/course/elements";
 
-import { Form, FormElements } from "../../../assets/styles/global";
+import { Form } from "../../../assets/styles/form";
+import { FormElements } from "../../../assets/styles/global";
 
 export type CourseProps = {
   id?: string;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Box } from "@mui/material";
 import { colors } from "../global";
 
 export const Title = styled.div`
@@ -37,4 +38,12 @@ export const Hr = styled.hr`
 
 export const Space = styled.div`
   margin-top: 5%;
+`;
+
+export const MoodSection = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
 `;
