@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Box, MenuItem, Typography } from "@mui/material";
+import {
+  Box,
+  FormControlLabel,
+  FormGroup,
+  MenuItem,
+  Switch,
+  Typography,
+} from "@mui/material";
 import { useMutation } from "@apollo/client";
 import FormElement from "../../../components/form/formElement";
 import { CREATE_MOOD } from "../../../graphql/mutations/social/mood";
@@ -94,10 +101,14 @@ export default function MoodCreation(): JSX.Element {
               )}
             </BoxIcon>
             <Typography sx={{ marginTop: 2 }}>
+              {/* {watchIcon === false
+                ? "Ajouter un icon personnalisé"
+                : "Revenir à la sélection"}
+              <input type="checkbox" {...register("personnalIcon")} /> */}
               {watchIcon === false
                 ? "Ajouter un icon personnalisé"
                 : "Revenir à la sélection"}
-              <input type="checkbox" {...register("personnalIcon")} />
+              <Switch {...register("personnalIcon")} size="small" />
             </Typography>
             <SolidButton type="submit" textButton="Ajouter ce mood" />
           </Form>
