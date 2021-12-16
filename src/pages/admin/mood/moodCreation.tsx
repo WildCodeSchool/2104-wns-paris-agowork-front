@@ -101,10 +101,6 @@ export default function MoodCreation(): JSX.Element {
               )}
             </BoxIcon>
             <Typography sx={{ marginTop: 2 }}>
-              {/* {watchIcon === false
-                ? "Ajouter un icon personnalisé"
-                : "Revenir à la sélection"}
-              <input type="checkbox" {...register("personnalIcon")} /> */}
               {watchIcon === false
                 ? "Ajouter un icon personnalisé"
                 : "Revenir à la sélection"}
