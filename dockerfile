@@ -11,6 +11,5 @@ RUN npm install
 
 COPY public public
 COPY src src
-ENV GENERATE_SOURCEMAP=false
 
 CMD ["npm", "start"]
