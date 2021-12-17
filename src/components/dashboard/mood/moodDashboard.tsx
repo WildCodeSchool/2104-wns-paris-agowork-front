@@ -14,6 +14,7 @@ import { GET_ALL_MOODS } from "../../../graphql/queries/social/mood";
 import { GetMoodsType } from "../../../types/moods";
 import FormSelect from "../../form/formSelect";
 import { MoodIcon } from "../../../assets/styles/list/list";
+import { GET_LOGGED_USER } from "../../../graphql/queries/user/user";
 
 type FormValues = {
   id: string;
@@ -21,20 +22,23 @@ type FormValues = {
 };
 
 export default function MoodCard(): JSX.Element {
+  const { data: allMoods } = useQuery<GetMoodsType>(GET_ALL_MOODS);
+  const { data: loggedUser } = useQuery(GET_LOGGED_USER);
+  console.log("current user", loggedUser);
+  const [currentMood, setCurrentMood] = useState(
+    loggedUser?.getLoggedUserByEmail.mood.icon
+  );
+  const [errorMessage, setErrorMessage] = useState("");
+  const context = useContext(AuthContext);
   const {
-    register,
     handleSubmit,
     control,
-    reset,
     formState: { errors },
   } = useForm();
-  const context = useContext(AuthContext);
-  const [currentMood, setCurrentMood] = useState(context.user.mood);
-  const [errorMessage, setErrorMessage] = useState("");
+
   const [updateUserMood] = useMutation(UPDATE_USER_MOOD, {
     onCompleted: (data) => {
       setErrorMessage("");
-      console.log(data.updateUserMood);
       const userMood = data.updateUserMood.mood;
       setCurrentMood(userMood.icon);
     },
@@ -42,10 +46,8 @@ export default function MoodCard(): JSX.Element {
       console.log(error);
     },
   });
-  const { data: allMoods } = useQuery<GetMoodsType>(GET_ALL_MOODS);
 
   const handleMood: SubmitHandler<FormValues> = (input) => {
-    console.log(input.id);
     updateUserMood({
       variables: {
         id: input.id,
@@ -62,7 +64,7 @@ export default function MoodCard(): JSX.Element {
           <FormSelect
             id="icon-select"
             name="id"
-            label="id"
+            label="Mood"
             control={control}
             required
           >

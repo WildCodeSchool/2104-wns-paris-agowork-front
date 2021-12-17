@@ -27,7 +27,7 @@ if (localStorage.getItem("token")) {
       picture: decodedToken.userPicture || undefined,
       role: decodedToken.userRole,
       campus: decodedToken.userCampus,
-      mood: decodedToken.mood,
+      mood: decodedToken.userMood,
       town: decodedToken.userTown,
     };
   }

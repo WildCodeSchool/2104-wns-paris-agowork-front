@@ -47,3 +47,21 @@ export const GetLoggedUserByEmail = gql`
     }
   }
 `;
+
+export const GET_LOGGED_USER = gql`
+  query getLoggedUserByEmail {
+    getLoggedUserByEmail {
+      firstname
+      lastname
+      id
+      campus {
+        name
+      }
+      mood {
+        id
+        icon
+        name
+      }
+    }
+  }
+`;
