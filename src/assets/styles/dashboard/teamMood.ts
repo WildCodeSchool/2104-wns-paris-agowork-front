@@ -8,6 +8,34 @@ export const CardsBoard = styled(Box)`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  a {
+    text-decoration: none;
+  }
+`;
+
+export const CardsAdmin = styled(Box)`
+  display: flex;
+  margin: 2rem 0 2rem 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+  .css-bhp9pd-MuiPaper-root-MuiCard-root {
+    width: 270px;
+  }
+  justify-content: space-around !important;
+`;
+
+export const CampusMoods = styled.div`
+  width: 75%;
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 `;
 
 export const ContentCard = styled.div`
@@ -34,6 +62,22 @@ export const MoodName = styled(Typography)`
   font-weight: 500;
 `;
 
+export const MoodProfile = styled(Typography)`
+  font-size: 25px;
+`;
+
 export const IconTeamMood = styled.img`
   width: 30px;
+`;
+
+export const ImageConstruction = styled(Box)`
+  margin: auto;
+  margin-top: 10rem;
+  text-align: center;
+  img {
+    background: ${colors.trigradient};
+    border-radius: 12px;
+    padding: 2rem;
+    width: 30%;
+  }
 `;

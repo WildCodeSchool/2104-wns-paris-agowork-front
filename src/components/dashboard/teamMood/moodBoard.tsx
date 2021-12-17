@@ -1,15 +1,13 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { useQuery } from "@apollo/client";
-import { moods } from "../../mood/mood.enum";
 import {
-  CardsBoard,
+  CampusMoods,
   ContentCard,
   MoodAvatar,
   MoodName,
 } from "../../../assets/styles/dashboard/teamMood";
 import { GET_STUDENTS_MOOD } from "../../../graphql/queries/user/user";
 import { ProfileAvatar } from "../../../assets/styles/sidebar/sidebar";
-import { IconMood } from "../../../assets/styles/dashboard/mood";
 import TeamMood from "./teamMood";
 
 type UserMoodType = {
@@ -28,7 +26,7 @@ export default function MoodBoard(): JSX.Element {
   const { data } = useQuery<GetUsersMoodType>(GET_STUDENTS_MOOD);
   console.log(data);
   return (
-    <CardsBoard>
+    <CampusMoods>
       {data?.getAllStudentsByMood.map((user: UserMoodType) => (
         <ContentCard key={user.id}>
           {user.picture ? (
@@ -46,6 +44,6 @@ export default function MoodBoard(): JSX.Element {
           )}
         </ContentCard>
       ))}
-    </CardsBoard>
+    </CampusMoods>
   );
 }
