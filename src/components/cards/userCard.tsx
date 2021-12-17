@@ -41,7 +41,7 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
   };
   return (
     <>
-      <CardList sx={{ width: 255, margin: 1 }}>
+      <CardList sx={{ width: 291, margin: 1 }}>
         {user.picture ? (
           <CardMedia
             component="img"
