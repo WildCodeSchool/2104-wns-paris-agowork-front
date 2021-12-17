@@ -30,6 +30,7 @@ export default function Login(): JSX.Element {
       setErrorMessage("");
       const userData = data;
       localStorage.setItem("token", userData.login.token);
+      console.log(userData);
       context.login(userData.login);
       history.push("/");
     },

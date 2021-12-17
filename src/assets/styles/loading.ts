@@ -40,3 +40,9 @@ export const Spinner = styled.svg`
   width: ${variables.size};
   margin: auto;
 `;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  text-align: center;
+  margin: auto;
+`;

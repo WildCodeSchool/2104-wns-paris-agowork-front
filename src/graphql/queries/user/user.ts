@@ -6,6 +6,8 @@ export const GET_ALL_USERS = gql`
       id
       firstname
       lastname
+      email
+      role
       picture
       mood {
         icon
@@ -42,6 +44,24 @@ export const GetLoggedUserByEmail = gql`
       town
       picture
       role
+    }
+  }
+`;
+
+export const GET_LOGGED_USER = gql`
+  query getLoggedUserByEmail {
+    getLoggedUserByEmail {
+      firstname
+      lastname
+      id
+      campus {
+        name
+      }
+      mood {
+        id
+        icon
+        name
+      }
     }
   }
 `;

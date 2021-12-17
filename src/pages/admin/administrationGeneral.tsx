@@ -1,47 +1,69 @@
 import React from "react";
-import { Card, Box, CardContent } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { BoxIcon, CardTitle } from "../../assets/styles/list/list";
-import CampusCreation from "./campus/campusCreation";
-import MoodCreation from "./mood/moodCreation";
-import { CardsBoard } from "../../assets/styles/dashboard/teamMood";
+import { ArrowForwardIos } from "@mui/icons-material";
+import {
+  ActionsCard,
+  BtnDelete,
+  CardTitle,
+  MoodIcon,
+} from "../../assets/styles/list/list";
+import {
+  CardsAdmin,
+  ImageConstruction,
+} from "../../assets/styles/dashboard/teamMood";
+import ImgBuilding from "../../assets/pictures/construction.png";
+import { Title } from "../../assets/styles/login/login";
+import SolidButton from "../../components/buttons/solidButton";
 
 export default function GeneralForm(): JSX.Element {
   return (
-    <CardsBoard>
-      <NavLink
-        to="/campus"
-        exact
-        className={({ isActive }: any) => (isActive ? "active" : "")}
-      >
-        <Card>
-          <CardContent>
-            <CardTitle>Campus</CardTitle>
-          </CardContent>
-        </Card>
-      </NavLink>
-      <NavLink
-        to="/mood"
-        exact
-        className={({ isActive }: any) => (isActive ? "active" : "")}
-      >
-        <Card>
-          <CardContent>
-            <CardTitle>Mood</CardTitle>
-          </CardContent>
-        </Card>
-      </NavLink>
-      <NavLink
-        to="/utilisateur"
-        exact
-        className={({ isActive }: any) => (isActive ? "active" : "")}
-      >
-        <Card>
-          <CardContent>
-            <CardTitle>Utilisateur</CardTitle>
-          </CardContent>
-        </Card>
-      </NavLink>
-    </CardsBoard>
+    <>
+      <CardsAdmin>
+        <NavLink
+          to="/campus"
+          exact
+          className={({ isActive }: any) => (isActive ? "active" : "")}
+        >
+          <Card>
+            <CardContent>
+              <MoodIcon>🎓</MoodIcon>
+              <CardTitle>Campus</CardTitle>
+            </CardContent>
+            <SolidButton type="text" textButton="Voir plus" />
+          </Card>
+        </NavLink>
+        <NavLink
+          to="/mood"
+          exact
+          className={({ isActive }: any) => (isActive ? "active" : "")}
+        >
+          <Card>
+            <CardContent>
+              <MoodIcon>✨</MoodIcon>
+              <CardTitle>Mood</CardTitle>
+            </CardContent>
+            <SolidButton type="text" textButton="Voir plus" />
+          </Card>
+        </NavLink>
+        <NavLink
+          to="/utilisateur"
+          exact
+          className={({ isActive }: any) => (isActive ? "active" : "")}
+        >
+          <Card>
+            <CardContent>
+              <MoodIcon>👤</MoodIcon>
+              <CardTitle>Utilisateur</CardTitle>
+            </CardContent>
+            <SolidButton type="text" textButton="Voir plus" />
+          </Card>
+        </NavLink>
+      </CardsAdmin>
+      <ImageConstruction>
+        <Title>Coming Soon</Title>
+        <img src={ImgBuilding} alt="" />
+      </ImageConstruction>
+    </>
   );
 }

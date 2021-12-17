@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
+import { Box } from "@mui/material";
+import { School } from "@mui/icons-material";
 import FormElement from "../../../components/form/formElement";
 import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus";
 import { CampusForm, Form, FormBox } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
 import CampusListing from "./campusListing";
-import { CardTitle, FormTitle } from "../../../assets/styles/list/list";
+import {
+  BoxIcon,
+  FormTitle,
+  LatestCreatedTitle,
+} from "../../../assets/styles/list/list";
+import { CampusType } from "../../../types/campus";
+import CampusCard from "../../../components/cards/campusCard";
 
 type FormValues = {
   name: string;
@@ -15,15 +23,16 @@ type FormValues = {
 };
 
 export default function CampusCreation(): JSX.Element {
+  const [latestCampus, setLatestCampus] = useState<CampusType>();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const [addCampus, { loading }] = useMutation(CREATE_CAMPUS, {
+  const [createCampus, { loading }] = useMutation(CREATE_CAMPUS, {
     onCompleted: (data) => {
-      console.log(data);
+      setLatestCampus(data.createCampus);
     },
     onError: (error) => {
       console.log(error);
@@ -31,7 +40,7 @@ export default function CampusCreation(): JSX.Element {
   });
 
   const handleCampus: SubmitHandler<FormValues> = (input) => {
-    addCampus({ variables: { input } });
+    createCampus({ variables: { input } });
     reset();
   };
   return (
@@ -56,6 +65,16 @@ export default function CampusCreation(): JSX.Element {
             <SolidButton type="submit" textButton="Ajouter ce campus" />
           </Form>
         </CampusForm>
+        {latestCampus ? (
+          <Box>
+            <LatestCreatedTitle>
+              👉&nbsp;&nbsp;Nouveau campus
+            </LatestCreatedTitle>
+            <CampusCard {...latestCampus} key={latestCampus.id} />
+          </Box>
+        ) : (
+          <></>
+        )}
       </FormBox>
       <CampusListing />
     </>

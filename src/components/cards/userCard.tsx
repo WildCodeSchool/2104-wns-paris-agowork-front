@@ -12,6 +12,7 @@ import {
   CardTitle,
   IconParagraph,
   Paragraph,
+  RoleTag,
 } from "../../assets/styles/list/list";
 import { UserType } from "../../types/user";
 import ConfirmationModal from "../modal/confirmationModal";
@@ -22,8 +23,8 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
   const handleClose = () => setOpen(false);
   const [deleteUser] = useMutation(DELETE_USER, {
     onCompleted: (data) => {
-      console.log(data);
       setOpen(false);
+      window.location.reload();
     },
     onError: (error) => {
       console.log(error);
@@ -40,7 +41,7 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
   };
   return (
     <>
-      <CardList sx={{ width: 200, margin: 1 }}>
+      <CardList sx={{ width: 291, margin: 1 }}>
         {user.picture ? (
           <CardMedia
             component="img"
@@ -54,18 +55,18 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
           </BrokenImage>
         )}
         <CardContent>
-          <Typography>{user.role}</Typography>
+          <RoleTag>{user.role}</RoleTag>
           <CardTitle>
             {user.firstname} {user.lastname}
           </CardTitle>
+          <Paragraph>{user.email}</Paragraph>
           {user.mood != null && user.mood.icon != null ? (
             <Typography>
-              <IconParagraph>{user.mood.icon}</IconParagraph>
+              <IconParagraph>{user.mood.icon}</IconParagraph> - Mood
             </Typography>
           ) : (
             <></>
           )}
-          <Paragraph>{user.email}</Paragraph>
           {user.campus != null && user.campus.name != null ? (
             <BoxIcon>
               <School />

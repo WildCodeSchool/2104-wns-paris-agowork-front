@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { ExpandMore } from "@mui/icons-material";
-import { MenuItem } from "@mui/material";
+import { Box, MenuItem } from "@mui/material";
 import { CREATE_USER } from "../../../graphql/mutations/user/user";
 import { Form, FormBox, UserForm } from "../../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
@@ -13,7 +12,11 @@ import FormElement from "../../../components/form/formElement";
 import FormSelect from "../../../components/form/formSelect";
 import { roles, UserType } from "../../../types/user";
 import UserCard from "../../../components/cards/userCard";
-import { FormTitle } from "../../../assets/styles/list/list";
+import {
+  BoxIcon,
+  FormTitle,
+  LatestCreatedTitle,
+} from "../../../assets/styles/list/list";
 
 export type FormValues = {
   firstname: string;
@@ -35,11 +38,8 @@ export default function UserCreation(): JSX.Element {
     reset,
     formState: { errors },
   } = useForm();
-  const {
-    loading,
-    error: errorCampus,
-    data: allCampus,
-  } = useQuery<GetCampusType>(GET_ALL_CAMPUS);
+  const { error: errorCampus, data: allCampus } =
+    useQuery<GetCampusType>(GET_ALL_CAMPUS);
 
   const [createUser] = useMutation(CREATE_USER, {
     onCompleted: (data) => {
@@ -95,18 +95,22 @@ export default function UserCreation(): JSX.Element {
                 register={register}
                 required
               />
-              <FormSelect
-                id="campus-select"
-                name="campus"
-                label="Campus"
-                control={control}
-              >
-                {allCampus?.getCampus.map((list: CampusType) => (
-                  <MenuItem key={list.id} value={list.id}>
-                    {list.name}
-                  </MenuItem>
-                ))}
-              </FormSelect>
+              {errorCampus ? (
+                "Erreur de chargement, contactez votre administrateur"
+              ) : (
+                <FormSelect
+                  id="campus-select"
+                  name="campus"
+                  label="Campus"
+                  control={control}
+                >
+                  {allCampus?.getCampus.map((list: CampusType) => (
+                    <MenuItem key={list.id} value={list.id}>
+                      {list.name}
+                    </MenuItem>
+                  ))}
+                </FormSelect>
+              )}
             </FormBox>
             <FormSelect
               id="role-select"
@@ -123,12 +127,17 @@ export default function UserCreation(): JSX.Element {
             </FormSelect>
             <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
           </Form>
-          {latestUser ? (
-            <UserCard {...latestUser} key={latestUser.email} />
-          ) : (
-            <></>
-          )}
         </UserForm>
+        {latestUser ? (
+          <Box>
+            <LatestCreatedTitle>
+              👉&nbsp;&nbsp;Nouvel utilisateur
+            </LatestCreatedTitle>
+            <UserCard {...latestUser} key={latestUser.id} />
+          </Box>
+        ) : (
+          <></>
+        )}
       </FormBox>
       <UserListing />
     </>
