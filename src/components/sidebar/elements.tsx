@@ -8,7 +8,6 @@ const Elements = ({ text, icon, path }: any): JSX.Element => {
       <Divider />
       <NavLink
         to={path}
-        exact
         className={({ isActive }: any) => (isActive ? "active" : "")}
       >
         <ListItem key={text}>

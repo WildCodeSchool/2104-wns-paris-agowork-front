@@ -26,7 +26,6 @@ const ProfileSidebar = ({ sidebarState }: any): JSX.Element => {
       </ListItem>
       <NavLink
         to="/"
-        exact
         className={({ isActive }: any) => (isActive ? "active" : "inactive")}
       >
         <ListItem>

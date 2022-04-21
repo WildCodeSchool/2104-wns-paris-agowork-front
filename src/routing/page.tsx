@@ -1,7 +1,5 @@
-// eslint-disable-next-line
-// @ts-nocheck
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import UserCreation from "../pages/admin/user/userCreation";
 import Dashboard from "../pages/public/dashboard";
 import Login from "../pages/public/login";
@@ -16,16 +14,65 @@ import MoodCreation from "../pages/admin/mood/moodCreation";
 const Page = (): JSX.Element => {
   return (
     <>
-      <Switch>
-        <PrivateRoute exact path="/" component={Dashboard} />
-        <PrivateRoute exact path="/mes-ressources" component={Ressources} />
-        <PrivateRoute exact path="/cours" component={ModuleList} />
-        <Route exact path="/login" component={Login} />
-        <AdminRoute exact path="/utilisateur" component={UserCreation} />
-        <AdminRoute exact path="/campus" component={CampusCreation} />
-        <AdminRoute exact path="/general" component={GeneralForm} />
-        <AdminRoute exact path="/mood" component={MoodCreation} />
-      </Switch>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/connexion" element={<Login />} />
+        <Route
+          path="/mes-ressources"
+          element={
+            <PrivateRoute>
+              <Ressources />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cours"
+          element={
+            <PrivateRoute>
+              <ModuleList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/general"
+          element={
+            <AdminRoute>
+              <GeneralForm />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/campus"
+          element={
+            <AdminRoute>
+              <CampusCreation />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/mood"
+          element={
+            <AdminRoute>
+              <MoodCreation />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/utilisateur"
+          element={
+            <AdminRoute>
+              <UserCreation />
+            </AdminRoute>
+          }
+        />
+      </Routes>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate, useLocation, To } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import {
   CssBaseline,
@@ -29,9 +29,14 @@ import {
 } from "../../assets/styles/sidebar/sidebar";
 import { AuthContext } from "../../context/authContext";
 
+interface State {
+  to: To;
+}
+
 const Sidebar = (): JSX.Element => {
   const { user } = useContext(AuthContext);
-  const history = useHistory();
+  const state = useLocation().state as State;
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -45,7 +50,7 @@ const Sidebar = (): JSX.Element => {
 
   const handleLogout = (event: any) => {
     localStorage.clear();
-    history.push("/login");
+    navigate("/connexion");
   };
 
   return (

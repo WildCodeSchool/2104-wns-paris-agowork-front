@@ -13,7 +13,6 @@ import FormSelect from "../../../components/form/formSelect";
 import { roles, UserType } from "../../../types/user";
 import UserCard from "../../../components/cards/userCard";
 import {
-  BoxIcon,
   FormTitle,
   LatestCreatedTitle,
 } from "../../../assets/styles/list/list";
@@ -22,7 +21,7 @@ export type FormValues = {
   firstname: string;
   lastname: string;
   town: string;
-  picture: string;
+  password: string;
   email: string;
   role: string;
   mood: string;
@@ -43,10 +42,11 @@ export default function UserCreation(): JSX.Element {
 
   const [createUser] = useMutation(CREATE_USER, {
     onCompleted: (data) => {
+      console.log(data);
       setLatestUser(data.createUser);
     },
     onError: (error) => {
-      console.log(error);
+      error.graphQLErrors.map(({ message }) => console.log(message));
     },
   });
 
