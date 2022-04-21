@@ -3,7 +3,6 @@ import { useHistory } from "react-router";
 import { useTheme } from "@mui/material/styles";
 import {
   CssBaseline,
-  Divider,
   IconButton,
   ListItem,
   ListItemIcon,
@@ -14,16 +13,13 @@ import {
   Menu,
   ChevronRight,
   SchoolOutlined,
-  StarHalfOutlined,
   Logout,
-  DoneOutlineOutlined,
   AdminPanelSettings,
 } from "@mui/icons-material";
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/muiSidebar";
 import ProfileSidebar from "./profileSidebar";
 import Elements from "./elements";
 import SocialMedia from "./socialMedia";
-import Subnav from "./subnav";
 import {
   TopBar,
   SideNav,
@@ -32,6 +28,7 @@ import {
   BurgerButton,
 } from "../../assets/styles/sidebar/sidebar";
 import { AuthContext } from "../../context/auth";
+import { MoodProfile } from "../../assets/styles/dashboard/teamMood";
 
 const Sidebar = (): JSX.Element => {
   const context = useContext(AuthContext);
@@ -67,7 +64,7 @@ const Sidebar = (): JSX.Element => {
           >
             <Menu />
           </BurgerButton>
-          <CompanyName>Company name</CompanyName>
+          <CompanyName>AgoWork</CompanyName>
           <SocialMedia />
         </TopBar>
       </AppBar>

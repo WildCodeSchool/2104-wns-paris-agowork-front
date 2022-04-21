@@ -22,14 +22,13 @@ type FormValues = {
 };
 
 export default function MoodCard(): JSX.Element {
+  const context = useContext(AuthContext);
   const { data: allMoods } = useQuery<GetMoodsType>(GET_ALL_MOODS);
   const { data: loggedUser } = useQuery(GET_LOGGED_USER);
   console.log("current user", loggedUser);
-  const [currentMood, setCurrentMood] = useState(
-    loggedUser?.getLoggedUserByEmail.mood.icon
-  );
+  const [currentMood, setCurrentMood] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const context = useContext(AuthContext);
+
   const {
     handleSubmit,
     control,
@@ -59,14 +58,17 @@ export default function MoodCard(): JSX.Element {
     <Card>
       <ContentCard>
         <TitleMood>Mood du jour</TitleMood>
-        <MoodIcon>{currentMood}</MoodIcon>
+        <MoodIcon>
+          {!currentMood
+            ? loggedUser?.getLoggedUserByEmail.mood.icon
+            : currentMood}
+        </MoodIcon>
         <form data-testid="formMood" onSubmit={handleSubmit(handleMood)}>
           <FormSelect
             id="icon-select"
             name="id"
-            label="Mood"
+            label="Changer de mood"
             control={control}
-            required
           >
             {allMoods?.getMoods.map((list: any) => (
               <MenuItem key={list.id} value={list.id}>

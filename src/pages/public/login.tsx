@@ -27,11 +27,10 @@ export default function Login(): JSX.Element {
   });
   const [login, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {
+      console.log(data);
       setErrorMessage("");
-      const userData = data;
-      localStorage.setItem("token", userData.login.token);
-      console.log(userData);
-      context.login(userData.login);
+      localStorage.setItem("token", data.login.token);
+      context.login(data.login);
       history.push("/");
     },
     onError: (error) => {
@@ -86,7 +85,7 @@ export default function Login(): JSX.Element {
                   })
                 }
                 type="password"
-                label="password"
+                label="Mot de passe"
                 variant="outlined"
                 id="password-mui-theme-provider-outlined-input"
               />
