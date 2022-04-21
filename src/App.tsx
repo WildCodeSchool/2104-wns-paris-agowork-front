@@ -10,11 +10,11 @@ function App(): JSX.Element {
   const theme = useTheme();
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <AuthProvider>
+      <AuthProvider>
+        <BrowserRouter>
           <Router />
-        </AuthProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
