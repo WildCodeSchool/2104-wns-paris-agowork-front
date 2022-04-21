@@ -15,7 +15,7 @@ const AuthRoute = ({
       {...rest}
       render={(props) =>
         // eslint-disable-next-line react/jsx-props-no-spreading
-        localStorage.getItem("token") ? (
+        localStorage.getItem("jwt") ? (
           <Component {...props} />
         ) : (
           <Redirect to="/login" />

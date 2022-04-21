@@ -1,5 +1,5 @@
 import React from "react";
-import { FormHelperText, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { GroupForm } from "../../assets/styles/form";
 
 export default function FormElement({

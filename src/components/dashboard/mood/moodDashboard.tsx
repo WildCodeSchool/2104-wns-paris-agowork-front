@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation, useQuery } from "@apollo/client";
 import { MenuItem } from "@mui/material";
-import { AuthContext } from "../../../context/auth";
+import { AuthContext } from "../../../context/authContext";
 import {
   Card,
   ContentCard,
@@ -22,10 +22,9 @@ type FormValues = {
 };
 
 export default function MoodCard(): JSX.Element {
-  const context = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { data: allMoods } = useQuery<GetMoodsType>(GET_ALL_MOODS);
   const { data: loggedUser } = useQuery(GET_LOGGED_USER);
-  console.log("current user", loggedUser);
   const [currentMood, setCurrentMood] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -47,10 +46,11 @@ export default function MoodCard(): JSX.Element {
   });
 
   const handleMood: SubmitHandler<FormValues> = (input) => {
+    console.log(user);
     updateUserMood({
       variables: {
         id: input.id,
-        email: context.user.email,
+        email: user?.email,
       },
     });
   };
@@ -76,7 +76,7 @@ export default function MoodCard(): JSX.Element {
               </MenuItem>
             ))}
           </FormSelect>
-          <SolidButton type="submit" textButton="Mettre à jour" />
+          <SolidButton textButton="Mettre à jour" type="submit" />
         </form>
       </ContentCard>
     </Card>

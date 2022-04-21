@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Delete } from "@mui/icons-material";
+
 import { Box, Card, CardActions, IconButton } from "@mui/material";
-import { colors, shapes } from "../global";
+import { colors } from "../global";
 
 export const BrokenImage = styled.div`
   background-color: ${colors.mediumGrey};

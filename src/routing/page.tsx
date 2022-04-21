@@ -9,12 +9,12 @@ import ModuleList from "../components/course/students/moduleList";
 import Ressources from "../components/ressources/ressources";
 import AuthRoute from "./authRoute";
 import CampusCreation from "../pages/admin/campus/campusCreation";
-import { AuthContext } from "../context/auth";
+import { AuthContext } from "../context/authContext";
 import GeneralForm from "../pages/admin/administrationGeneral";
 import MoodCreation from "../pages/admin/mood/moodCreation";
 
 const Page = (): JSX.Element => {
-  const context = useContext(AuthContext);
+  const user = useContext(AuthContext);
   return (
     <>
       <Switch>
@@ -22,7 +22,7 @@ const Page = (): JSX.Element => {
         <AuthRoute exact path="/mes-ressources" component={Ressources} />
         <AuthRoute exact path="/cours" component={ModuleList} />
         <Route exact path="/login" component={Login} />
-        {context.user.role === "ADMIN" || context.user.role === "SUPERADMIN" ? (
+        {user?.role === "ADMIN" || user?.role === "SUPERADMIN" ? (
           <>
             <AuthRoute exact path="/utilisateur" component={UserCreation} />
             <AuthRoute exact path="/campus" component={CampusCreation} />

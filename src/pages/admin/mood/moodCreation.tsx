@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {
-  Box,
-  FormControlLabel,
-  FormGroup,
-  MenuItem,
-  Switch,
-  Typography,
-} from "@mui/material";
+import { Box, MenuItem, Switch, Typography } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import FormElement from "../../../components/form/formElement";
 import { CREATE_MOOD } from "../../../graphql/mutations/social/mood";
@@ -39,9 +32,8 @@ export default function MoodCreation(): JSX.Element {
     watch,
     formState: { errors },
   } = useForm();
-  const [createMood, { loading }] = useMutation(CREATE_MOOD, {
+  const [createMood] = useMutation(CREATE_MOOD, {
     onCompleted: (data) => {
-      console.log(data);
       setLatestMood(data.createMood);
     },
     onError: (error) => {

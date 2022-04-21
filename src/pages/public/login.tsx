@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import { FormHelperText, TextField } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../graphql/mutations/user/user";
@@ -11,13 +12,13 @@ import {
 } from "../../assets/styles/login/login";
 import { GroupForm } from "../../assets/styles/form";
 import Loading from "../../components/loading/loading";
-import { AuthContext } from "../../context/auth";
+import { AuthContext } from "../../context/authContext";
 import SolidButton from "../../components/buttons/solidButton";
 import ErrorPopup from "../../components/error/errorPopup";
 
 export default function Login(): JSX.Element {
   const history = useHistory();
-  const context = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorHidden, setErrorHidden] = useState(true);
   const [formState, setFormState] = useState({
@@ -25,12 +26,12 @@ export default function Login(): JSX.Element {
     email: "",
     password: "",
   });
+
   const [login, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {
-      console.log(data);
       setErrorMessage("");
-      localStorage.setItem("token", data.login.token);
-      context.login(data.login);
+      setUser(jwt_decode(data.login.token));
+      localStorage.setItem("jwt", data.login.token);
       history.push("/");
     },
     onError: (error) => {

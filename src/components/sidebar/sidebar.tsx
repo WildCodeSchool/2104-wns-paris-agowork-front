@@ -27,11 +27,10 @@ import {
   ColoredSvg,
   BurgerButton,
 } from "../../assets/styles/sidebar/sidebar";
-import { AuthContext } from "../../context/auth";
-import { MoodProfile } from "../../assets/styles/dashboard/teamMood";
+import { AuthContext } from "../../context/authContext";
 
 const Sidebar = (): JSX.Element => {
-  const context = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const history = useHistory();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -81,8 +80,7 @@ const Sidebar = (): JSX.Element => {
             icon={<SchoolOutlined />}
             path="/mes-ressources"
           />
-          {context.user.role === "ADMIN" ||
-          context.user.role === "SUPERADMIN" ? (
+          {user?.role === "ADMIN" || user?.role === "SUPERADMIN" ? (
             <Elements
               text="Administration"
               icon={<AdminPanelSettings />}

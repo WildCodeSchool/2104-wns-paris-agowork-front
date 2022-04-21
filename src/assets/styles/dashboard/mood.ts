@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box, Button, Radio, Typography } from "@mui/material";
+import { Box, Radio, Typography } from "@mui/material";
 import { colors, shapes } from "../global";
 
 export const Card = styled(Box)`

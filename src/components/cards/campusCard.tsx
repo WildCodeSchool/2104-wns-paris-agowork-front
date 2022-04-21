@@ -20,7 +20,7 @@ const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
   const handleClose = () => setOpen(false);
 
   const [deleteCampus] = useMutation(DELETE_CAMPUS, {
-    onCompleted: (data) => {
+    onCompleted: () => {
       setOpen(false);
       window.location.reload();
     },
