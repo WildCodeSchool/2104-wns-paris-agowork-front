@@ -1,7 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate, useLocation, To } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { FormHelperText, TextField } from "@mui/material";
+import {
+  FormControl,
+  FormHelperText,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../graphql/mutations/user/user";
 import {
@@ -18,21 +27,27 @@ import { AuthContext } from "../../context/authContext";
 import SolidButton from "../../components/buttons/solidButton";
 import ErrorPopup from "../../components/error/errorPopup";
 
-interface State {
-  to: To;
-}
-
 export default function Login(): JSX.Element {
-  const state = useLocation().state as State;
   const navigate = useNavigate();
-  const { user, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorHidden, setErrorHidden] = useState(true);
-  const [formState, setFormState] = useState({
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginForm, setLoginForm] = useState({
     login: true,
     email: "",
     password: "",
   });
+
+  // to handle show/hide password input
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
 
   const [login, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {
@@ -53,8 +68,8 @@ export default function Login(): JSX.Element {
     e.preventDefault();
     login({
       variables: {
-        email: formState.email,
-        password: formState.password,
+        email: loginForm.email,
+        password: loginForm.password,
       },
     });
   };
@@ -71,10 +86,10 @@ export default function Login(): JSX.Element {
             <LoginForm onSubmit={handleLogin}>
               <GroupForm>
                 <TextField
-                  value={formState.email}
+                  value={loginForm.email}
                   onChange={(e) =>
-                    setFormState({
-                      ...formState,
+                    setLoginForm({
+                      ...loginForm,
                       email: e.target.value,
                     })
                   }
@@ -86,19 +101,36 @@ export default function Login(): JSX.Element {
                 <FormHelperText>Required</FormHelperText>
               </GroupForm>
               <GroupForm>
-                <TextField
-                  value={formState.password}
-                  onChange={(e) =>
-                    setFormState({
-                      ...formState,
-                      password: e.target.value,
-                    })
-                  }
-                  type="password"
-                  label="Mot de passe"
-                  variant="outlined"
-                  id="password-mui-theme-provider-outlined-input"
-                />
+                <FormControl variant="outlined">
+                  <InputLabel htmlFor="outlined-adornment-password">
+                    Password
+                  </InputLabel>
+                  <OutlinedInput
+                    id="outlined-adornment-password"
+                    type={showPassword ? "text" : "password"}
+                    value={loginForm.password}
+                    onChange={(e) =>
+                      setLoginForm({
+                        ...loginForm,
+                        password: e.target.value,
+                      })
+                    }
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    label="Password"
+                  />
+                </FormControl>
+
                 <FormHelperText>Required</FormHelperText>
               </GroupForm>
               <SolidButton type="submit" textButton="Connexion" />
