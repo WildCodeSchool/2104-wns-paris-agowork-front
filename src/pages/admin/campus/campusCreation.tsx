@@ -30,7 +30,8 @@ export default function CampusCreation(): JSX.Element {
     reset,
     formState: { errors },
   } = useForm();
-  const [createCampus, { loading }] = useMutation(CREATE_CAMPUS, {
+
+  const [createCampus] = useMutation(CREATE_CAMPUS, {
     onCompleted: (data) => {
       setLatestCampus(data.createCampus);
     },
@@ -43,6 +44,7 @@ export default function CampusCreation(): JSX.Element {
     createCampus({ variables: { input } });
     reset();
   };
+
   return (
     <>
       <FormBox>

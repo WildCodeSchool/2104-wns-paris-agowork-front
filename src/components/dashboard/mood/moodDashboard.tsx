@@ -23,22 +23,18 @@ type FormValues = {
 
 export default function MoodCard(): JSX.Element {
   const { user } = useContext(AuthContext);
+  // get all mood registered by admin
   const { data: allMoods } = useQuery<GetMoodsType>(GET_ALL_MOODS);
-  const { data: loggedUser } = useQuery(GET_LOGGED_USER);
+  const { data: loggedUser, refetch } = useQuery(GET_LOGGED_USER);
   const [currentMood, setCurrentMood] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, control, reset } = useForm();
 
   const [updateUserMood] = useMutation(UPDATE_USER_MOOD, {
     onCompleted: (data) => {
-      setErrorMessage("");
-      const userMood = data.updateUserMood.mood;
-      setCurrentMood(userMood.icon);
+      setCurrentMood(data.updateUserMood.mood.icon);
+      // refetch GET_LOGGED_USER query to get the updated mood
+      refetch();
     },
     onError: (error) => {
       console.log(error);
@@ -46,18 +42,20 @@ export default function MoodCard(): JSX.Element {
   });
 
   const handleMood: SubmitHandler<FormValues> = (input) => {
-    console.log(user);
     updateUserMood({
       variables: {
         id: input.id,
         email: user?.email,
       },
     });
+    // reset form choice
+    reset();
   };
+
   return (
     <Card>
       <ContentCard>
-        <TitleMood>Mood du jour</TitleMood>
+        <TitleMood>Ton Mood du jour</TitleMood>
         <MoodIcon>
           {!currentMood
             ? loggedUser?.getLoggedUserByEmail.mood.icon
@@ -76,6 +74,7 @@ export default function MoodCard(): JSX.Element {
               </MenuItem>
             ))}
           </FormSelect>
+          {}
           <SolidButton textButton="Mettre à jour" type="submit" />
         </form>
       </ContentCard>
