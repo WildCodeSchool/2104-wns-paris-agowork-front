@@ -8,8 +8,8 @@ import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus"
 import { CampusType, GetCampusType } from "../../../types/campus";
 import SolidButton from "../../../components/buttons/solidButton";
 import UserListing from "./userListing";
-import FormElement from "../../../components/form/formElement";
-import FormSelect from "../../../components/form/formSelect";
+import InputText from "../../../components/form/inputText";
+import InputSelect from "../../../components/form/inputSelect";
 import { roles, UserType } from "../../../types/user";
 import UserCard from "../../../components/cards/userCard";
 import {
@@ -61,13 +61,13 @@ export default function UserCreation(): JSX.Element {
           <FormTitle>Ajouter un utilisateur</FormTitle>
           <Form onSubmit={handleSubmit(handleUser)}>
             <FormBox>
-              <FormElement
+              <InputText
                 label="firstname"
                 type="text"
                 register={register}
                 required
               />
-              <FormElement
+              <InputText
                 label="lastname"
                 type="text"
                 register={register}
@@ -75,13 +75,13 @@ export default function UserCreation(): JSX.Element {
               />
             </FormBox>
             <FormBox>
-              <FormElement
+              <InputText
                 label="email"
                 type="text"
                 register={register}
                 required
               />
-              <FormElement
+              <InputText
                 label="password"
                 type="password"
                 register={register}
@@ -89,7 +89,7 @@ export default function UserCreation(): JSX.Element {
               />
             </FormBox>
             <FormBox>
-              <FormElement
+              <InputText
                 label="town"
                 type="text"
                 register={register}
@@ -98,7 +98,7 @@ export default function UserCreation(): JSX.Element {
               {errorCampus ? (
                 "Erreur de chargement, contactez votre administrateur"
               ) : (
-                <FormSelect
+                <InputSelect
                   id="campus-select"
                   name="campus"
                   label="Campus"
@@ -109,10 +109,10 @@ export default function UserCreation(): JSX.Element {
                       {list.name}
                     </MenuItem>
                   ))}
-                </FormSelect>
+                </InputSelect>
               )}
             </FormBox>
-            <FormSelect
+            <InputSelect
               id="role-select"
               name="role"
               label="Role"
@@ -124,7 +124,7 @@ export default function UserCreation(): JSX.Element {
                   {list.name}
                 </MenuItem>
               ))}
-            </FormSelect>
+            </InputSelect>
             <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
           </Form>
         </UserForm>

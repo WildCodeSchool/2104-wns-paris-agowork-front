@@ -28,6 +28,7 @@ export const colors = {
 };
 
 export const shapes = {
+  borderRadiusSmall: "8px",
   borderRadiusMed: "15px",
   borderRadiusB: "20px",
 };
@@ -82,6 +83,7 @@ export const hide = styled.div`
 
 export const Snackbar = styled(Stack)`
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
+  margin-top: 2rem;
 `;
 
 export const Popup = styled(Box)`

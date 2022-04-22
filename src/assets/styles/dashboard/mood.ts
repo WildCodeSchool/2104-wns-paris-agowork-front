@@ -9,7 +9,7 @@ export const Card = styled(Box)`
   min-width: 22%;
   flex-wrap: wrap;
   margin-left: 2rem;
-  border-radius: ${shapes.borderRadiusB};
+  border-radius: ${shapes.borderRadiusSmall};
 `;
 
 export const ContentCard = styled(Box)`

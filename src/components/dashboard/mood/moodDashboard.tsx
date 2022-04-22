@@ -12,7 +12,7 @@ import { UPDATE_USER_MOOD } from "../../../graphql/mutations/social/mood";
 import SolidButton from "../../buttons/solidButton";
 import { GET_ALL_MOODS } from "../../../graphql/queries/social/mood";
 import { GetMoodsType } from "../../../types/moods";
-import FormSelect from "../../form/formSelect";
+import InputSelect from "../../form/inputSelect";
 import { MoodIcon } from "../../../assets/styles/list/list";
 import { GET_LOGGED_USER } from "../../../graphql/queries/user/user";
 
@@ -62,7 +62,7 @@ export default function MoodCard(): JSX.Element {
             : currentMood}
         </MoodIcon>
         <form data-testid="formMood" onSubmit={handleSubmit(handleMood)}>
-          <FormSelect
+          <InputSelect
             id="icon-select"
             name="id"
             label="Changer de mood"
@@ -73,7 +73,7 @@ export default function MoodCard(): JSX.Element {
                 {list.icon} {list.name}
               </MenuItem>
             ))}
-          </FormSelect>
+          </InputSelect>
           {}
           <SolidButton textButton="Mettre à jour" type="submit" />
         </form>

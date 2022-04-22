@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Box, MenuItem, Switch, Typography } from "@mui/material";
 import { useMutation } from "@apollo/client";
-import FormElement from "../../../components/form/formElement";
+import InputText from "../../../components/form/inputText";
 import { CREATE_MOOD } from "../../../graphql/mutations/social/mood";
 import { Form, FormBox, MoodForm } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
@@ -11,7 +11,7 @@ import {
   FormTitle,
   LatestCreatedTitle,
 } from "../../../assets/styles/list/list";
-import FormSelect from "../../../components/form/formSelect";
+import InputSelect from "../../../components/form/inputSelect";
 import { moods } from "../../../components/mood/mood.enum";
 import MoodListing from "./moodListing";
 import { MoodType } from "../../../types/moods";
@@ -65,14 +65,14 @@ export default function MoodCreation(): JSX.Element {
           <FormTitle>Ajouter un mood</FormTitle>
           <Form onSubmit={handleSubmit(handleMood)}>
             <BoxIcon>
-              <FormElement
+              <InputText
                 label="name"
                 type="text"
                 register={register}
                 required
               />
               {watchIcon === false ? (
-                <FormSelect
+                <InputSelect
                   id="icon-select"
                   name="icon"
                   label="icon"
@@ -84,12 +84,12 @@ export default function MoodCreation(): JSX.Element {
                       {list.icon}
                     </MenuItem>
                   ))}
-                </FormSelect>
+                </InputSelect>
               ) : (
                 <></>
               )}
               {watchIcon && (
-                <FormElement label="icon" type="text" register={register} />
+                <InputText label="icon" type="text" register={register} />
               )}
             </BoxIcon>
             <Typography sx={{ marginTop: 2 }}>

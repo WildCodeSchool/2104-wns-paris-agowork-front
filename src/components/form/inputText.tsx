@@ -2,7 +2,7 @@ import React from "react";
 import { TextField } from "@mui/material";
 import { GroupForm } from "../../assets/styles/form";
 
-export default function FormElement({
+export default function InputText({
   label,
   required,
   register,
