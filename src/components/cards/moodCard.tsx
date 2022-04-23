@@ -12,7 +12,7 @@ import {
 import ConfirmationModal from "../modal/confirmationModal";
 import { DELETE_MOOD } from "../../graphql/mutations/social/mood";
 
-const MoodCard = ({ ...mood }: any): JSX.Element => {
+const MoodCard = ({ updateListing, ...mood }: any): JSX.Element => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -20,7 +20,7 @@ const MoodCard = ({ ...mood }: any): JSX.Element => {
   const [deleteMood] = useMutation(DELETE_MOOD, {
     onCompleted: (data) => {
       setOpen(false);
-      window.location.reload();
+      updateListing();
     },
     onError: (error) => {
       console.log(error);
@@ -41,7 +41,7 @@ const MoodCard = ({ ...mood }: any): JSX.Element => {
           <MoodIcon>{mood.icon}</MoodIcon>
           <CardTitle>{mood.name}</CardTitle>
         </CardContent>
-        {mood.id === "61ba24253b74a6001ac83262" ? (
+        {mood.name === "Au top" ? (
           <></>
         ) : (
           <>

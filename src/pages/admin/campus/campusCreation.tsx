@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { Box } from "@mui/material";
-import { School } from "@mui/icons-material";
 import InputText from "../../../components/form/inputText";
 import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus";
 import { CampusForm, Form, FormBox } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
 import CampusListing from "./campusListing";
 import {
-  BoxIcon,
   FormTitle,
   LatestCreatedTitle,
 } from "../../../assets/styles/list/list";

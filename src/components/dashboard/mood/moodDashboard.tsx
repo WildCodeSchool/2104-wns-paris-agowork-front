@@ -27,7 +27,6 @@ export default function MoodCard(): JSX.Element {
   const { data: allMoods } = useQuery<GetMoodsType>(GET_ALL_MOODS);
   const { data: loggedUser, refetch } = useQuery(GET_LOGGED_USER);
   const [currentMood, setCurrentMood] = useState("");
-
   const { handleSubmit, control, reset } = useForm();
 
   const [updateUserMood] = useMutation(UPDATE_USER_MOOD, {
@@ -56,16 +55,20 @@ export default function MoodCard(): JSX.Element {
     <Card>
       <ContentCard>
         <TitleMood>Ton Mood du jour</TitleMood>
-        <MoodIcon>
-          {!currentMood
-            ? loggedUser?.getLoggedUserByEmail.mood.icon
-            : currentMood}
-        </MoodIcon>
+        {loggedUser?.getLoggedUserByEmail.mood?.icon ? (
+          <MoodIcon>
+            {!currentMood
+              ? loggedUser?.getLoggedUserByEmail.mood.icon
+              : currentMood}
+          </MoodIcon>
+        ) : (
+          "Ajouter votre mood pour la première fois"
+        )}
         <form data-testid="formMood" onSubmit={handleSubmit(handleMood)}>
           <InputSelect
             id="icon-select"
             name="id"
-            label="Changer de mood"
+            label="Liste des moods"
             control={control}
           >
             {allMoods?.getMoods.map((list: any) => (

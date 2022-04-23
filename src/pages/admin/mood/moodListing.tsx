@@ -8,7 +8,13 @@ import { GET_ALL_MOODS } from "../../../graphql/queries/social/mood";
 import { GetMoodsType, MoodType } from "../../../types/moods";
 
 export default function MoodListing(): JSX.Element {
-  const { loading, error, data } = useQuery<GetMoodsType>(GET_ALL_MOODS);
+  const { loading, error, data, refetch } =
+    useQuery<GetMoodsType>(GET_ALL_MOODS);
+
+  const updateListing = () => {
+    refetch();
+  };
+
   if (error) {
     return <Typography>ERROR</Typography>;
   }
@@ -20,7 +26,7 @@ export default function MoodListing(): JSX.Element {
       ) : (
         <CardsBoard>
           {data?.getMoods.map((mood: MoodType) => (
-            <MoodCard {...mood} key={mood.id} />
+            <MoodCard {...mood} updateListing={updateListing} key={mood.id} />
           ))}
         </CardsBoard>
       )}

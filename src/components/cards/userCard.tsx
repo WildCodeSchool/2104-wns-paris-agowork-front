@@ -17,14 +17,14 @@ import {
 import { UserType } from "../../types/user";
 import ConfirmationModal from "../modal/confirmationModal";
 
-const UserCard = ({ ...user }: UserType): JSX.Element => {
+const UserCard = ({ updateListing, ...user }: any): JSX.Element => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [deleteUser] = useMutation(DELETE_USER, {
     onCompleted: (data) => {
       setOpen(false);
-      window.location.reload();
+      updateListing();
     },
     onError: (error) => {
       console.log(error);

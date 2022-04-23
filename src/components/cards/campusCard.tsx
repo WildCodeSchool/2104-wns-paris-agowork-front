@@ -11,10 +11,9 @@ import {
   IconParagraph,
 } from "../../assets/styles/list/list";
 import ConfirmationModal from "../modal/confirmationModal";
-import { CampusType } from "../../types/campus";
 import { DELETE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
 
-const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
+const CampusCard = ({ updateListing, ...campus }: any): JSX.Element => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -22,7 +21,7 @@ const CampusCard = ({ ...campus }: CampusType): JSX.Element => {
   const [deleteCampus] = useMutation(DELETE_CAMPUS, {
     onCompleted: () => {
       setOpen(false);
-      window.location.reload();
+      updateListing();
     },
     onError: (error) => {
       console.log(error);

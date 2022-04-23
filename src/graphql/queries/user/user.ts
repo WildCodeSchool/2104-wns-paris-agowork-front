@@ -35,19 +35,6 @@ export const GET_STUDENTS_MOOD = gql`
   }
 `;
 
-export const GetLoggedUserByEmail = gql`
-  query loggedUser {
-    loggedUser {
-      firstname
-      lastname
-      email
-      town
-      picture
-      role
-    }
-  }
-`;
-
 export const GET_LOGGED_USER = gql`
   query getLoggedUserByEmail {
     getLoggedUserByEmail {
