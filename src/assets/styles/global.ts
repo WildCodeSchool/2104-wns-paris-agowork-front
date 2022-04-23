@@ -38,6 +38,26 @@ export const BoxShaddow = styled.div`
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
 `;
 
+export const Popup = styled(Box)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: ${colors.darkBlue};
+  border: 1px solid #000;
+  box-shadow: 24px;
+  padding: 2rem;
+  color: #ffff;
+  border-radius: ${shapes.borderRadiusMed};
+  text-align: center;
+  & svg {
+    color: ${colors.mediumPink};
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+`;
+
 export const ColoredButton = styled(Button)`
   background: ${colors.pinkLinearGradient};
   color: white;
@@ -84,24 +104,4 @@ export const hide = styled.div`
 export const Snackbar = styled(Stack)`
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
   margin-top: 2rem;
-`;
-
-export const Popup = styled(Box)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  background-color: ${colors.darkBlue};
-  border: 1px solid #000;
-  box-shadow: 24px;
-  padding: 2rem;
-  color: white;
-  border-radius: ${shapes.borderRadiusMed};
-  text-align: center;
-  & svg {
-    color: ${colors.mediumPink};
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
 `;

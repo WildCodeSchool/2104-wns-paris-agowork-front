@@ -14,7 +14,7 @@ import {
 import { CampusType } from "../../../types/campus";
 import CampusCard from "../../../components/cards/campusCard";
 
-type FormValues = {
+type CampusCreationValues = {
   name: string;
   address: string;
   phone: string;
@@ -38,7 +38,7 @@ export default function CampusCreation(): JSX.Element {
     },
   });
 
-  const handleCampus: SubmitHandler<FormValues> = (input) => {
+  const handleCampus: SubmitHandler<CampusCreationValues> = (input) => {
     createCampus({ variables: { input } });
     reset();
   };

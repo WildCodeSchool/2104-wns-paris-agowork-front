@@ -16,8 +16,9 @@ import {
   FormTitle,
   LatestCreatedTitle,
 } from "../../../assets/styles/list/list";
+import InputPassword from "../../../components/form/inputPassword";
 
-export type FormValues = {
+export type UserCreationValues = {
   firstname: string;
   lastname: string;
   town: string;
@@ -50,7 +51,7 @@ export default function UserCreation(): JSX.Element {
     },
   });
 
-  const handleUser: SubmitHandler<FormValues> = (input) => {
+  const handleUser: SubmitHandler<UserCreationValues> = (input) => {
     createUser({ variables: { input } });
     reset();
   };
@@ -74,20 +75,10 @@ export default function UserCreation(): JSX.Element {
                 required
               />
             </FormBox>
-            <FormBox>
-              <InputText
-                label="email"
-                type="text"
-                register={register}
-                required
-              />
-              <InputText
-                label="password"
-                type="password"
-                register={register}
-                required
-              />
-            </FormBox>
+
+            <InputText label="email" type="text" register={register} required />
+            <InputPassword register={register} />
+
             <FormBox>
               <InputText
                 label="town"

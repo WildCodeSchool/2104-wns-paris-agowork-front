@@ -17,7 +17,7 @@ import MoodListing from "./moodListing";
 import { MoodType } from "../../../types/moods";
 import MoodCard from "../../../components/cards/moodCard";
 
-type FormValues = {
+type MoodCreationValues = {
   name: string;
   icon: string;
 };
@@ -47,7 +47,7 @@ export default function MoodCreation(): JSX.Element {
     );
     return () => subscription.unsubscribe();
   }, [watch]);
-  const handleMood: SubmitHandler<FormValues> = (input) => {
+  const handleMood: SubmitHandler<MoodCreationValues> = (input) => {
     createMood({
       variables: {
         input: {

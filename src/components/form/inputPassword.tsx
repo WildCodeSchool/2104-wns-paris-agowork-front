@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 import {
   FormControl,
   FormHelperText,
@@ -16,17 +16,18 @@ export default function InputPassword({ register }: any): JSX.Element {
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
 
   return (
     <GroupForm>
       <FormControl variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <InputLabel htmlFor="outlined-adornment-password">
+          password *
+        </InputLabel>
         <OutlinedInput
+          required
           id="outlined-adornment-password"
           label="Password"
           type={showPassword ? "text" : "password"}
@@ -45,7 +46,6 @@ export default function InputPassword({ register }: any): JSX.Element {
           }
         />
       </FormControl>
-      <FormHelperText>Obligatoire</FormHelperText>
     </GroupForm>
   );
 }
