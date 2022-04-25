@@ -7,7 +7,7 @@ import { CampusType, GetCampusType } from "../../../types/campus";
 import Loading from "../../../components/loading/loading";
 import CampusCard from "../../../components/cards/campusCard";
 
-export default function CampusListing(): JSX.Element {
+export default function CampusListing(campusCreated: any): JSX.Element {
   const { loading, error, data, refetch } =
     useQuery<GetCampusType>(GET_ALL_CAMPUS);
 
@@ -17,6 +17,10 @@ export default function CampusListing(): JSX.Element {
 
   if (error) {
     return <Typography>ERROR</Typography>;
+  }
+
+  if (campusCreated) {
+    updateListing();
   }
 
   return (

@@ -1,7 +1,6 @@
 import React, { MouseEvent, useState } from "react";
 import {
   FormControl,
-  FormHelperText,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -10,7 +9,11 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { GroupForm } from "../../assets/styles/form";
 
-export default function InputPassword({ register }: any): JSX.Element {
+export default function InputPassword({
+  label,
+  mandatory,
+  register,
+}: any): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   // to handle show/hide password input
   const handleClickShowPassword = () => {
@@ -24,10 +27,10 @@ export default function InputPassword({ register }: any): JSX.Element {
     <GroupForm>
       <FormControl variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">
-          password *
+          {!label ? "password *" : label}
         </InputLabel>
         <OutlinedInput
-          required
+          {...(mandatory === "false" ? "" : "required")}
           id="outlined-adornment-password"
           label="Password"
           type={showPassword ? "text" : "password"}

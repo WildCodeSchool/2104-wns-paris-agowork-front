@@ -5,9 +5,11 @@ import {
   ApolloClient,
   ApolloProvider,
   createHttpLink,
+  from,
   InMemoryCache,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { onError } from "@apollo/client/link/error";
 import App from "./App";
 
 let url: string | undefined = "";
@@ -21,6 +23,15 @@ if (process.env.NODE_ENV !== "production") {
 } else {
   url = "/graphql";
 }
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    console.log("graphQLErrors", graphQLErrors);
+  }
+  if (networkError) {
+    console.log("networkError", networkError);
+  }
+});
 
 const httpLink = createHttpLink({
   uri: url,
@@ -38,7 +49,7 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink),
+  link: from([errorLink, authLink.concat(httpLink)]),
 });
 
 ReactDOM.render(

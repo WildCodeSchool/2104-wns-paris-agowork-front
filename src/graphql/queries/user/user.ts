@@ -52,3 +52,21 @@ export const GET_LOGGED_USER = gql`
     }
   }
 `;
+
+export const GET_ONE_USER = gql`
+  query getUserById($id: ID!) {
+    getUserById(id: $id) {
+      id
+      firstname
+      lastname
+      email
+      town
+      role
+      picture
+      campus {
+        id
+        name
+      }
+    }
+  }
+`;

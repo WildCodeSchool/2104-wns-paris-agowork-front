@@ -17,17 +17,17 @@ const ConfirmationModal = ({
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="modal-deleteUser-title"
+      aria-labelledby="modal-delete-title"
     >
       <Popup>
         <Report />
         <Typography
-          id="modal-deleteUser-title"
+          id="modal-delete-title"
           variant="h6"
           component="h2"
           sx={{ marginBottom: 2 }}
         >
-          Êtes-vous sûr de vouloir supprimer définitivement ?
+          Êtes-vous sûr de vouloir supprimer définitivement cet élément ?
         </Typography>
         <BoxIcon>
           <BorderedButton sx={{ marginRight: 2 }} onClick={handleClose}>

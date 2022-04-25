@@ -7,15 +7,20 @@ import { GetUsersType, UserType } from "../../../types/user";
 import UserCard from "../../../components/cards/userCard";
 import Loading from "../../../components/loading/loading";
 
-export default function UserListing(): JSX.Element {
+export default function UserListing(userCreated: any): JSX.Element {
   const { loading, error, data, refetch } =
     useQuery<GetUsersType>(GET_ALL_USERS);
+
   const updateListing = () => {
     refetch();
   };
 
   if (error) {
     return <Typography>ERROR</Typography>;
+  }
+
+  if (userCreated) {
+    updateListing();
   }
 
   return (

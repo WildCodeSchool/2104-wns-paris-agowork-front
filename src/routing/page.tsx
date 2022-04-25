@@ -10,6 +10,7 @@ import PrivateRoute from "./privateRoute";
 import AdminRoute from "./adminRoute";
 import GeneralForm from "../pages/admin/administrationGeneral";
 import MoodCreation from "../pages/admin/mood/moodCreation";
+import UserUpdate from "../pages/admin/user/userUpdate";
 
 const Page = (): JSX.Element => {
   return (
@@ -70,6 +71,15 @@ const Page = (): JSX.Element => {
             <AdminRoute>
               <UserCreation />
             </AdminRoute>
+          }
+        />
+
+        <Route
+          path="/utilisateur/:id"
+          element={
+            <PrivateRoute>
+              <UserUpdate />
+            </PrivateRoute>
           }
         />
       </Routes>

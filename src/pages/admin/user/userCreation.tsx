@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Box, MenuItem } from "@mui/material";
+import { Box, MenuItem, Typography } from "@mui/material";
 import { CREATE_USER } from "../../../graphql/mutations/user/user";
 import { Form, FormBox, UserForm } from "../../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
@@ -25,7 +25,6 @@ export type UserCreationValues = {
   password: string;
   email: string;
   role: string;
-  mood: string;
   campus: string;
 };
 
@@ -43,7 +42,6 @@ export default function UserCreation(): JSX.Element {
 
   const [createUser] = useMutation(CREATE_USER, {
     onCompleted: (data) => {
-      console.log(data);
       setLatestUser(data.createUser);
     },
     onError: (error) => {
@@ -53,7 +51,6 @@ export default function UserCreation(): JSX.Element {
 
   const handleUser: SubmitHandler<UserCreationValues> = (input) => {
     createUser({ variables: { input } });
-    reset();
   };
   return (
     <>
@@ -87,7 +84,9 @@ export default function UserCreation(): JSX.Element {
                 required
               />
               {errorCampus ? (
-                "Erreur de chargement, contactez votre administrateur"
+                <Typography>
+                  Erreur de chargement, contactez votre administrateur
+                </Typography>
               ) : (
                 <InputSelect
                   id="campus-select"
@@ -130,7 +129,7 @@ export default function UserCreation(): JSX.Element {
           <></>
         )}
       </FormBox>
-      <UserListing />
+      <UserListing userCreated={latestUser} />
     </>
   );
 }

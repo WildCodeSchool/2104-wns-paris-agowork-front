@@ -110,7 +110,7 @@ export default function MoodCreation(): JSX.Element {
           <></>
         )}
       </FormBox>
-      <MoodListing />
+      <MoodListing moodCreated={latestMood} />
     </>
   );
 }

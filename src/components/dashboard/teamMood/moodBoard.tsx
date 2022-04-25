@@ -24,7 +24,7 @@ type GetUsersMoodType = {
 
 export default function MoodBoard(): JSX.Element {
   const { data } = useQuery<GetUsersMoodType>(GET_STUDENTS_MOOD);
-  console.log(data);
+
   return (
     <CampusMoods>
       {data?.getAllStudentsByMood.map((user: UserMoodType) => (

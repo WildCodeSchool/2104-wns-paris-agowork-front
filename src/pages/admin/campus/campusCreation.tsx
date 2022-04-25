@@ -50,7 +50,7 @@ export default function CampusCreation(): JSX.Element {
           <FormTitle>Ajouter un campus</FormTitle>
           <Form onSubmit={handleSubmit(handleCampus)}>
             <InputText label="name" type="text" register={register} required />
-            <InputText label="phone" type="text" register={register} false />
+            <InputText label="phone" type="text" register={register} required />
             <InputText label="address" type="text" register={register} false />
             <SolidButton type="submit" textButton="Ajouter ce campus" />
           </Form>
@@ -66,7 +66,7 @@ export default function CampusCreation(): JSX.Element {
           <></>
         )}
       </FormBox>
-      <CampusListing />
+      <CampusListing campusCreated={latestCampus} />
     </>
   );
 }

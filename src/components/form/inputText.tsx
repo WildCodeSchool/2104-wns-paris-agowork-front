@@ -7,14 +7,17 @@ export default function InputText({
   required,
   register,
   type,
+  value,
 }: any): JSX.Element {
   return (
     <GroupForm>
       <TextField
         {...register(label, { required })}
-        type={type}
+        type={!type ? "text" : type}
+        defaultValue={value}
         required={required}
         label={label}
+        key={value}
         variant="outlined"
         id={`${label}-input`}
       />
