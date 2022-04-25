@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Card, FormControl } from "@mui/material";
-import { shapes, colors } from "./global";
+import { shapes } from "./global";
 
 export const Form = styled.form`
   border-radius: ${shapes.borderRadiusMed};

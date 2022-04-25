@@ -22,7 +22,6 @@ export default function GeneralForm(): JSX.Element {
       <CardsAdmin>
         <NavLink
           to="/campus"
-          exact
           className={({ isActive }: any) => (isActive ? "active" : "")}
         >
           <Card>
@@ -35,7 +34,6 @@ export default function GeneralForm(): JSX.Element {
         </NavLink>
         <NavLink
           to="/mood"
-          exact
           className={({ isActive }: any) => (isActive ? "active" : "")}
         >
           <Card>
@@ -48,7 +46,6 @@ export default function GeneralForm(): JSX.Element {
         </NavLink>
         <NavLink
           to="/utilisateur"
-          exact
           className={({ isActive }: any) => (isActive ? "active" : "")}
         >
           <Card>

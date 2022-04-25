@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box, Button, Radio, Typography } from "@mui/material";
+import { Box, Radio, Typography } from "@mui/material";
 import { colors, shapes } from "../global";
 
 export const Card = styled(Box)`
@@ -9,7 +9,7 @@ export const Card = styled(Box)`
   min-width: 22%;
   flex-wrap: wrap;
   margin-left: 2rem;
-  border-radius: ${shapes.borderRadiusB};
+  border-radius: ${shapes.borderRadiusSmall};
 `;
 
 export const ContentCard = styled(Box)`

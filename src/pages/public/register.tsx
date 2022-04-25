@@ -1,7 +1,16 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm, SubmitHandler } from "react-hook-form";
 import jwt_decode from "jwt-decode";
+import {
+  FormControl,
+  FormHelperText,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../graphql/mutations/user/user";
 import {
@@ -12,31 +21,25 @@ import {
   LoginContainer,
   ColoredContainer,
 } from "../../assets/styles/login/login";
+import { GroupForm } from "../../assets/styles/form";
 import Loading from "../../components/loading/loading";
 import { AuthContext } from "../../context/authContext";
 import SolidButton from "../../components/buttons/solidButton";
 import ErrorPopup from "../../components/error/errorPopup";
-import InputText from "../../components/form/inputText";
-import InputPassword from "../../components/form/inputPassword";
-
-export type LoginValues = {
-  password: string;
-  email: string;
-};
 
 export default function Login(): JSX.Element {
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorHidden, setErrorHidden] = useState(true);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginForm, setLoginForm] = useState({
+    login: true,
+    email: "",
+    password: "",
+  });
 
-  const [login, { loading }] = useMutation(LOGIN_USER, {
+  const [register, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {
       setErrorMessage("");
       setUser(jwt_decode(data.login.token));
@@ -51,14 +54,14 @@ export default function Login(): JSX.Element {
     },
   });
 
-  const handleLogin: SubmitHandler<LoginValues> = (input) => {
-    login({
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    register({
       variables: {
-        email: input.email,
-        password: input.password,
+        email: loginForm.email,
+        password: loginForm.password,
       },
     });
-    reset();
   };
 
   return (
@@ -66,26 +69,7 @@ export default function Login(): JSX.Element {
       <ColoredContainer />
       <LoginCard>
         <CardContent>
-          <Title>Login</Title>
-          {loading && errorHidden ? (
-            <Loading />
-          ) : (
-            <LoginForm onSubmit={handleSubmit(handleLogin)}>
-              <InputText
-                label="email"
-                type="text"
-                register={register}
-                required
-              />
-              <InputPassword register={register} />
-              <SolidButton type="submit" textButton="Connexion" />
-            </LoginForm>
-          )}
-          {errorMessage !== "" && !errorHidden ? (
-            <ErrorPopup errorMessage={errorMessage} errorHidden={errorHidden} />
-          ) : (
-            <> </>
-          )}
+        <Title>Register</Title>
         </CardContent>
       </LoginCard>
     </LoginContainer>
