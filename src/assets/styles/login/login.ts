@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FormControl, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { colors, shapes } from "../global";
 
 export const LoginContainer = styled(Box)`

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { Typography } from "@mui/material";
 import { CardsBoard } from "../../../assets/styles/dashboard/teamMood";
@@ -7,11 +7,20 @@ import { GetUsersType, UserType } from "../../../types/user";
 import UserCard from "../../../components/cards/userCard";
 import Loading from "../../../components/loading/loading";
 
-export default function UserListing(): JSX.Element {
-  const { loading, error, data } = useQuery<GetUsersType>(GET_ALL_USERS);
+export default function UserListing(userCreated: any): JSX.Element {
+  const { loading, error, data, refetch } =
+    useQuery<GetUsersType>(GET_ALL_USERS);
+
+  const updateListing = () => {
+    refetch();
+  };
 
   if (error) {
     return <Typography>ERROR</Typography>;
+  }
+
+  if (userCreated) {
+    updateListing();
   }
 
   return (
@@ -21,7 +30,7 @@ export default function UserListing(): JSX.Element {
       ) : (
         <CardsBoard>
           {data?.getAllUsers.map((user: UserType) => (
-            <UserCard {...user} key={user.id} />
+            <UserCard {...user} updateListing={updateListing} key={user.id} />
           ))}
         </CardsBoard>
       )}

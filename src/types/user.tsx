@@ -27,4 +27,7 @@ export const roles = [
   {
     name: "ADMIN",
   },
+  {
+    name: "SUPERADMIN",
+  },
 ];

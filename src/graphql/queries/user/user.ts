@@ -35,19 +35,6 @@ export const GET_STUDENTS_MOOD = gql`
   }
 `;
 
-export const GetLoggedUserByEmail = gql`
-  query loggedUser {
-    loggedUser {
-      firstname
-      lastname
-      email
-      town
-      picture
-      role
-    }
-  }
-`;
-
 export const GET_LOGGED_USER = gql`
   query getLoggedUserByEmail {
     getLoggedUserByEmail {
@@ -60,6 +47,24 @@ export const GET_LOGGED_USER = gql`
       mood {
         id
         icon
+        name
+      }
+    }
+  }
+`;
+
+export const GET_ONE_USER = gql`
+  query getUserById($id: ID!) {
+    getUserById(id: $id) {
+      id
+      firstname
+      lastname
+      email
+      town
+      role
+      picture
+      campus {
+        id
         name
       }
     }

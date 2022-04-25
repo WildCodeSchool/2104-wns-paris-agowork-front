@@ -3,7 +3,7 @@ import { FormHelperText, InputLabel, Select } from "@mui/material";
 import { Controller } from "react-hook-form";
 import { GroupForm } from "../../assets/styles/form";
 
-export default function FormSelect({
+export default function InputSelect({
   name,
   label,
   control,

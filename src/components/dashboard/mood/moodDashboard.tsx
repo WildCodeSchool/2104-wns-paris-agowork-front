@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation, useQuery } from "@apollo/client";
 import { MenuItem } from "@mui/material";
-import { AuthContext } from "../../../context/auth";
+import { AuthContext } from "../../../context/authContext";
 import {
   Card,
   ContentCard,
@@ -12,7 +12,7 @@ import { UPDATE_USER_MOOD } from "../../../graphql/mutations/social/mood";
 import SolidButton from "../../buttons/solidButton";
 import { GET_ALL_MOODS } from "../../../graphql/queries/social/mood";
 import { GetMoodsType } from "../../../types/moods";
-import FormSelect from "../../form/formSelect";
+import InputSelect from "../../form/inputSelect";
 import { MoodIcon } from "../../../assets/styles/list/list";
 import { GET_LOGGED_USER } from "../../../graphql/queries/user/user";
 
@@ -22,25 +22,18 @@ type FormValues = {
 };
 
 export default function MoodCard(): JSX.Element {
+  const { user } = useContext(AuthContext);
+  // get all mood registered by admin
   const { data: allMoods } = useQuery<GetMoodsType>(GET_ALL_MOODS);
-  const { data: loggedUser } = useQuery(GET_LOGGED_USER);
-  console.log("current user", loggedUser);
-  const [currentMood, setCurrentMood] = useState(
-    loggedUser?.getLoggedUserByEmail.mood.icon
-  );
-  const [errorMessage, setErrorMessage] = useState("");
-  const context = useContext(AuthContext);
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm();
+  const { data: loggedUser, refetch } = useQuery(GET_LOGGED_USER);
+  const [currentMood, setCurrentMood] = useState("");
+  const { handleSubmit, control, reset } = useForm();
 
   const [updateUserMood] = useMutation(UPDATE_USER_MOOD, {
     onCompleted: (data) => {
-      setErrorMessage("");
-      const userMood = data.updateUserMood.mood;
-      setCurrentMood(userMood.icon);
+      setCurrentMood(data.updateUserMood.mood.icon);
+      // refetch GET_LOGGED_USER query to get the updated mood
+      refetch();
     },
     onError: (error) => {
       console.log(error);
@@ -51,30 +44,41 @@ export default function MoodCard(): JSX.Element {
     updateUserMood({
       variables: {
         id: input.id,
-        email: context.user.email,
+        email: user?.email,
       },
     });
+    // reset form choice
+    reset();
   };
+
   return (
     <Card>
       <ContentCard>
-        <TitleMood>Mood du jour</TitleMood>
-        <MoodIcon>{currentMood}</MoodIcon>
+        <TitleMood>Ton Mood du jour</TitleMood>
+        {loggedUser?.getLoggedUserByEmail.mood?.icon ? (
+          <MoodIcon>
+            {!currentMood
+              ? loggedUser?.getLoggedUserByEmail.mood.icon
+              : currentMood}
+          </MoodIcon>
+        ) : (
+          "Ajouter votre mood pour la première fois"
+        )}
         <form data-testid="formMood" onSubmit={handleSubmit(handleMood)}>
-          <FormSelect
+          <InputSelect
             id="icon-select"
             name="id"
-            label="Mood"
+            label="Liste des moods"
             control={control}
-            required
           >
             {allMoods?.getMoods.map((list: any) => (
               <MenuItem key={list.id} value={list.id}>
                 {list.icon} {list.name}
               </MenuItem>
             ))}
-          </FormSelect>
-          <SolidButton type="submit" textButton="Mettre à jour" />
+          </InputSelect>
+          {}
+          <SolidButton textButton="Mettre à jour" type="submit" />
         </form>
       </ContentCard>
     </Card>

@@ -9,7 +9,7 @@ import Sidebar from "../components/sidebar/sidebar";
 const Router = (): JSX.Element => {
   return (
     <>
-      {useLocation().pathname !== "/login" ? (
+      {useLocation().pathname !== "/connexion" ? (
         <Box sx={{ display: "flex" }}>
           <Sidebar />
           <Container component="main">

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Toolbar, Avatar, Typography, IconButton } from "@mui/material";
-import { Home } from "@mui/icons-material";
 import { Drawer } from "./muiSidebar";
 import { colors } from "../global";
 

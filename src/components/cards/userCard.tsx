@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { CardContent, CardMedia, Typography } from "@mui/material";
-import { Delete, ImageSearch, Report, School } from "@mui/icons-material";
+import { Delete, ImageSearch, School, MoreHoriz } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
-import { DELETE_USER } from "../../graphql/mutations/user/user";
+import { DELETE_USER, UPDATE_USER } from "../../graphql/mutations/user/user";
 import {
   ActionsCard,
   BoxIcon,
@@ -14,17 +15,17 @@ import {
   Paragraph,
   RoleTag,
 } from "../../assets/styles/list/list";
-import { UserType } from "../../types/user";
 import ConfirmationModal from "../modal/confirmationModal";
 
-const UserCard = ({ ...user }: UserType): JSX.Element => {
+const UserCard = ({ updateListing, ...user }: any): JSX.Element => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   const [deleteUser] = useMutation(DELETE_USER, {
     onCompleted: (data) => {
       setOpen(false);
-      window.location.reload();
+      updateListing();
     },
     onError: (error) => {
       console.log(error);
@@ -39,6 +40,7 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
       },
     });
   };
+
   return (
     <>
       <CardList sx={{ width: 291, margin: 1 }}>
@@ -47,7 +49,7 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
             component="img"
             height="140"
             image={user.picture}
-            alt="Paella dish"
+            alt={user.firstname}
           />
         ) : (
           <BrokenImage>
@@ -80,6 +82,9 @@ const UserCard = ({ ...user }: UserType): JSX.Element => {
           <BtnDelete onClick={handleOpen}>
             <Delete />
           </BtnDelete>
+          <Link to={`/utilisateur/${user.id}`}>
+            <MoreHoriz />
+          </Link>
         </ActionsCard>
       </CardList>
       <ConfirmationModal

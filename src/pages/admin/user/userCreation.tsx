@@ -1,31 +1,30 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Box, MenuItem } from "@mui/material";
+import { Box, MenuItem, Typography } from "@mui/material";
 import { CREATE_USER } from "../../../graphql/mutations/user/user";
 import { Form, FormBox, UserForm } from "../../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
 import { CampusType, GetCampusType } from "../../../types/campus";
 import SolidButton from "../../../components/buttons/solidButton";
 import UserListing from "./userListing";
-import FormElement from "../../../components/form/formElement";
-import FormSelect from "../../../components/form/formSelect";
+import InputText from "../../../components/form/inputText";
+import InputSelect from "../../../components/form/inputSelect";
 import { roles, UserType } from "../../../types/user";
 import UserCard from "../../../components/cards/userCard";
 import {
-  BoxIcon,
   FormTitle,
   LatestCreatedTitle,
 } from "../../../assets/styles/list/list";
+import InputPassword from "../../../components/form/inputPassword";
 
-export type FormValues = {
+export type UserCreationValues = {
   firstname: string;
   lastname: string;
   town: string;
-  picture: string;
+  password: string;
   email: string;
   role: string;
-  mood: string;
   campus: string;
 };
 
@@ -46,13 +45,12 @@ export default function UserCreation(): JSX.Element {
       setLatestUser(data.createUser);
     },
     onError: (error) => {
-      console.log(error);
+      error.graphQLErrors.map(({ message }) => console.log(message));
     },
   });
 
-  const handleUser: SubmitHandler<FormValues> = (input) => {
+  const handleUser: SubmitHandler<UserCreationValues> = (input) => {
     createUser({ variables: { input } });
-    reset();
   };
   return (
     <>
@@ -61,44 +59,36 @@ export default function UserCreation(): JSX.Element {
           <FormTitle>Ajouter un utilisateur</FormTitle>
           <Form onSubmit={handleSubmit(handleUser)}>
             <FormBox>
-              <FormElement
+              <InputText
                 label="firstname"
                 type="text"
                 register={register}
                 required
               />
-              <FormElement
+              <InputText
                 label="lastname"
                 type="text"
                 register={register}
                 required
               />
             </FormBox>
+
+            <InputText label="email" type="text" register={register} required />
+            <InputPassword register={register} />
+
             <FormBox>
-              <FormElement
-                label="email"
-                type="text"
-                register={register}
-                required
-              />
-              <FormElement
-                label="password"
-                type="password"
-                register={register}
-                required
-              />
-            </FormBox>
-            <FormBox>
-              <FormElement
+              <InputText
                 label="town"
                 type="text"
                 register={register}
                 required
               />
               {errorCampus ? (
-                "Erreur de chargement, contactez votre administrateur"
+                <Typography>
+                  Erreur de chargement, contactez votre administrateur
+                </Typography>
               ) : (
-                <FormSelect
+                <InputSelect
                   id="campus-select"
                   name="campus"
                   label="Campus"
@@ -109,10 +99,10 @@ export default function UserCreation(): JSX.Element {
                       {list.name}
                     </MenuItem>
                   ))}
-                </FormSelect>
+                </InputSelect>
               )}
             </FormBox>
-            <FormSelect
+            <InputSelect
               id="role-select"
               name="role"
               label="Role"
@@ -124,7 +114,7 @@ export default function UserCreation(): JSX.Element {
                   {list.name}
                 </MenuItem>
               ))}
-            </FormSelect>
+            </InputSelect>
             <SolidButton type="submit" textButton="Ajouter cet utilisateur" />
           </Form>
         </UserForm>
@@ -139,7 +129,7 @@ export default function UserCreation(): JSX.Element {
           <></>
         )}
       </FormBox>
-      <UserListing />
+      <UserListing userCreated={latestUser} />
     </>
   );
 }

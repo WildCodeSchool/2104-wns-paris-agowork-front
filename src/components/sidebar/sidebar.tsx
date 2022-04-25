@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate, useLocation, To } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import {
   CssBaseline,
-  Divider,
   IconButton,
   ListItem,
   ListItemIcon,
@@ -14,16 +13,13 @@ import {
   Menu,
   ChevronRight,
   SchoolOutlined,
-  StarHalfOutlined,
   Logout,
-  DoneOutlineOutlined,
   AdminPanelSettings,
 } from "@mui/icons-material";
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/muiSidebar";
 import ProfileSidebar from "./profileSidebar";
 import Elements from "./elements";
 import SocialMedia from "./socialMedia";
-import Subnav from "./subnav";
 import {
   TopBar,
   SideNav,
@@ -31,11 +27,16 @@ import {
   ColoredSvg,
   BurgerButton,
 } from "../../assets/styles/sidebar/sidebar";
-import { AuthContext } from "../../context/auth";
+import { AuthContext } from "../../context/authContext";
+
+interface State {
+  to: To;
+}
 
 const Sidebar = (): JSX.Element => {
-  const context = useContext(AuthContext);
-  const history = useHistory();
+  const { user } = useContext(AuthContext);
+  const state = useLocation().state as State;
+  const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -49,7 +50,7 @@ const Sidebar = (): JSX.Element => {
 
   const handleLogout = (event: any) => {
     localStorage.clear();
-    history.push("/login");
+    navigate("/connexion");
   };
 
   return (
@@ -67,7 +68,7 @@ const Sidebar = (): JSX.Element => {
           >
             <Menu />
           </BurgerButton>
-          <CompanyName>Company name</CompanyName>
+          <CompanyName>AgoWork</CompanyName>
           <SocialMedia />
         </TopBar>
       </AppBar>
@@ -84,8 +85,7 @@ const Sidebar = (): JSX.Element => {
             icon={<SchoolOutlined />}
             path="/mes-ressources"
           />
-          {context.user.role === "ADMIN" ||
-          context.user.role === "SUPERADMIN" ? (
+          {user?.role === "ADMIN" || user?.role === "SUPERADMIN" ? (
             <Elements
               text="Administration"
               icon={<AdminPanelSettings />}

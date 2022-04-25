@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Delete } from "@mui/icons-material";
+
 import { Box, Card, CardActions, IconButton } from "@mui/material";
-import { colors, shapes } from "../global";
+import { colors } from "../global";
 
 export const BrokenImage = styled.div`
   background-color: ${colors.mediumGrey};
@@ -33,6 +33,7 @@ export const IconMood = styled.span`
 export const CardTitle = styled.h2`
   font-size: 18px;
   font-weight: 600;
+  color: black;
   margin: 2px 0 2px 0;
 `;
 
@@ -58,6 +59,8 @@ export const BtnDelete = styled(IconButton)`
 
 export const ActionsCard = styled(CardActions)`
   justify-content: flex-end;
+  display: inline-flex;
+  vertical-align: middle;
   margin-top: auto;
 `;
 
